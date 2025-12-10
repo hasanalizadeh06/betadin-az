@@ -1,0 +1,943 @@
+"use client";
+import React, { useEffect } from 'react';
+
+const ObrabotkaRan: React.FC = () => {
+  useEffect(() => {
+    // Analytics scroll tracking logic adapted from the original script
+    // Guard for browsers and the global ym function (Yandex Metrica)
+    const scrollGoals: { [key: number]: () => void } = {
+      25: () => typeof (window as any).ym === 'function' && (window as any).ym(37744585, 'reachGoal', 'Скроллинг25'),
+      50: () => typeof (window as any).ym === 'function' && (window as any).ym(37744585, 'reachGoal', 'Скроллинг50'),
+      75: () => typeof (window as any).ym === 'function' && (window as any).ym(37744585, 'reachGoal', 'Скроллинг75'),
+      100: () => typeof (window as any).ym === 'function' && (window as any).ym(37744585, 'reachGoal', 'Скроллинг100'),
+    };
+    const triggered: { [key: number]: boolean } = {
+      25: false,
+      50: false,
+      75: false,
+      100: false,
+    };
+
+    function checkScroll() {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const docHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      const winHeight = window.innerHeight;
+      const scrollPercent = Math.floor(((scrollTop + winHeight) / docHeight) * 100);
+      for (let percent of [25, 50, 75, 100]) {
+        if (scrollPercent >= percent && !triggered[percent]) {
+          triggered[percent] = true;
+          scrollGoals[percent]();
+          // eslint-disable-next-line no-console
+          console.log(percent);
+        }
+      }
+      if (Object.values(triggered).every((v) => v)) {
+        window.removeEventListener('scroll', checkScroll);
+      }
+    }
+    window.addEventListener('scroll', checkScroll);
+    // initial check in case the page is already scrolled
+    checkScroll();
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+    };
+  }, []);
+
+  return (
+    <main>
+      <script>
+        {"console.log(1);"}
+      </script>
+      <div className="container-page-header">
+        <div className="container">
+          <div className="page-header page-header-breadcrumbs">
+            <ol className="breadcrumb" vocab="https://schema.org/" typeof="BreadcrumbList">
+              <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="https://betadin.ru">
+                  <span property="name">Главная</span>
+                </a>
+                <meta property="position" content="1" />
+              </li>
+              <li property="itemListElement" typeof="ListItem">
+                <a property="item" typeof="WebPage" href="https://betadin.ru/encyclopedia/">
+                  <span property="name">Обработка ран</span>
+                </a>
+                <meta property="position" content="2" />
+              </li>
+              <li property="itemListElement" typeof="ListItem">
+                <span property="name">Обработка ран</span>
+                <meta property="position" content="3" />
+              </li>
+            </ol>
+          </div>
+          <div className="page-header">
+            <div className="page-header-left">
+              <div className="page-header-title">
+                <h1 className="page-header-title-text">Обработка ран: антисептики, алгоритмы, рекомендации</h1>
+                <picture>
+                  <source
+                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                    type="image/webp"
+                  />
+                  <img
+                    decoding="async"
+                    height={112}
+                    width={115}
+                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
+                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                    alt="картинка у заголовка"
+                  />
+                </picture>
+              </div>
+              <h2 className="page-header-subtitle">Что такое рана</h2>
+              <div className="page-header-body">
+                <p>
+                  Рана – это повреждение покровных или внутренних тканей, вызванное внешним воздействием
+                  <strong>
+                    <sup>
+                      <a href="#spisok-literatury">1,2,3</a>
+                    </sup>
+                  </strong>
+                  .
+                </p>
+              </div>
+              <ul className="page-header-anchors page-header-anchors-detail">
+                <li>
+                  <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#pervichnaya-obrabotka-rany">Первичная обработка</a>
+                </li>
+                <li>
+                  <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#hirurgicheskaya-obrabotka-rany">Хирургическая обработка</a>
+                </li>
+                <li>
+                  <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#kakie-vidy-sredstv-dlya-obrabotki-ran-naibolee-rasprostraneny"> Растворы и антисептики </a>
+                </li>
+              </ul>
+            </div>
+            <div className="page-header-right">
+              <div className="page-header-img">
+                <picture>
+                  <source
+                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1032/97afaf188378d32fe74c7c654890dca2811b9c066b298911728fc32b33174004-730x615/obrabotka-ran-730x615.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1032/97afaf188378d32fe74c7c654890dca2811b9c066b298911728fc32b33174004-730x615/obrabotka-ran-1460x1230.webp 2x"
+                    type="image/webp"
+                  />
+                  <img
+                    fetchPriority="high"
+                    decoding="async"
+                    height={615}
+                    width={730}
+                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1032/97afaf188378d32fe74c7c654890dca2811b9c066b298911728fc32b33174004-730x615/obrabotka-ran-730x615.jpg.webp"
+                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1032/97afaf188378d32fe74c7c654890dca2811b9c066b298911728fc32b33174004-730x615/obrabotka-ran-730x615.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1032/97afaf188378d32fe74c7c654890dca2811b9c066b298911728fc32b33174004-730x615/obrabotka-ran-1460x1230.jpg.webp 2x"
+                    alt="Обработка ран"
+                  />
+                </picture>
+              </div>
+            </div>
+          </div>
+          <nav className="nav-content">
+            <ul>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#prichiny-poyavleniya-ran">Причины появления ран</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#klassifikaciya-ran">Классификация ран</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#zazhivlenie-rany">Заживление раны</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#vidy-obrabotki-rany">Виды обработки раны</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#hirurgicheskaya-obrabotka-rany">В каких случаях требуется обработка ран</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#kakie-vidy-sredstv-dlya-obrabotki-ran-naibolee-rasprostraneny">Какие виды средств для обработки ран наиболее распространены?</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#obrabotka-rany-rastvorom-betadin">Обработка раны раствором Бетадин®</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#chasto-zadavaemye-voprosy">Часто задаваемые вопросы</a>
+              </li>
+              <li>
+                <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#spisok-literatury">Список литературы</a>
+              </li>
+            </ul>
+            <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+          </nav>
+        </div>
+      </div>
+
+      <p />
+      <nav className="nav-content nav-content-fixed">
+        <ul>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#prichiny-poyavleniya-ran">Причины появления ран</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#klassifikaciya-ran">Классификация ран</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#zazhivlenie-rany">Заживление раны</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#vidy-obrabotki-rany">Виды обработки раны</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#hirurgicheskaya-obrabotka-rany">В каких случаях требуется обработка ран</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#kakie-vidy-sredstv-dlya-obrabotki-ran-naibolee-rasprostraneny">Какие виды средств для обработки ран наиболее распространены?</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#obrabotka-rany-rastvorom-betadin">Обработка раны раствором Бетадин®</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#chasto-zadavaemye-voprosy">Часто задаваемые вопросы</a>
+          </li>
+          <li>
+            <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#spisok-literatury">Список литературы</a>
+          </li>
+        </ul>
+        <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+      </nav>
+      <div className="home-container">
+        <div className="new-disclaimer"> Информация в статье не&nbsp;заменяет консультацию врача</div>
+      </div>
+      <div className="page-content-wrapper">
+        <div className="container container-middle page-content">
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/3340/8e99f6c6bbfa9d70ef2bd656524e3d387868c2e0dc9981f5e085a7e489b1f3d0-650x0/rana-pravkaat4x-650x325.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/3340/8e99f6c6bbfa9d70ef2bd656524e3d387868c2e0dc9981f5e085a7e489b1f3d0-650x0/rana-pravkaat4x-1300x650.webp 2x"
+              type="image/webp"
+            />
+            <img
+              decoding="async"
+              height={325}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3340/8e99f6c6bbfa9d70ef2bd656524e3d387868c2e0dc9981f5e085a7e489b1f3d0-650x0/rana-pravkaat4x-650x325.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3340/8e99f6c6bbfa9d70ef2bd656524e3d387868c2e0dc9981f5e085a7e489b1f3d0-650x0/rana-pravkaat4x-650x325.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3340/8e99f6c6bbfa9d70ef2bd656524e3d387868c2e0dc9981f5e085a7e489b1f3d0-650x0/rana-pravkaat4x-1300x650.png.webp 2x"
+              alt="Глубокая рваная рана"
+            />
+          </picture>
+          <div className="exlude-turbo">
+            <picture className="banner-betadin banner-circle">
+              <source
+                srcSet="https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/64ae25138752f082ec07415217f2c831bfe117280e12ff94a1ef5fbdd2a6cad8-503x505/circle-503x505.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/64ae25138752f082ec07415217f2c831bfe117280e12ff94a1ef5fbdd2a6cad8-503x505/circle-1006x1010.webp 2x"
+                type="image/webp"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                height={505}
+                width={503}
+                src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/64ae25138752f082ec07415217f2c831bfe117280e12ff94a1ef5fbdd2a6cad8-503x505/circle-503x505.jpg.webp"
+                srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/64ae25138752f082ec07415217f2c831bfe117280e12ff94a1ef5fbdd2a6cad8-503x505/circle-503x505.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/64ae25138752f082ec07415217f2c831bfe117280e12ff94a1ef5fbdd2a6cad8-503x505/circle-1006x1010.jpg.webp 2x"
+                alt="Декоративные элементы"
+              />
+            </picture>
+          </div>
+          <h2 className="h2" id="prichiny-poyavleniya-ran">Причины появления ран</h2>
+          <div className="list-base">
+            <ul>
+              <li>Несчастный случай</li>
+              <li>Хирургическое вмешательство</li>
+              <li>Боевые действия</li>
+            </ul>
+          </div>
+          <h2 className="h2" id="klassifikaciya-ran">Классификация ран</h2>
+          <p>
+            <strong>
+              В зависимости от повреждения кожи раны подразделяют на
+              <sup>
+                <a href="#spisok-literatury">1,2,3</a>
+              </sup>
+              :</strong>
+          </p>
+          <div className="two-column">
+            <div className="column">
+              <p>
+                <strong>Открытые</strong>
+              </p>
+              <p>С повреждением кожи или слизистых оболочек. Могут подвергаться инфицированию.</p>
+            </div>
+            <div className="column">
+              <p>
+                <strong>Закрытые</strong>
+              </p>
+              <p>Без повреждения кожи или слизистой ткани. Повреждаются только глубжележащие ткани.</p>
+            </div>
+          </div>
+          <p>
+            Существуют легкие повреждения, ссадины и царапины, и серьезные раны с повреждением сустава, нерва, крупного&nbsp;кровеносного сосуда или внутренних органов, для лечения которых необходима срочная госпитализация пострадавшего.
+          </p>
+          <p>
+            <strong>Раны, в зависимости от инфицированности, бывают:</strong>
+          </p>
+          <div className="two-column">
+            <div className="column">
+              <p>
+                <strong>Инфицированные</strong>
+              </p>
+              <p>Инфицированные при получении травмы</p>
+              <p>
+                <br />Инфицированные через некоторое время после повреждения
+              </p>
+            </div>
+            <div className="column">
+              <p>
+                <strong>Неинфицированные</strong>
+              </p>
+              <p>В ране отсутствуют вредоносные микроорганизмы</p>
+            </div>
+          </div>
+          <p>Важно помнить, что инфекция, попавшая в рану, может привести к появлению таких осложнений, как:</p>
+          <ul className="wp-block-list">
+            <li>газовой гангрене</li>
+            <li>стафилококковой инфекции</li>
+            <li>столбняку</li>
+          </ul>
+          <h2 className="h2" id="symptomy-rany">Симптомы, возникающие при появлении раны</h2>
+          <ul className="wp-block-list">
+            <li>Боль</li>
+            <li>Появление крови</li>
+            <li>Зияние (расхождение краев кожи)</li>
+            <li>
+              Нарушение функций поврежденной части тела
+              <strong>
+                <sup>
+                  <a href="#spisok-literatury">1,2,3</a>
+                </sup>
+              </strong>
+            </li>
+          </ul>
+          <h2 className="h2" id="zazhivlenie-rany">Заживление раны</h2>
+          <p>
+            В зависимости от степени повреждения тканей, присутствия или отсутствия микробного загрязнения раны заживают первичным или вторичным натяжением
+            <strong>
+              <sup>
+                <a href="#spisok-literatury">1,2,3</a>
+              </sup>
+            </strong>
+            .
+          </p>
+          <div className="two-column">
+            <div className="column">
+              <p>
+                Если повреждение имеет ровные жизнеспособные края, которые отстают друг от друга на 0,5-1 см, или же рана является операционной, и ее закрывают швами, то она заживет первичным натяжением.
+              </p>
+            </div>
+            <div className="column">
+              <p>
+                Если же рана имеет обширные дефекты тканей, из-за чего невозможно произвести первичное сопоставление стенок повреждения, или присутствует
+                <a href="https://betadin.ru/encyclopedia/rany-s-infekciej/">раневая инфекция</a>, нагноение, то ее заживление происходит вторичным натяжением с появлением грубого рубца.
+              </p>
+            </div>
+          </div>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1034/baa00466debf326179c4d887846bb0c99208e81ea4f7744952132511fe1e7039-650x0/istockphoto-1341663000-2048x2048-2-2-650x150.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1034/baa00466debf326179c4d887846bb0c99208e81ea4f7744952132511fe1e7039-650x0/istockphoto-1341663000-2048x2048-2-2-1300x300.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={150}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1034/baa00466debf326179c4d887846bb0c99208e81ea4f7744952132511fe1e7039-650x0/istockphoto-1341663000-2048x2048-2-2-650x150.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1034/baa00466debf326179c4d887846bb0c99208e81ea4f7744952132511fe1e7039-650x0/istockphoto-1341663000-2048x2048-2-2-650x150.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1034/baa00466debf326179c4d887846bb0c99208e81ea4f7744952132511fe1e7039-650x0/istockphoto-1341663000-2048x2048-2-2-1300x300.png.webp 2x"
+              alt="Первичное натяжение раны"
+            />
+          </picture>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1035/1232fce8e5f5e99a1185d030b9b7b8fefff3d60a74155e15a393c371f832bbba-650x0/istockphoto-1341663000-2048x2048-2-3-650x150.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1035/1232fce8e5f5e99a1185d030b9b7b8fefff3d60a74155e15a393c371f832bbba-650x0/istockphoto-1341663000-2048x2048-2-3-1300x300.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={150}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1035/1232fce8e5f5e99a1185d030b9b7b8fefff3d60a74155e15a393c371f832bbba-650x0/istockphoto-1341663000-2048x2048-2-3-650x150.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1035/1232fce8e5f5e99a1185d030b9b7b8fefff3d60a74155e15a393c371f832bbba-650x0/istockphoto-1341663000-2048x2048-2-3-650x150.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1035/1232fce8e5f5e99a1185d030b9b7b8fefff3d60a74155e15a393c371f832bbba-650x0/istockphoto-1341663000-2048x2048-2-3-1300x300.png.webp 2x"
+              alt="вторичное натяжение раны"
+            />
+          </picture>
+          <div className="green">
+            <p>
+              <strong>Обычную</strong>, неосложненную и <strong>неинфицированную рану</strong> можно обработать <strong>дома</strong>.
+              <br />
+              <br />
+              <strong>Глубокие</strong>, инфицированные раны <strong>требуют&nbsp;оказания первой помощи</strong>&nbsp;<strong>с последующим визитом к врачу</strong>.
+            </p>
+          </div>
+          <div className="iframe">
+            <div className="bg_default bg_green" />
+            <div className="h3 h3_green iframe-title">Как и чем обрабатывать раны, смотрите в коротком видео:</div>
+            <div className="iframe-container">
+              <iframe
+                className="lazyloaded"
+                data-src="https://rutube.ru/play/embed/8314874a89912f6b1013b956c27b80dc/?p=S00uuqCAOQ5PAjEEREaaHQ"
+                frameBorder={0}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            <div className="iframe_desc">Из видео вы узнаете про алгоритм обработки ран и про средства, необходимые для своевременной дезинфекции.</div>
+          </div>
+          <h2 className="h2" id="vidy-obrabotki-rany">Виды обработки раны</h2>
+          <h3 className="h3" id="pervichnaya-obrabotka-rany">Первичная обработка раны</h3>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1036/f6374b36e2c670e2fd35ed033e727cf326d6b76d9a479b0ea1f21000f151e311-650x0/istockphoto-1341663000-2048x2048-2-3-1-650x150.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1036/f6374b36e2c670e2fd35ed033e727cf326d6b76d9a479b0ea1f21000f151e311-650x0/istockphoto-1341663000-2048x2048-2-3-1-1300x300.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={150}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1036/f6374b36e2c670e2fd35ed033e727cf326d6b76d9a479b0ea1f21000f151e311-650x0/istockphoto-1341663000-2048x2048-2-3-1-650x150.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1036/f6374b36e2c670e2fd35ed033e727cf326d6b76d9a479b0ea1f21000f151e311-650x0/istockphoto-1341663000-2048x2048-2-3-1-650x150.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1036/f6374b36e2c670e2fd35ed033e727cf326d6b76d9a479b0ea1f21000f151e311-650x0/istockphoto-1341663000-2048x2048-2-3-1-1300x300.png.webp 2x"
+              alt="Первичная обработка раны"
+            />
+          </picture>
+          <p>
+            В первую очередь необходимо удалить видимые загрязнения из раны, затем — обработать ее антисептиком. После ее обработки следует наложить повязку из бинта или пластыря, чтобы исключить возможность повторного загрязнения.
+          </p>
+          <h3 className="h3" id="obrabotku-rany-v-domashnih-usloviyah-mozhno-opisat-v-6-prostyh-shagah">Обработку раны в домашних условиях можно описать в 6 простых шагах</h3>
+          <div className="big">
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 2. Остановить кровотечение</strong>
+                </p>
+                <p>
+                  Чтобы остановить кровотечение, можно «прижать» рану.&nbsp;Производить данную манипуляцию необходимо только с помощью чистой ткани или бинта.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 2. Остановить кровотечение</strong>
+                </p>
+                <p>
+                  Чтобы остановить кровотечение, можно «прижать» рану.&nbsp;Производить данную манипуляцию необходимо только с помощью чистой ткани или бинта.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 3. Очистить рану</strong>
+                </p>
+                <p>
+                  Для очищения раны достаточно промыть ее чистой водой.&nbsp;Мыло использовать можно, но только вокруг раны. Также для очистки раны идеально подойдет 0,9% солевой раствор.&nbsp;Смочите марлю в солевом растворе и протрите поврежденный участок.
+                </p>
+                <p>
+                  Если рана образовалась в результате падения на улице, и в нее попали осколки, то их следует достать, поскольку инородные тела в ране также могут вызвать инфекцию.&nbsp;Необходимо скрутить стерильный бинт, чтобы получился заостренный кончик или воспользоваться пинцетом, предварительно обеззараженным 70% спиртовым раствором.
+                </p>
+                <p>
+                  После очищения раны для предупреждения ее инфицирования необходимо обработать поврежденный участок антисептиком.
+                  Для этих целей рекомендуют использовать водный раствор
+                  <a href="https://betadin.ru/encyclopedia/povidon-jod/">повидон-йода</a>
+                  (<span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>), который, в отличие от перекиси водорода, спиртовых
+                  <a href="https://betadin.ru/encyclopedia/rastvor-joda/">растворов йода</a>
+                  и зеленки, не жжет, не щиплет кожу и может наноситься на всю раневую поверхность.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 4. Закрыть рану</strong>
+                </p>
+                <p>
+                  Следующий шаг — защитить рану. Наложите на поврежденный участок стерильную повязку и зафиксируйте ее бинтом.&nbsp;Это защитит кожу, окружающую рану, а также предотвратит увеличение размера раны и окажет на нее необходимое давление для ускорения процессов заживления.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 5. Менять повязку</strong>
+                </p>
+                <p>
+                  Повязку следует менять не реже одного раза в день.&nbsp;При смене повязки обязательно заранее вымойте руки, тщательно очистите рану и закрепите стерильную повязку.&nbsp;
+                </p>
+                <p>Если рана продолжает кровоточить, появляются желтоватые выделения, то следует обратиться к врачу.&nbsp;</p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Шаг № 6. Наблюдать за симптомами</strong>
+                </p>
+                <p>
+                  Сильная боль, неприятный запах, густые и желтоватые выделения, потемнение кожи вокруг раны — это признаки осложненного заживления раны. В этом случае необходимо срочно обратиться к врачу.
+                </p>
+              </div>
+            </div>
+          </div>
+          <h3 className="h3" id="hirurgicheskaya-obrabotka-rany">Хирургическая обработка раны</h3>
+          <p>Хирургическая обработка раны в зависимости от времени ее проведения может быть:</p>
+          <p>Ранней – если проведена в первые 24 часа после повреждения.</p>
+          <p>Отсроченной – осуществляется на вторые сутки после образования раны.</p>
+          <p>Поздней – обработка проводится позже вторых суток.</p>
+          <p>
+            <strong>Ключевые этапы хирургической обработки раны у врача</strong>
+          </p>
+          <div className="big">
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Рассечение полости раны</strong>
+                </p>
+                <p>Для наилучшего изучения краев раны следует рассечь ее края.</p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Удаление из раны инородных тел</strong>
+                </p>
+                <p>Инородные тела, застревающие в ране, препятствуют ее заживлению. Также они способствуют развитию бактериальной инфекции. Для более быстрого заживления без нагноения все инородные тела следует убрать.</p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Иссечение омертвевшей ткани</strong>
+                </p>
+                <p>Омертвевшая ткань также препятствует заживлению, поэтому ее убирают.</p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Проведение операции на поврежденных тканях/органах</strong>
+                </p>
+                <p>
+                  Если рана глубокая и задевает, например, крупный сосуд, то врачам необходимо остановить кровотечение и восстановить его целостность.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Установка дренажей</strong>
+                </p>
+                <p>
+                  Если рана имеет признаки инфицирования, то от нее следует отводить образовавшийся секрет. Кроме того, если есть иные показания, то врачи могут установить дренажи, которые нужно будет менять.
+                </p>
+              </div>
+            </div>
+            <div className="line">
+              <div>
+                <p>
+                  <strong>Закрытие раны</strong>
+                </p>
+                <p>Обычно на этом этапе накладывают швы. Как именно наложить швы, врач определяет по типу повреждения.</p>
+              </div>
+            </div>
+          </div>
+          <h2 className="h2" id="hirurgicheskaya-obrabotka-rany-2">В каких случаях требуется обработка ран</h2>
+          <h3 className="h3" id="obrabotka-rany-posle-operacii">Обработка раны после операции:</h3>
+          <div className="big">
+            <div className="line">
+              <p>Снимите пластырь, очистите повреждение средством для промывания ран. Идеально подойдет 0,9% раствор хлорида натрия.</p>
+            </div>
+            <div className="line">
+              <p>Просушите рану стерильными салфетками промачивающими движениями. Для профилактики присоединения инфекции необходимо обработать поврежденный участок антисептиком, например раствором
+                <strong>
+                  <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+                </strong>
+                .
+              </p>
+            </div>
+            <div className="line">
+              <p>
+                Наклейте новый пластырь.<strong>
+                <sup>
+                  <a href="#spisok-literatury">3,4,5</a>
+                </sup>
+                </strong>
+              </p>
+            </div>
+          </div>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1037/ac63bb0bf597ca306fa9c796a051e5b7d61a8e0d8bcdefa7002d810215350124-650x0/istockphoto-1341663000-2048x2048-2-3-2-650x150.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1037/ac63bb0bf597ca306fa9c796a051e5b7d61a8e0d8bcdefa7002d810215350124-650x0/istockphoto-1341663000-2048x2048-2-3-2-1300x300.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={150}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1037/ac63bb0bf597ca306fa9c796a051e5b7d61a8e0d8bcdefa7002d810215350124-650x0/istockphoto-1341663000-2048x2048-2-3-2-650x150.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1037/ac63bb0bf597ca306fa9c796a051e5b7d61a8e0d8bcdefa7002d810215350124-650x0/istockphoto-1341663000-2048x2048-2-3-2-650x150.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1037/ac63bb0bf597ca306fa9c796a051e5b7d61a8e0d8bcdefa7002d810215350124-650x0/istockphoto-1341663000-2048x2048-2-3-2-1300x300.png.webp 2x"
+              alt="Обработка раны после операции"
+            />
+          </picture>
+          <div className="green">
+            <p>
+              Если вы хотите принять душ, то <strong>пластырь следует снять до начала водных процедур</strong>.
+              <br />
+              <br />
+              Рану желательно <strong>не мылить</strong>.
+              <br />
+              <br />
+              Если вы хотите посетить баню, то это возможно <strong>после удаления швов</strong>. Обычно на 7-15 день.
+            </p>
+          </div>
+          <h3 className="h3" id="obrabotka-rany-posle-udaleniya-rodinki">Обработка раны после удаления родинки</h3>
+          <p>Уход очень прост: в течение 4-7 дней необходимо обрабатывать рану растворами антисептиков.</p>
+          <p>После отпадания корочки процедуру можно прекратить.</p>
+          <div className="green">
+            <p>
+              <strong>Важно!</strong>
+            </p>
+            <p>
+              <strong>Нельзя мочить</strong> и распаривать корочку. <br />Следует <strong>избегать попадания воды</strong> на поверхность корки. <br />
+              <br />
+              <strong>Не следует удалять корочку</strong> самостоятельно, иначе останется рубец. Корочка должна отпасть самостоятельно.
+            </p>
+          </div>
+          <h3 className="h3" id="obrabotka-rany-posle-ukusa-zhivotnyh">Обработка раны после укуса животных</h3>
+          <div className="big">
+            <div className="line">
+              <p>
+                Незамедлительно промыть рану с мылом или любым щелочным раствором. Такая среда снижает жизнеспособность вируса бешенства, который может содержаться в слюне непривитых животных.
+              </p>
+            </div>
+            <div className="line">
+              <p>
+                Обработать края раны растворами антисептиков: раствором спирта в концентрации 70%, раствором йода в концентрации 5%,
+                <strong>
+                  <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+                </strong>
+                или раствором перекиси водорода в концентрации 3%.
+              </p>
+            </div>
+            <div className="line">
+              <p>Наложить стерильную повязку или наклейку.</p>
+            </div>
+            <div className="line">
+              <p>Обратиться в ближайший травматологический пункт для проведения вакцинации против бешенства, если нет информации о наличии вакцинации у животного.</p>
+            </div>
+          </div>
+          <h2 className="h2" id="kakie-vidy-sredstv-dlya-obrabotki-ran-naibolee-rasprostraneny">Средства, растворы и антисептики для обработки ран</h2>
+          <div className="list-base">
+            <p>В качестве антисептика для обработки раны можно использовать<strong>
+              <sup>
+                <a href="#spisok-literatury">1,2,3</a>
+              </sup>
+            </strong>:
+            </p>
+            <ul>
+              <li>Растворы на основе йода, в том числе <strong><span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span></strong></li>
+              <li>Перекись водорода</li>
+              <li>Хлоргексидина биглюканат&nbsp;</li>
+              <li>Калия перманганат и другие</li>
+            </ul>
+          </div>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/3314/bbb102d68694e1b216e9f519dce827aafc9d8aa7981685844aaedbdd86eea7b2-650x0/istockphoto-1341663000-2048x2048-2-9-650x325.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/3314/bbb102d68694e1b216e9f519dce827aafc9d8aa7981685844aaedbdd86eea7b2-650x0/istockphoto-1341663000-2048x2048-2-9-1300x650.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={325}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3314/bbb102d68694e1b216e9f519dce827aafc9d8aa7981685844aaedbdd86eea7b2-650x0/istockphoto-1341663000-2048x2048-2-9-650x325.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3314/bbb102d68694e1b216e9f519dce827aafc9d8aa7981685844aaedbdd86eea7b2-650x0/istockphoto-1341663000-2048x2048-2-9-650x325.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3314/bbb102d68694e1b216e9f519dce827aafc9d8aa7981685844aaedbdd86eea7b2-650x0/istockphoto-1341663000-2048x2048-2-9-1300x650.png.webp 2x"
+              alt="Растворы антисептики для обработки ран"
+            />
+          </picture>
+          <figure>
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <strong>Раствор</strong>
+                  </th>
+                  <th>
+                    <strong>Плюсы</strong>
+                  </th>
+                  <th>
+                    <strong>Минусы</strong>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>Бетадин<sup>®</sup></strong>
+                  </td>
+                  <td>
+                    Водный раствор, не раздражает кожу, способствует заживлению раны, имеет пролонгированное действие (действует более длительно).
+                    <sup>
+                      <a title="#spisok-literatury" href="#spisok-literatury">2,3,6</a>
+                    </sup>
+                    Хорошо смывается с кожи.
+                  </td>
+                  <td>Нет явных недостатков, ограничения к применению для специфичных пациентов (см. инструкцию к препарату)
+                    <sup>
+                      <a title="#spisok-literatury" href="#spisok-literatury">11,12</a>
+                    </sup>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Перекись водорода</strong>
+                  </td>
+                  <td>Очищает рану механическим путем</td>
+                  <td>Способствует раздражению и воспалению участков раны, дальнейшему распаду пораженных клеток, что приводит к замедлению регенерации кожи
+                    <sup>
+                      <a title="#spisok-literatury" href="#spisok-literatury">13</a>
+                    </sup>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Йод (спиртовой раствор)</strong>
+                  </td>
+                  <td>Низкая стоимость и доступность</td>
+                  <td>Сушит кожу, способствует шелушению, можно обрабатывать только края раны
+                    <sup>
+                      <a title="#spisok-literatury" href="#spisok-literatury">2,14</a>
+                    </sup>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Хлоргексидина биглюконат</strong>
+                  </td>
+                  <td>Активен в отношении ряда бактерий, вирусов и грибов</td>
+                  <td>Может вызывать кожную сыпь, зуд, фотосенсибилизацию, анафилаксию
+                    <sup>
+                      <a title="#spisok-literatury" href="#spisok-literatury">15</a>
+                    </sup>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+          <p>&nbsp;</p>
+          <h2 className="h2" id="obrabotka-rany-rastvorom-betadin">Обработка раны антисептическим раствором повидон-йода Бетадин®</h2>
+          <div className="product-block">
+            <div className="banner-product-img">
+              <picture>
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/ff94189c2c00d6423c998599064f31a6bea71a919cbb3ca090580b01c7d3f9b2-315x310/banner-betadin-mobile-315x252.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/ff94189c2c00d6423c998599064f31a6bea71a919cbb3ca090580b01c7d3f9b2-315x310/banner-betadin-mobile-630x503.webp 2x"
+                  type="image/webp"
+                />
+                <source
+                  media="(max-width: 767px)"
+                  srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/ff94189c2c00d6423c998599064f31a6bea71a919cbb3ca090580b01c7d3f9b2-315x310/banner-betadin-mobile-315x252.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/ff94189c2c00d6423c998599064f31a6bea71a919cbb3ca090580b01c7d3f9b2-315x310/banner-betadin-mobile-630x503.jpg.webp 2x"
+                />
+                <source
+                  srcSet="https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/04e464e9cc8a608638f512b092c8fd91f774daf10a0f004a7d6e73ce50995b50-928x916/banner-betadin-927x916.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/04e464e9cc8a608638f512b092c8fd91f774daf10a0f004a7d6e73ce50995b50-928x916/banner-betadin-1853x1832.webp 2x"
+                  type="image/webp"
+                />
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/04e464e9cc8a608638f512b092c8fd91f774daf10a0f004a7d6e73ce50995b50-928x916/banner-betadin-927x916.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/04e464e9cc8a608638f512b092c8fd91f774daf10a0f004a7d6e73ce50995b50-928x916/banner-betadin-1853x1832.jpg.webp 2x"
+                  width={927}
+                  height={916}
+                  src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/04e464e9cc8a608638f512b092c8fd91f774daf10a0f004a7d6e73ce50995b50-928x916/banner-betadin-927x916.jpg.webp"
+                  alt="Бетадин"
+                />
+              </picture>
+            </div>
+            <p>
+              <strong>
+                <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+              </strong> представляет собой 10% водный&nbsp;раствор повидон-йода, не приводящий, как правило, к ощущениям пощипывания и зуда.
+            </p>
+            <p>Содержащийся в составе <strong>
+              <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+            </strong> йод, может ускорять заживление.
+            </p>
+            <p>
+              <strong>
+                <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+              </strong> Раствор содержит вещество, образованное путем соединения йода и поливинилпирролидона (повидона), который способствует постепенному высвобождению йода.
+            </p>
+            <p>
+              <strong>
+                <span style={{ color: '#0f780b' }}>Бетадин<sup>®</sup></span>
+              </strong> легко смыть простой водой с кожи.
+            </p>
+            <p className="buttons">
+              <a className="btn btn-green btn-green-instruction" target="_blank" href="/betadin-rastvor-instruktsiya/">
+                Инструкция
+              </a>
+            </p>
+          </div>
+          <h3 className="h3" id="algoritm-deystviy-pri-obrabotke-rany-rastvorom-betadin">Алгоритм действий при обработке раны раствором Бетадин®</h3>
+          <p>
+            <strong>Бетадин<sup>®</sup></strong> для обработки ран можно применять как в неразбавленном виде, так и в разведенном виде.
+          </p>
+          <p>
+            Из 10% раствора следует сделать 1% раствор, то есть приготовить раствор в разведении 1:10 (например, 1 мл <strong>Бетадин<sup>®</sup></strong> и 10 мл воды или физраствора).
+          </p>
+          <p>После разведения промакивающими движениями обработайте рану раствором, закройте рану стерильной повязкой.</p>
+          <picture className="img-normal">
+            <source
+              srcSet="https://betadin.ru/wp-content/uploads/imagesv3/3309/9b8b1b2ff74aa5dd0676e917321ea03ff4b7adfb1fb08386e0cc655d20ceb33c-650x0/istockphoto-1341663000-2048x2048-2-6-650x150.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/3309/9b8b1b2ff74aa5dd0676e917321ea03ff4b7adfb1fb08386e0cc655d20ceb33c-650x0/istockphoto-1341663000-2048x2048-2-6-1300x300.webp 2x"
+              type="image/webp"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              height={150}
+              width={650}
+              src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3309/9b8b1b2ff74aa5dd0676e917321ea03ff4b7adfb1fb08386e0cc655d20ceb33c-650x0/istockphoto-1341663000-2048x2048-2-6-650x150.png.webp"
+              srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3309/9b8b1b2ff74aa5dd0676e917321ea03ff4b7adfb1fb08386e0cc655d20ceb33c-650x0/istockphoto-1341663000-2048x2048-2-6-650x150.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3309/9b8b1b2ff74aa5dd0676e917321ea03ff4b7adfb1fb08386e0cc655d20ceb33c-650x0/istockphoto-1341663000-2048x2048-2-6-1300x300.png.webp 2x"
+              alt="Схема обработки раны антисептиком"
+            />
+          </picture>
+          <div className="block-with-image">
+            <div className="block-with-image__green">
+              <p>
+                <strong>Повидон йод</strong>
+              </p>
+              <p>Характеристики и свойства повидон-йода. Для чего применяется повидон-йод? Инструкция по применению раствора, мази, свечей Бетадин<sup>®</sup> с повидон-йодом.</p>
+              <a href="https://betadin.ru/encyclopedia/povidon-jod/" className="btn btn-green" target="_blank">Подробнее</a>
+            </div>
+            <picture>
+              <source
+                srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-310x235/povidon-jod-prevyu-310x210.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-310x235/povidon-jod-prevyu-620x420.webp 2x"
+                type="image/webp"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                height={210}
+                width={310}
+                src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-310x235/povidon-jod-prevyu-310x210.png.webp"
+                srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-310x235/povidon-jod-prevyu-310x210.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-310x235/povidon-jod-prevyu-620x420.png.webp 2x"
+                alt="Повидон-йод - превью"
+              />
+            </picture>
+          </div>
+          <h3 className="h3" id="obrabotka-rany-perekisyu-vodoroda">Обработка раны перекисью водорода</h3>
+          <p>Перекись водорода – H<sub>2</sub>O<sub>2</sub> – может удалять микроорганизмы с раны механическим путем и выводить их из раны за счет образования пузырьков вследствие химической реакции.</p>
+          <h3 className="h3" id="obrabotka-rany-yodom">Обработка раны йодом</h3>
+          <p>Йод, как правило, бывает в виде 5% спиртового раствора, поэтому при обработке йодом возникает неприятное жжение, кожа подвергается высушиванию, появляется шелушение и зуд. Для уменьшения неприятных ощущений следует обрабатывать только края раны, не заходить на поврежденную область.</p>
+          <div className="green">
+            <p>
+              Если под рукой <strong>нет лекарственных препаратов</strong>, то их можно заменить водным раствором соды, поваренной соли.
+              <br />Рана, нанесенная <strong>нестерильным предметом</strong>, всегда будет содержать <strong>бактерии.</strong>
+            </p>
+          </div>
+          <div className="exlude-turbo">
+            <picture className="banner-betadin banner-quastion">
+              <source
+                srcSet="https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/3f5ca5eaa9dd6f783190f88eedc9c12872396029916225a1c533027f8e4345e2-558x542/quastion-558x542.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/assetsv3/3f5ca5eaa9dd6f783190f88eedc9c12872396029916225a1c533027f8e4345e2-558x542/quastion-1115x1084.webp 2x"
+                type="image/webp"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                height={542}
+                width={558}
+                src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/3f5ca5eaa9dd6f783190f88eedc9c12872396029916225a1c533027f8e4345e2-558x542/quastion-558x542.jpg.webp"
+                srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/3f5ca5eaa9dd6f783190f88eedc9c12872396029916225a1c533027f8e4345e2-558x542/quastion-558x542.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/assetsv3/3f5ca5eaa9dd6f783190f88eedc9c12872396029916225a1c533027f8e4345e2-558x542/quastion-1115x1084.jpg.webp 2x"
+                alt="Декоративные элементы"
+              />
+            </picture>
+          </div>
+          <h2 className="h2" id="chasto-zadavaemye-voprosy">Часто задаваемые вопросы</h2>
+          <h3 className="h3" id="kak-obrabotat-ranu">Как обработать рану?</h3>
+          <p>Изначально следует промыть рану, провести ее обеззараживание антисептическими растворами, наложить стерильную повязку.</p>
+          <p>Если появились признаки инфекции, рана долго не заживает, то следует немедленно обратиться к врачу.</p>
+          <h3 className="h3" id="mozhno-li-obrabatyvat-ranu-mazyu-esli-da-to-kakoy">Можно ли обрабатывать рану мазью, если да, то какой?</h3>
+          <p>На этапе заживления можно обрабатывать рану специальными мазями, обладающими антибактериальными и ускоряющими заживление свойствами. Например, Бетадин<sup>®</sup> Мазь обладает антисептическими и дезинфицирующими свойствами, удобна в применении, а также дополнительно за счёт макрогола в составе способствует очищению, вытягиванию из раны загрязнений (гной, различные жидкости, отмершие клетки кожи).
+          </p>
+          <div className="autor">
+            <div className="autor-left">
+              <p className="autor-title">Красковский Федор Янович</p>
+              <div className="autor-subtitle" />
+              <p className="autor-footer">Автор статьи</p>
+            </div>
+            <picture>
+              <source
+                srcSet="https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-470x406.webp 2x"
+                type="image/webp"
+              />
+              <img
+                loading="lazy"
+                decoding="async"
+                height={203}
+                width={235}
+                src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.png.webp"
+                srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-470x406.png.webp 2x"
+                alt=""
+              />
+            </picture>
+          </div>
+          <div className="h2 h2-read-more" id="chitat-po-teme">Читать по теме</div>
+          <div className="slider-normal">
+            <div className="swiper-wrapper">
+              <div className="swiper-slide swiper-slide-active">
+                <div className="slide-image">
+                  <picture>
+                    <source
+                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                      type="image/webp"
+                    />
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      height={166}
+                      width={246}
+                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp"
+                      srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.png.webp 2x"
+                      alt="Повидон-йод - превью"
+                    />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title">
+                    <strong>Повидон йод</strong>
+                  </p>
+                  <p>Характеристики и свойства повидон-йода. Для чего применяется повидон-йод? Инструкция по применению раствора, мази, свечей Бетадин<sup>®</sup> с повидон-йодом.</p>
+                  <p className="slide-more"> <a href="https://betadin.ru/encyclopedia/povidon-jod/"> Подробнее </a> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2 className="h2" id="spisok-literatury">Список литературы</h2>
+          <ol className="literature">
+            <li id="literature-0">Завражанов А. А., Гвоздев М. Ю., Крутова В. А. и др. Раны и раневой процесс. ГБОУ ВПО КубГМУ Минздрава России. Краснодар, 2016.</li>
+            <li id="literature-1">Гостищев В. и др. Общая хирургия. – Общество с ограниченной ответственностью Издательская группа ГЭОТАР-Медиа, 2005.</li>
+            <li id="literature-2">Васильев В. К., Попов А. П., Цыбикжапов А. Д. Общая хирургия. – 2014.</li>
+            <li id="literature-3">Enoch S., Price P. Cellular, molecular and biochemical differences in the pathophysiology of healing between acute wounds, chronic wounds and wounds in the aged //World Wide Wounds. – 2004. – Т. 13. – С. 1-17.</li>
+            <li id="literature-4">Cooper P. A review of different wound types and their principles of management in Wound Healing: a systematic approach to advanced wound healing and management. – 2005.</li>
+            <li id="literature-5">Носенко О. М., Москаленко Т. Я., Рутинская А. В. Повидон-йод ( Бетадин<sup>®</sup> ) в современной акушерско-гинекологической практике //REPRODUCTIVE ENDOCRINOLOGY. – 2018. – №. 44. – С. 43-48.</li>
+            <li id="literature-6">Инструкция по медицинскому применению препарата Бетадин<sup>®</sup>, раствор, РУ П N015282/03.</li>
+            <li id="literature-7">Инструкция по медицинскому применению препарата Бетадин<sup>®</sup>, мазь, РУ П N015282/02.</li>
+            <li id="literature-8">Яремчук Ан.А., Хишова О.М., Половко Н.П. Обоснование состава многокомпонентной мази для лечения гнойных ран в первой фазе раневого процесса. Вестник фармации №3 (57) 2012.</li>
+            <li id="literature-9">Ахтямова Н.Е. Лечение пролежней у малоподвижных пациентов // РМЖ. 2015. № 00. С. 1–1.</li>
+            <li id="literature-10">Paul Lorenz Bigliardi. Povidone iodine in wound healing: A review of current concepts and practices. International Journal of Surgery 44 (2017) 260e268.</li>
+            <li id="literature-11">Королева И. А., Кожухов А. А. Место повидон-йода в офтальмологической практике. «РМЖ» №1 от 26.02.2018.</li>
+            <li id="literature-12">Трошин Н. Стоит ли так активно использовать 3% раствор перекиси водорода при хирургических вмешательствах? | | «РМЖ» №25 от 15.12.2005.</li>
+            <li id="literature-13">Инструкция по медицинскому применению. Йод, раствор для наружного применения, [спиртовой]. (РН: ЛП-002039).</li>
+            <li id="literature-14">Инструкция по медицинскому применению. Хлоргексидин Медисорб (РН: ЛП-005766).</li>
+          </ol>
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default ObrabotkaRan;

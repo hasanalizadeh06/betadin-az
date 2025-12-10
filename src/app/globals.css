@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Load Sansus Webissimo from the remote URL provided */
+@font-face {
+  font-family: 'Sansus Webissimo';
+  src: url('https://betadin.ru/wp-content/themes/betadin/default/assets/generated/Sansus_Webissimo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Set the global font variable to Sansus Webissimo. If you provide the font files,
+     uncomment and use the @font-face block below (or place font files in /public/fonts).
+     Fallbacks are provided after the custom font name. */
+  --font-sans: 'Sansus Webissimo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Apply the global font variable */
+  font-family: var(--font-sans);
+}
+
+/*
+  To load local font files, add them to /public/fonts (for example: /public/fonts/SansusWebissimo.woff2)
+  and uncomment the @font-face block below, adjusting the src paths and font-weight as needed.
+
+  @font-face {
+    font-family: 'Sansus Webissimo';
+    src: url('/fonts/SansusWebissimo.woff2') format('woff2'),
+         url('/fonts/SansusWebissimo.woff') format('woff');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  If you use a CDN or provider, you can instead import the font at the top of this file,
+  e.g. @import url('https://example.com/path/to/sansus-webissimo.css');
+*/

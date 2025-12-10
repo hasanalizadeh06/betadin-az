@@ -1,0 +1,120 @@
+/* Temporary debug overrides to make product-another slider images visible */
+/* Narrowly scoped to avoid wide regressions. Remove when finalized. */
+.product-another-products .product-another-card picture,
+.product-another-products .product-another-card picture img,
+.product-another-products .product-another-card img {
+	position: static !important;
+	left: auto !important;
+	right: auto !important;
+	top: auto !important;
+	transform: none !important;
+	width: auto !important;
+	max-width: 100% !important;
+	display: block !important;
+	opacity: 1 !important;
+	z-index: 2 !important;
+}
+
+/* Make sure the slider wrapper doesn't clip or translate images during debug */
+.product-another-products .slider-another-card,
+.product-another-products .slider-another-card .swiper-wrapper {
+	overflow: visible !important;
+	-webkit-transform: none !important;
+	transform: none !important;
+}
+
+/* If any image still gets hidden by parent with zero height, ensure picture has block layout */
+.product-another-products .product-another-card picture {
+	display: block !important;
+	height: auto !important;
+}
+
+/* Ensure swiper slides/cards stretch to the same height so borders align */
+.product-another-products .slider-another-card,
+.product-another-products .slider-another-card .swiper-wrapper {
+	display: flex !important;
+	align-items: stretch !important;
+	align-content: stretch !important;
+	width: 100% !important;
+}
+
+.product-another-products .slider-another-card .swiper-wrapper {
+	height: auto !important;
+}
+
+.product-another-products .product-another-card,
+.product-another-products .slider-another-card .swiper-slide {
+	flex: 1 1 0 !important;
+	width: auto !important;
+	max-width: none !important;
+	box-sizing: border-box !important;
+	padding: 40px !important;
+	min-height: 360px !important;
+}
+
+/* Keep current card visual, but use same border width so heights match */
+.product-another-products .product-another-card {
+	border: 1px solid #efefef !important;
+}
+
+.product-another-products .product-another-card.product-another-card-current {
+	border-color: #acddb9 !important;
+	box-shadow: none !important;
+}
+
+/* Prevent hover scaling from changing card height during layout */
+.product-another-products .product-another-card.swiper-slide:not(.product-another-card-current):hover,
+.product-another-products .product-another-card:not(.product-another-card-current):hover {
+	-webkit-transform: none !important;
+	transform: none !important;
+	-webkit-box-shadow: 0 0 24px hsla(120,1%,87%,.56) !important;
+	box-shadow: 0 0 24px hsla(120,1%,87%,.56) !important;
+}
+
+/* Ensure inner content stretches so bottom paddings align */
+.product-another-products .product-another-card > * {
+	flex-shrink: 0;
+}
+
+/* Use gap instead of per-slide margins to keep spacing consistent */
+.product-another-products {
+	gap: 25px !important;
+}
+
+/* Prevent extra right-side padding from the slider container */
+.product-another-products .slider-another-card {
+	padding-right: 0 !important;
+}
+
+/* Slider-normal: make the image box square, centered, and contain the image */
+.slider-normal .swiper-wrapper {
+	gap: 29px !important;
+}
+
+.slider-normal .slide-image {
+	/* make a square box */
+	width: 246px !important;
+	height: 246px !important;
+	padding: 0 !important;
+	margin: 0 auto !important;
+	overflow: hidden !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	background: transparent !important;
+}
+
+.slider-normal .slide-image img,
+.slider-normal .slide-image picture img {
+	display: block !important;
+	width: auto !important;
+	max-width: 100% !important;
+	height: 100% !important;
+	object-fit: contain !important;
+}
+
+/* Keep slide body spacing consistent */
+.slider-normal .swiper-slide {
+	box-sizing: border-box !important;
+}
+
