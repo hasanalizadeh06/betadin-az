@@ -17,6 +17,9 @@ export default function PolivinilpirrolidonAz() {
 		40: false,
 		80: false,
 	});
+	const [navOpened, setNavOpened] = useState(false);
+	const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+	const [navTitleHidden, setNavTitleHidden] = useState(false);
 
 	useEffect(() => {
 		const scrollGoals: ScrollGoals = {
@@ -58,10 +61,28 @@ export default function PolivinilpirrolidonAz() {
 			}
 		}
 
+		const handleScroll = () => {
+			const shouldHideTitle = window.scrollY >= 1000;
+			setNavTitleHidden(shouldHideTitle);
+
+			if (shouldHideTitle) {
+				setSecondaryNavOpened(false);
+			}
+		};
+
+		const handleResize = () => {
+			setNavOpened(false);
+			setSecondaryNavOpened(false);
+		};
+
 		window.addEventListener('scroll', checkScroll);
+		window.addEventListener('scroll', handleScroll);
+		window.addEventListener('resize', handleResize);
 
 		return () => {
 			window.removeEventListener('scroll', checkScroll);
+			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
 
@@ -97,6 +118,19 @@ export default function PolivinilpirrolidonAz() {
 									<h1 className="page-header-title-text">
 										Polivinilpirrolidon (povidon): tətbiqi və xüsusiyyətləri
 									</h1>
+									<picture>
+										<source
+											srcSet="/icon-230x224.webp"
+											type="image/webp"
+										/>
+										<Image
+											src="/icon-230x224.webp"
+											alt="başlıqda şəkil"
+											width={115}
+											height={112}
+											decoding="async"
+										/>
+									</picture>
 								</div>
 								<h2 className="page-header-subtitle">Povidonun (polivinilpirrolidonun) kəşfi</h2>
 								<div className="page-header-body">
@@ -124,14 +158,15 @@ export default function PolivinilpirrolidonAz() {
 								<div className="page-header-img">
 									<picture>
 										<source
-											srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+											srcSet="/polivinilpirrolidon-povidon-730x615.webp 1x, /polivinilpirrolidon-povidon-1460x1230.webp 2x"
 											type="image/webp"
 										/>
 										<Image
-											src="/circle-1006x1010.webp"
-											alt="Dekorativ elementlər"
-											width={503}
-											height={505}
+											src="/polivinilpirrolidon-povidon-1460x1230.webp"
+											alt="Polivinilpirrolidon"
+											width={730}
+											height={615}
+											fetchPriority="high"
 											decoding="async"
 										/>
 									</picture>
@@ -139,7 +174,7 @@ export default function PolivinilpirrolidonAz() {
 							</div>
 						</div>
 
-						<nav className="nav-content">
+						<nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
 							<ul>
 								<li>
 									<a href="#oblasti-primeneniya-polivinilpirrolidona">Tətbiq sahələri</a>
@@ -154,12 +189,19 @@ export default function PolivinilpirrolidonAz() {
 									<a href="#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
 								</li>
 							</ul>
-							<div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+							<div
+								className="nav-content-title nav-content-title-cross"
+								onClick={() => setNavOpened((prev) => !prev)}
+							>
+								Mündəricat
+							</div>
 						</nav>
-					</div>
 				</div>
+			</div>
 
-				<nav className="nav-content nav-content-fixed">
+			<nav
+					className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+				>
 					<ul>
 						<li>
 							<a href="#oblasti-primeneniya-polivinilpirrolidona">Polivinilpirrolidonun tətbiq sahələri</a>
@@ -174,7 +216,12 @@ export default function PolivinilpirrolidonAz() {
 							<a href="#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
 						</li>
 					</ul>
-					<div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+					<div
+						className="nav-content-title nav-content-title-cross"
+						onClick={() => setSecondaryNavOpened((prev) => !prev)}
+					>
+						Mündəricat
+					</div>
 				</nav>
 
 				<div className="home-container">
@@ -471,11 +518,11 @@ export default function PolivinilpirrolidonAz() {
 							</div>
 							<picture>
 								<source
-									srcSet="/maz-na-osnove-joda-prevyu-310x210.webp 1x, /maz-na-osnove-joda-prevyu-620x420.webp 2x"
+									srcSet="/maz-na-osnove-joda-prevyu-246x166 (1).webp, /maz-na-osnove-joda-prevyu-246x166 (1).webp"
 									type="image/webp"
 								/>
 								<Image
-									src="/maz-na-osnove-joda-prevyu-620x420.webp"
+									src="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
 									alt="Məlhəm - prevyu"
 									width={310}
 									height={210}
@@ -529,6 +576,103 @@ export default function PolivinilpirrolidonAz() {
 
 						<div className="h2 h2-read-more" id="chitat-po-teme">Oxumağa davam et</div>
 
+						<div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
+							<div className="swiper-wrapper">
+								<div className="swiper-slide swiper-slide-active">
+									<div className="slide-image">
+										<picture>
+											<source
+												srcSet="/povidon-jod-prevyu-620x420.webp"
+												type="image/webp"
+											/>
+											<Image
+												src="/povidon-jod-prevyu-620x420.webp"
+												alt="Povidon-iyod - önbaxış"
+												width={246}
+												height={166}
+												loading="lazy"
+												decoding="async"
+											/>
+										</picture>
+									</div>
+									<div className="slide-body">
+										<p className="slide-title">
+											<strong>Povidon iyod</strong>
+										</p>
+										<p>
+											Povidon-iyodun xüsusiyyətləri və xassələri. Povidon-iyod nə üçün istifadə olunur?
+											Betadin® həll, məlhəm, şamların istifadə təlimatı.
+										</p>
+										<p className="slide-more">
+											<Link href="/encyclopedia/povidon-jod/">Ətraflı</Link>
+										</p>
+									</div>
+								</div>
+
+								<div className="swiper-slide">
+									<div className="slide-image">
+										<picture>
+											<source
+												srcSet="/svechi-ot-vaginita-prevyu-246x166 (1).webp, /svechi-ot-vaginita-prevyu-246x166 (1).webp"
+												type="image/webp"
+											/>
+											<Image
+												src="/svechi-ot-vaginita-prevyu-246x166 (1).webp"
+												alt="Vaginitdən şamlar - önbaxış"
+												width={246}
+												height={166}
+												loading="lazy"
+												decoding="async"
+											/>
+										</picture>
+									</div>
+									<div className="slide-body">
+										<p className="slide-title">
+											<strong>Vaginitdən şamlar</strong>
+										</p>
+										<p>
+											Vaginal şam formasında yerli preparatlarla vaginitin müalicəsi.
+											Vaginada iltihab üçün şamları necə seçmək olar?
+										</p>
+										<p className="slide-more">
+											<Link href="/encyclopedia/svechi-ot-vaginita/">Ətraflı</Link>
+										</p>
+									</div>
+								</div>
+
+								<div className="swiper-slide">
+									<div className="slide-image">
+										<picture>
+											<source
+												srcSet="/maz-na-osnove-joda-prevyu-246x166 (1).webp, /maz-na-osnove-joda-prevyu-246x166 (1).webp"
+												type="image/webp"
+											/>
+											<Image
+												src="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
+												alt="İyod əsaslı məlhəm - önbaxış"
+												width={246}
+												height={166}
+												loading="lazy"
+												decoding="async"
+											/>
+										</picture>
+									</div>
+									<div className="slide-body">
+										<p className="slide-title">
+											<strong>İyod əsaslı məlhəm</strong>
+										</p>
+										<p>
+											İyod əsaslı məlhəm: təsir mexanizmi, tətbiq sahəsi. Müxtəlif dəri
+											xəstəliklərinin müalicəsi üçün povidon-iyod əsaslı Betadin® məlhəmi.
+										</p>
+										<p className="slide-more">
+											<Link href="/encyclopedia/jod-maz/">Ətraflı</Link>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<div className="autor">
 							<div className="autor-left">
 								<p className="autor-title">Moshkova Elena Mihaylovna</p>
@@ -536,11 +680,11 @@ export default function PolivinilpirrolidonAz() {
 							</div>
 							<picture>
 								<source
-									srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+									srcSet="/moshkova-novyj-406x406 (1).webp"
 									type="image/webp"
 								/>
 								<Image
-									src="/moshkova-novyj-406x406.webp"
+									src="/moshkova-novyj-406x406 (1).webp"
 									alt="Moshkova Elena Mihaylovna"
 									width={203}
 									height={203}

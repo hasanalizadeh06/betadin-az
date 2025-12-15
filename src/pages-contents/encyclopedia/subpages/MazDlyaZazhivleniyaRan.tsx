@@ -1,10 +1,15 @@
+﻿
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const MazDlyaZazhivleniyaRan: React.FC = () => {
   const t = useTranslations('Blogs.MazDlyaZazhivleniyaRan');
   const triggeredRef = useRef<Record<number, boolean>>({ 25: false, 50: false, 75: false, 100: false });
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -33,6 +38,29 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
     };
     window.addEventListener('scroll', checkScroll);
     return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
   }, []);
 
   return (
@@ -66,15 +94,14 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
                   <h1 className="page-header-title-text">{t('sections.header_title')}</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
-                    <img
+                    <Image
                       decoding="async"
                       height={112}
                       width={115}
-                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
-                      srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                      src="/icon-230x224.webp"
                       alt={t('sections.alt_header_icon')}
                     />
                   </picture>
@@ -126,58 +153,59 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
                 </div>
               </div>
             </div>
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
-                  <a href="#fazy-zazhivleniya-ran">{t('sections.toc_phases')}</a>
+                  <a href="#fazy-zazhivleniya-ran">{t.raw('sections.toc_phases')}</a>
                 </li>
                 <li>
-                  <a href="#ranozazhivlyayushchie-mazi">{t('sections.toc_ointments')}</a>
+                  <a href="#ranozazhivlyayushchie-mazi">{t.raw('sections.toc_ointments')}</a>
                 </li>
                 <li>
-                  <a href="#maz-na-osnove-povidon-yoda">{t('sections.toc_povidon')}</a>
+                  <a href="#maz-na-osnove-povidon-yoda">{t.raw('sections.toc_povidon')}</a>
                 </li>
                 <li>
-                  <a href="#algoritm-perevyazki-s-ispolzovaniem-mazi-dlya-zazhivleniya-ran">{t('sections.toc_algorithm')}</a>
+                  <a href="#algoritm-perevyazki-s-ispolzovaniem-mazi-dlya-zazhivleniya-ran">{t.raw('sections.toc_algorithm')}</a>
                 </li>
                 <li>
-                  <a href="#chto-vliyaet-na-zazhivlenie-kozhi-bez-oslozhneniy">{t('sections.toc_healing')}</a>
+                  <a href="#chto-vliyaet-na-zazhivlenie-kozhi-bez-oslozhneniy">{t.raw('sections.toc_healing')}</a>
                 </li>
                 <li>
-                  <a href="#chasto-zadavaemye-voprosy">{t('sections.toc_faq')}</a>
+                  <a href="#chasto-zadavaemye-voprosy">{t.raw('sections.toc_faq')}</a>
                 </li>
                 <li>
-                  <a href="#spisok-literatury">{t('sections.toc_literature')}</a>
+                  <a href="#spisok-literatury">{t.raw('sections.toc_literature')}</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross"> {t('sections.table_of_contents')}</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t.raw('sections.table_of_contents')}</div>
             </nav>
           </div>
         </div>
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
-              <a href="#fazy-zazhivleniya-ran">{t('sections.toc_phases')}</a>
+              <a href="#fazy-zazhivleniya-ran">{t.raw('sections.toc_phases')}</a>
             </li>
             <li>
-              <a href="#ranozazhivlyayushchie-mazi">{t('sections.toc_ointments')}</a>
+              <a href="#ranozazhivlyayushchie-mazi">{t.raw('sections.toc_ointments')}</a>
             </li>
             <li>
-              <a href="#maz-na-osnove-povidon-yoda">{t('sections.toc_povidon')}</a>
+              <a href="#maz-na-osnove-povidon-yoda">{t.raw('sections.toc_povidon')}</a>
             </li>
             <li>
-              <a href="#algoritm-perevyazki-s-ispolzovaniem-mazi-dlya-zazhivleniya-ran">{t('sections.toc_algorithm')}</a>
+              <a href="#algoritm-perevyazki-s-ispolzovaniem-mazi-dlya-zazhivleniya-ran">{t.raw('sections.toc_algorithm')}</a>
             </li>
             <li>
-              <a href="#chto-vliyaet-na-zazhivlenie-kozhi-bez-oslozhneniy">{t('sections.toc_healing')}</a>
+              <a href="#chto-vliyaet-na-zazhivlenie-kozhi-bez-oslozhneniy">{t.raw('sections.toc_healing')}</a>
             </li>
             <li>
-              <a href="#chasto-zadavaemye-voprosy">{t('sections.toc_faq')}</a>
+              <a href="#chasto-zadavaemye-voprosy">{t.raw('sections.toc_faq')}</a>
             </li>
             <li>
-              <a href="#spisok-literatury">{t('sections.toc_literature')}</a>
+              <a href="#spisok-literatury">{t.raw('sections.toc_literature')}</a>
             </li>
           </ul>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t.raw('sections.table_of_contents')}</div>
         </nav>
         <div className="home-container">
           <div className="new-disclaimer"> {t('sections.disclaimer')}</div>
@@ -212,8 +240,8 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
               </div>
             </div>
             <picture className="img-normal">
-              <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1218/6f73e3a4e553890fe4285361cc80695690156c35e7614e84e71858cdf3ca296d-650x0/istockphoto-1341663000-2048x2048-2-2-2-650x150.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1218/6f73e3a4e553890fe4285361cc80695690156c35e7614e84e71858cdf3ca296d-650x0/istockphoto-1341663000-2048x2048-2-2-2-1300x300.jpg.webp 2x" type="image/webp" />
-              <img loading="lazy" decoding="async" height={150} width={650} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1218/6f73e3a4e553890fe4285361cc80695690156c35e7614e84e71858cdf3ca296d-650x0/istockphoto-1341663000-2048x2048-2-2-2-650x150.png.webp" alt={t('sections.alt_wound_types')} />
+              <source srcSet="/istockphoto-1341663000-2048x2048-2-2-2-650x150.webp, /istockphoto-1341663000-2048x2048-2-2-2-1300x300.webp" type="image/webp" />
+              <img loading="lazy" decoding="async" height={150} width={650} src="/istockphoto-1341663000-2048x2048-2-2-2-650x150.png.webp" alt={t('sections.alt_dressing_algorithm')} />
             </picture>
             <h2 className="h2" id="chto-vliyaet-na-zazhivlenie-kozhi-bez-oslozhneniy">{t('sections.affects_healing_title')}</h2>
             <div className="list-base">
@@ -306,8 +334,8 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
             <p>{t('sections.chloramphenicol_desc_1')}</p>
             <p>{t('sections.chloramphenicol_desc_2')}</p>
             <picture className="img-normal">
-              <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-650x150.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-1300x300.jpg.webp 2x" type="image/webp" />
-              <img loading="lazy" decoding="async" height={150} width={650} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-650x150.png.webp" alt={t('sections.alt_dressing_algorithm')} />
+              <source srcSet="/istockphoto-1341663000-2048x2048-2-2-3-650x150.webp" type="image/webp" />
+              <img loading="lazy" decoding="async" height={150} width={650} src="/istockphoto-1341663000-2048x2048-2-2-3-650x150.webp" alt={t('sections.alt_dressing_algorithm')} />
             </picture>
             <h3 className="h3" id="maz-s-serebrom">{t('sections.silver_title')}</h3>
             <p>{t('sections.silver_desc_1')}<sup><a href="#spisok-literatury">10,11</a></sup>.</p>
@@ -341,8 +369,8 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
             </div>
             <div className="green"><p>{t('sections.daily_care_note')}</p></div>
             <picture className="img-normal">
-              <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-650x150.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-1300x300.jpg.webp 2x" type="image/webp" />
-              <img loading="lazy" decoding="async" height={150} width={650} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1222/986d1de62b3ff06a6a26a8ab8039f69967432585f3a0f77554ed937a97948ea5-650x0/istockphoto-1341663000-2048x2048-2-2-3-650x150.png.webp" alt="Алгоритм перевязки раны с мазью" />
+              <source srcSet="/istockphoto-1341663000-2048x2048-2-2-3-650x150.webp" type="image/webp" />
+              <img loading="lazy" decoding="async" height={150} width={650} src="/istockphoto-1341663000-2048x2048-2-2-3-650x150.webp" alt="Алгоритм перевязки раны с мазью" />
             </picture>
             <div className="block-with-image">
               <div className="block-with-image__green">
@@ -351,8 +379,8 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
                 <a href="/encyclopedia/rany-s-infekciej/" className="btn btn-green" target="_blank" rel="noreferrer">{t('sections.more_button')}</a>
               </div>
               <picture>
-                <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-310x235/rany-s-infekcziej-prevyu-310x210.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-310x235/rany-s-infekcziej-prevyu-620x420.jpg.webp 2x" type="image/webp" />
-                <img loading="lazy" decoding="async" height={210} width={310} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-310x235/rany-s-infekcziej-prevyu-310x210.png.webp" alt="Раны с инфекцией-превью" />
+                <source srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp" type="image/webp" />
+                <img loading="lazy" decoding="async" height={210} width={310} src="/rany-s-infekcziej-prevyu-246x166 (1).webp" alt="Раны с инфекцией-превью" />
               </picture>
             </div>
             <div className="exlude-turbo">
@@ -375,8 +403,8 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
                 <p className="autor-footer">{t('sections.author_role')}</p>
               </div>
               <picture>
-                <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-470x406.webp 2x" type="image/webp" />
-                <img loading="lazy" decoding="async" height={203} width={235} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.png.webp" alt="" />
+                <source srcSet="/kraskovskij-novyj-470x406 (1).webp, /kraskovskij-novyj-470x406 (1).webp" type="image/webp" />
+                <img loading="lazy" decoding="async" height={203} width={235} src="/kraskovskij-novyj-470x406 (1).webp" alt="" />
               </picture>
             </div>
             <div className="h2 h2-read-more" id="chitat-po-teme">{t('sections.read_more_title')}</div>
@@ -384,41 +412,38 @@ const MazDlyaZazhivleniyaRan: React.FC = () => {
               <div className="swiper-wrapper">
                 <div className="swiper-slide">
                   <div className="slide-image">
-                    <picture>
-                      <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-491x332.jpg.webp 2x" type="image/webp" />
-                      <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.png.webp" alt={t.raw('sections.slider_articles')[0].alt} />
-                    </picture>
+                  <picture>
+                  <img loading="lazy" decoding="async" height={166} width={246} src="/chem-obrabotat-ranu-rebenku-prevyu-246x166.webp" alt={t.raw('sections.slider_articles')[0].alt} />
+                  </picture>
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title"><strong>{t.raw('sections.slider_articles')[0].title}</strong></p>
-                    <p>{t.raw('sections.slider_articles')[0].description}</p>
-                    <p className="slide-more"><a href={t.raw('sections.slider_articles')[0].link}> {t('sections.slider_more')} </a></p>
+                  <p className="slide-title"><strong>{t.raw('sections.slider_articles')[0].title}</strong></p>
+                  <p>{t.raw('sections.slider_articles')[0].description}</p>
+                  <p className="slide-more"><a href={t.raw('sections.slider_articles')[0].link}> {t('sections.slider_more')} </a></p>
                   </div>
                 </div>
                 <div className="swiper-slide">
                   <div className="slide-image">
-                    <picture>
-                      <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.jpg.webp 2x" type="image/webp" />
-                      <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp" alt={t.raw('sections.slider_articles')[1].alt} />
-                    </picture>
+                  <picture>
+                  <img loading="lazy" decoding="async" height={210} width={310} src="/povidon-jod-prevyu-620x420.webp" alt={t.raw('sections.slider_articles')[1].alt} />
+                  </picture>
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title"><strong>{t.raw('sections.slider_articles')[1].title}</strong></p>
-                    <p>{t.raw('sections.slider_articles')[1].description}</p>
-                    <p className="slide-more"><a href={t.raw('sections.slider_articles')[1].link}> {t('sections.slider_more')} </a></p>
+                  <p className="slide-title"><strong>{t.raw('sections.slider_articles')[1].title}</strong></p>
+                  <p>{t.raw('sections.slider_articles')[1].description}</p>
+                  <p className="slide-more"><a href={t.raw('sections.slider_articles')[1].link}> {t('sections.slider_more')} </a></p>
                   </div>
                 </div>
                 <div className="swiper-slide">
                   <div className="slide-image">
-                    <picture>
-                      <source srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-0x166/rany-s-infekcziej-prevyu-246x166.jpg.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-0x166/rany-s-infekcziej-prevyu-491x332.jpg.webp 2x" type="image/webp" />
-                      <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1912/1b0bdd1f7af72a302e8a8dd710823c524fbf96394cd1031075dcc05084bf7c33-0x166/rany-s-infekcziej-prevyu-246x166.png.webp" alt={t.raw('sections.slider_articles')[2].alt} />
-                    </picture>
+                  <picture>
+                  <img loading="lazy" decoding="async" height={166} width={246} src="/rany-s-infekcziej-prevyu-246x166 (1).webp" alt={t.raw('sections.slider_articles')[2].alt} />
+                  </picture>
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title"><strong>{t.raw('sections.slider_articles')[2].title}</strong></p>
-                    <p>{t.raw('sections.slider_articles')[2].description}</p>
-                    <p className="slide-more"><a href={t.raw('sections.slider_articles')[2].link}> {t('sections.slider_more')} </a></p>
+                  <p className="slide-title"><strong>{t.raw('sections.slider_articles')[2].title}</strong></p>
+                  <p>{t.raw('sections.slider_articles')[2].description}</p>
+                  <p className="slide-more"><a href={t.raw('sections.slider_articles')[2].link}> {t('sections.slider_more')} </a></p>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -666,11 +666,11 @@ export default function Furunkul() {
                     <div className="slide-image">
                         <picture>
                         <source
-                          srcSet={`${idx === 0 ? '/povidon-jod-prevyu-246x166 (1).webp' : idx === 1 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'} 1x, ${idx === 0 ? '/povidon-jod-prevyu-246x166 (1).webp' : idx === 1 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'} 2x`}
+                          srcSet={idx === 0 ? '/povidon-jod-prevyu-620x420.webp' : idx === 1 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'}
                           type="image/webp"
                         />
                         <Image
-                          src={idx === 0 ? '/povidon-jod-prevyu-246x166 (1).webp' : idx === 1 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'}
+                          src={idx === 0 ? '/povidon-jod-prevyu-620x420.webp' : idx === 1 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'}
                           alt={article.alt}
                           width={246}
                           height={166}

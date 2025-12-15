@@ -90,7 +90,7 @@ const Preimushestva = () => {
                                         />
                                     </picture>
                                 </div>
-                                <div className="slide-body" dangerouslySetInnerHTML={{ __html: t(slide.translationKey).replace(/\s/g, '\u00A0') }} />
+                                <div className="slide-body" dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
                             </div>
                         ))}
                     </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,10 +19,37 @@ interface Triggered {
 }
 
 export default function RastvorJoda() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
   const [scrollTriggered, setScrollTriggered] = useState<Triggered>({
     40: false,
     80: false,
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -105,7 +132,7 @@ export default function RastvorJoda() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -143,11 +170,11 @@ export default function RastvorJoda() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-2-1-730x615.webp 1x, /kartinka-banner-2-1-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-2-1-730x615.webp, /kartinka-banner-2-1-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/kartinka-banner-2-1-1460x1230.webp"
+                      src="/kartinka-banner-2-1-730x615.webp"
                       alt="Раствор йода"
                       width={730}
                       height={615}
@@ -159,7 +186,7 @@ export default function RastvorJoda() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#yodnye-rastvory-pokazaniya-k-primeneniyu">
@@ -193,12 +220,12 @@ export default function RastvorJoda() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Содержание</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#yodnye-rastvory-pokazaniya-k-primeneniyu">
@@ -232,7 +259,7 @@ export default function RastvorJoda() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Содержание</div>
         </nav>
 
         <div className="home-container">
@@ -759,7 +786,7 @@ export default function RastvorJoda() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -776,7 +803,7 @@ export default function RastvorJoda() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-1115x1084.webp"
                   type="image/webp"
                 />
                 <Image
@@ -850,11 +877,11 @@ export default function RastvorJoda() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}
@@ -874,11 +901,11 @@ export default function RastvorJoda() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp 1x, /polivinilpirrolidon-povidon-prevyu-491x332.webp 2x"
+                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/polivinilpirrolidon-povidon-prevyu-491x332.webp"
+                        src="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         alt="Поливинилпирролидон (повидон) - превью"
                         width={246}
                         height={166}
@@ -902,11 +929,11 @@ export default function RastvorJoda() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Повидон-йод - превью"
                         width={246}
                         height={166}
@@ -933,11 +960,11 @@ export default function RastvorJoda() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp 1x, /maz-dlya-zazhivleniya-ran-prevyu-491x332.webp 2x"
+                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/maz-dlya-zazhivleniya-ran-prevyu-491x332.webp"
+                        src="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         alt="Мазь для заживления ран- превью"
                         width={246}
                         height={166}

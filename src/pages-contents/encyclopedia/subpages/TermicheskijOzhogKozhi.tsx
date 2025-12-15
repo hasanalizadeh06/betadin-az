@@ -17,6 +17,9 @@ export default function TermicheskijOzhogKozhi() {
     40: false,
     80: false,
   });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -65,6 +68,37 @@ export default function TermicheskijOzhogKozhi() {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <article>
@@ -99,7 +133,7 @@ export default function TermicheskijOzhogKozhi() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -136,11 +170,11 @@ export default function TermicheskijOzhogKozhi() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-3-730x615.webp 1x, /kartinka-banner-3-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-3-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/kartinka-banner-3-1460x1230.webp"
+                      src="/kartinka-banner-3-730x615.webp"
                       alt="Термический ожог кожи"
                       width={730}
                       height={615}
@@ -152,7 +186,7 @@ export default function TermicheskijOzhogKozhi() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#stepen-tyazhesti-termicheskih-ozhogov-osnovnye-simptomy">
@@ -180,12 +214,19 @@ export default function TermicheskijOzhogKozhi() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened(!navOpened)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#stepen-tyazhesti-termicheskih-ozhogov-osnovnye-simptomy">
@@ -213,7 +254,12 @@ export default function TermicheskijOzhogKozhi() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">
@@ -241,11 +287,11 @@ export default function TermicheskijOzhogKozhi() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Декоративные элементы"
                   width={503}
                   height={505}
@@ -264,11 +310,11 @@ export default function TermicheskijOzhogKozhi() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-2-4-650x150.webp 1x, /istockphoto-1341663000-2048x2048-2-2-4-1300x300.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-2-4-650x150.webp"
                 type="image/webp"
               />
               <Image
-                src="/istockphoto-1341663000-2048x2048-2-2-4-1300x300.webp"
+                src="/istockphoto-1341663000-2048x2048-2-2-4-650x150.webp"
                 alt="Степень тяжести термических ожогов."
                 width={650}
                 height={150}
@@ -327,11 +373,11 @@ export default function TermicheskijOzhogKozhi() {
 
             <picture className="img-normal">
               <source
-                srcSet="/medical-kit-and-bandaid-509398-488-1-20-650x325.webp 1x, /medical-kit-and-bandaid-509398-488-1-20-1300x650.webp 2x"
+                srcSet="/medical-kit-and-bandaid-509398-488-1-20-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/medical-kit-and-bandaid-509398-488-1-20-1300x650.webp"
+                src="/medical-kit-and-bandaid-509398-488-1-20-650x325.webp"
                 alt="Строение кожи"
                 width={650}
                 height={325}
@@ -416,11 +462,11 @@ export default function TermicheskijOzhogKozhi() {
 
             <picture className="img-normal">
               <source
-                srcSet="/medical-kit-and-bandaid-509398-488-1-21-650x325.webp 1x, /medical-kit-and-bandaid-509398-488-1-21-1300x650.webp 2x"
+                srcSet="/medical-kit-and-bandaid-509398-488-1-21-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/medical-kit-and-bandaid-509398-488-1-21-1300x650.webp"
+                src="/medical-kit-and-bandaid-509398-488-1-21-650x325.webp"
                 alt="Правило девяток"
                 width={650}
                 height={325}
@@ -558,14 +604,14 @@ export default function TermicheskijOzhogKozhi() {
               </div>
               <picture>
                 <source
-                  srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-310x210.webp 1x, /mazi-i-kremy-ot-ozhogov-prevyu-620x420.webp 2x"
+                  srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/mazi-i-kremy-ot-ozhogov-prevyu-620x420.webp"
+                  src="/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp"
                   alt="Мази и кремы от ожогов-превью"
-                  width={310}
-                  height={210}
+                  width={246}
+                  height={166}
                   loading="lazy"
                   decoding="async"
                 />
@@ -616,16 +662,11 @@ export default function TermicheskijOzhogKozhi() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Бетадин"
                     width={927}
                     height={916}
@@ -742,14 +783,14 @@ export default function TermicheskijOzhogKozhi() {
               </div>
               <picture>
                 <source
-                  srcSet="/maz-na-osnove-joda-prevyu-310x210.webp 1x, /maz-na-osnove-joda-prevyu-620x420.webp 2x"
+                  srcSet="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/maz-na-osnove-joda-prevyu-620x420.webp"
+                  src="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
                   alt="Мазь на основе йода - превью"
-                  width={310}
-                  height={210}
+                  width={246}
+                  height={166}
                   loading="lazy"
                   decoding="async"
                 />
@@ -796,11 +837,11 @@ export default function TermicheskijOzhogKozhi() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/quastion-1115x1084.webp"
+                  src="/quastion-558x542.webp"
                   alt="Декоративные элементы"
                   width={558}
                   height={542}
@@ -864,11 +905,11 @@ export default function TermicheskijOzhogKozhi() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}
@@ -888,11 +929,11 @@ export default function TermicheskijOzhogKozhi() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rany-s-infekcziej-prevyu-491x332.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="Раны с инфекцией-превью"
                         width={246}
                         height={166}
@@ -918,11 +959,11 @@ export default function TermicheskijOzhogKozhi() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rastvor-joda-prevyu-246x166.webp 1x, /rastvor-joda-prevyu-491x332.webp 2x"
+                        srcSet="/rastvor-joda-prevyu-246x166 (2).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rastvor-joda-prevyu-491x332.webp"
+                        src="/rastvor-joda-prevyu-246x166 (2).webp"
                         alt="Раствор йода - превью"
                         width={246}
                         height={166}
@@ -946,11 +987,11 @@ export default function TermicheskijOzhogKozhi() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-246x166.webp 1x, /mazi-i-kremy-ot-ozhogov-prevyu-491x332.webp 2x"
+                        srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/mazi-i-kremy-ot-ozhogov-prevyu-491x332.webp"
+                        src="/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp"
                         alt="Мази и кремы от ожогов-превью"
                         width={246}
                         height={166}

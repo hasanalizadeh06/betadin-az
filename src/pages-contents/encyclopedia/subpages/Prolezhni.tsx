@@ -1,7 +1,36 @@
 "use client";
-import React, { useEffect } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const Prolezhni: React.FC = () => {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldHide = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHide);
+      if (shouldHide) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     // Analytics scroll tracking logic adapted from the original script
     // eslint-disable-next-line no-console
@@ -61,8 +90,8 @@ const Prolezhni: React.FC = () => {
               <div className="page-header-title">
                 <h1 className="page-header-title-text">Пролежни у взрослых и детей: профилактика и уход</h1>
                 <picture>
-                  <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x" type="image/webp" />
-                  <img decoding="async" height={112} width={115} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp" srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x" alt="картинка у заголовка" />
+                  <source srcSet="/icon-230x224.webp" type="image/webp" />
+                  <Image height={112} width={115} src="/icon-230x224.webp" alt="картинка у заголовка" />
                 </picture>
               </div>
               <h2 className="page-header-subtitle">Что такое пролежни </h2>
@@ -87,7 +116,7 @@ const Prolezhni: React.FC = () => {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
             <ul>
               <li><a href="#lokalizaciya-prolezhney">Локализация пролежней</a></li>
               <li><a href="#simptomy-prolezhney">Симптомы пролежней</a></li>
@@ -99,12 +128,19 @@ const Prolezhni: React.FC = () => {
               <li><a href="#otvety-na-voprosy">Ответы на вопросы</a></li>
               <li><a href="#spisok-literatury">Список литературы</a></li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+            <div
+              className="nav-content-title nav-content-title-cross"
+              onClick={() => setNavOpened((prev) => !prev)}
+            >
+               Содержание
+            </div>
           </nav>
         </div>
       </div>
 
-      <nav className="nav-content nav-content-fixed">
+      <nav
+        className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}
+      >
         <ul>
           <li><a href="#lokalizaciya-prolezhney">Локализация пролежней</a></li>
           <li><a href="#simptomy-prolezhney">Симптомы пролежней</a></li>
@@ -116,7 +152,12 @@ const Prolezhni: React.FC = () => {
           <li><a href="#otvety-na-voprosy">Ответы на вопросы</a></li>
           <li><a href="#spisok-literatury">Список литературы</a></li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+        <div
+          className="nav-content-title nav-content-title-cross"
+          onClick={() => setSecondaryNavOpened((prev) => !prev)}
+        >
+           Содержание
+        </div>
       </nav>
 
       <div className="home-container">
@@ -281,6 +322,17 @@ const Prolezhni: React.FC = () => {
             <p>Способ применения зависит от лекарственной формы препарата. Для лечения пролежней применяют Бетадин® в форме раствора и мази.</p>
             <p>Раствор для наружного применения наносят на рану в неразбавленном виде. Мазь наносят 2 раза в сутки тонким слоем с захватом здоровой кожи.</p>
           </div>
+          <picture className="img-normal">
+            <source srcSet="/istockphoto-1341663000-2048x2048-2-5-2048x473.png.webp" type="image/webp" />
+            <img loading="lazy" decoding="async" height={473} width={2048} src="/istockphoto-1341663000-2048x2048-2-5-2048x473.png.webp" alt="Бетадин® в форме мази" />
+          </picture>
+          <p>Бетадин® в форме мази наносят 2 раза в сутки тонким слоем с захватом здоровой кожи.</p>
+          <picture className="img-normal">
+            <source srcSet="/medical-kit-and-bandaid_509398-488-4-2048x1024.png.webp" type="image/webp" />
+            <img loading="lazy" decoding="async" height={512} width={1024} src="/medical-kit-and-bandaid_509398-488-4-2048x1024.png.webp" alt="Применение препарата под контролем врача" />
+          </picture>
+          <p>Важно отметить, что применение всех форм препарата должно осуществляться под контролем врача.</p>
+          
           <h4 className="h4" id="protivopokazaniya-k-ispolzovaniyu-preparatov-betadin">Противопоказания к использованию препаратов Бетадин®</h4>
           <p>Среди противопоказаний: гиперчувствительность к активному веществу, аденома щитовидной железы, гипертиреоз, герпетиформный дерматит Дюринга, применение радиоактивного йода. Препарат противопоказан недоношенным и новорожденным детям. С осторожностью применяют при заболевании почек, беременности и лактации.</p>
           <div className="buttons"><a className="btn btn-green btn-green-instruction" target="_blank" href="/betadin-rastvor-instruktsiya/">Инструкция</a></div>
@@ -312,13 +364,53 @@ const Prolezhni: React.FC = () => {
               <div className="swiper-slide swiper-slide-active" style={{ marginRight: '29px' }}>
                 <div className="slide-image">
                   <picture>
-                    <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-491x332.webp 2x" type="image/webp" />
-                    <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-246x166.png.webp" alt="Обработка пролежней_ мази и кремы-превью" />
+                    <source srcSet="/obrabotka-prolezhnej-mazi-i-kremy-prevyu-246x166.webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/obrabotka-prolezhnej-mazi-i-kremy-prevyu-246x166.webp" alt="Обработка пролежней_ мази и кремы-превью" />
                   </picture>
                 </div>
-                <div className="slide-body"><p className="slide-title"><strong>Обработка пролежней: мази и кремы</strong></p><p>Подбираем эффективный и безопасный препарат для обработки пролежней.</p></div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Обработка пролежней: мази и кремы</strong></p>
+                  <p>Подбираем эффективный и безопасный препарат для обработки пролежней.</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/obrabotka-prolezhnej/">Подробнее</a>
+                    <a href="/encyclopedia/obrabotka-prolezhnej/">Подробнее</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide swiper-slide-next" style={{ marginRight: '29px' }}>
+                <div className="slide-image">
+                  <picture>
+                    <source srcSet="/povidon-jod-prevyu-246x166 (1).webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/povidon-jod-prevyu-246x166 (1).webp" alt="Повидон-йод - превью" />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Повидон йод</strong></p>
+                  <p>Характеристики и свойства повидон-йода. Для чего применяется повидон-йод? Инструкция по применению раствора, мази, свечей Бетадин<sup>®</sup> с повидон-йодом.</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/povidon-jod/">Подробнее</a>
+                    <a href="/encyclopedia/povidon-jod/">Подробнее</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide" style={{ marginRight: '29px' }}>
+                <div className="slide-image">
+                  <picture>
+                    <source srcSet="/maz-dlya-lecheniya-troficheskih-yazv-prevyu-246x166 (1).webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/maz-dlya-lecheniya-troficheskih-yazv-prevyu-246x166 (1).webp" alt="Мазь для лечения трофических язв - превью" />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Трофические язвы ног</strong></p>
+                  <p>Как распознать трофическую язву на ноге, и в чем причина образования такого дефекта кожи?</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/troficheskie-yazvy-nog/">Подробнее</a>
+                    <a href="/encyclopedia/troficheskie-yazvy-nog/">Подробнее</a>
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
           <h2 className="h2" id="spisok-literatury">Список литературы</h2>
           <ol className="literature">

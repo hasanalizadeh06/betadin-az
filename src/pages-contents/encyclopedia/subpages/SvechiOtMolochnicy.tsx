@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function SvechiOtMolochnicy() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -92,13 +120,13 @@ export default function SvechiOtMolochnicy() {
                   <h1 className="page-header-title-text">Свечи от молочницы: как выбрать и применять</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/molochnicy-icon.png"
+                      src="/icon-230x224.webp"
                       alt="картинка у заголовка"
                     />
                   </picture>
@@ -141,7 +169,7 @@ export default function SvechiOtMolochnicy() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#simptomy-vaginalnogo-kandidoza-molochnicy">Симптомы вагинального кандидоза (молочницы)</a>
@@ -165,12 +193,12 @@ export default function SvechiOtMolochnicy() {
                   <a href="#literatura">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Содержание</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#simptomy-vaginalnogo-kandidoza-molochnicy">Симптомы вагинального кандидоза (молочницы)</a>
@@ -194,7 +222,7 @@ export default function SvechiOtMolochnicy() {
               <a href="#literatura">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Содержание</div>
         </nav>
 
         <div className="home-container">

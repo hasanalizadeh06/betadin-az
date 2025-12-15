@@ -17,6 +17,9 @@ export default function PovidonJod() {
     40: false,
     80: false,
   });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -58,10 +61,28 @@ export default function PovidonJod() {
       }
     }
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -99,7 +120,7 @@ export default function PovidonJod() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -137,11 +158,11 @@ export default function PovidonJod() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/polivinilpirrolidon-povidon-730x615.webp 1x, /polivinilpirrolidon-povidon-1460x1230.webp 2x"
+                      srcSet="/polivinilpirrolidon-povidon-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/polivinilpirrolidon-povidon-1460x1230.webp"
+                      src="/polivinilpirrolidon-povidon-730x615.webp"
                       alt="Поливинилпирролидон"
                       width={730}
                       height={615}
@@ -153,7 +174,7 @@ export default function PovidonJod() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#otkrytie-yoda-i-povidon-yoda">Открытие йода и повидон-йода</a>
@@ -178,12 +199,19 @@ export default function PovidonJod() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#otkrytie-yoda-i-povidon-yoda">Открытие йода и повидон-йода</a>
@@ -208,7 +236,12 @@ export default function PovidonJod() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">
@@ -232,11 +265,11 @@ export default function PovidonJod() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Декоративные элементы"
                   width={503}
                   height={505}
@@ -333,11 +366,11 @@ export default function PovidonJod() {
 
             <picture className="img-normal">
               <source
-                srcSet="/mask-group-7-scaled-650x325.webp 1x, /mask-group-7-scaled-1300x650.webp 2x"
+                srcSet="/mask-group-7-scaled-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/mask-group-7-scaled-1300x650.webp"
+                src="/mask-group-7-scaled-650x325.webp"
                 alt="Продукция на основе повидон-йода"
                 width={650}
                 height={325}
@@ -374,16 +407,11 @@ export default function PovidonJod() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Бетадин"
                     width={927}
                     height={916}
@@ -425,16 +453,11 @@ export default function PovidonJod() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-maz-mobile-315x226.webp 1x, /banner-betadin-maz-mobile-630x451.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-maz-927x916.webp 1x, /banner-betadin-maz-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-maz-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-maz-1853x1832.webp"
+                    src="/banner-betadin-maz-927x916.webp"
                     alt="Бетадин"
                     width={927}
                     height={916}
@@ -485,19 +508,14 @@ export default function PovidonJod() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-svechi-mobile-315x235.webp 1x, /banner-betadin-svechi-mobile-630x470.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-svechi-927x916.webp 1x, /banner-betadin-svechi-1853x1832.webp 2x"
+                    srcSet="/svechi-553x512.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-svechi-1853x1832.webp"
+                    src="/svechi-553x512.webp"
                     alt="Бетадин"
-                    width={927}
-                    height={916}
+                    width={553}
+                    height={512}
                     loading="lazy"
                     decoding="async"
                   />
@@ -650,11 +668,11 @@ export default function PovidonJod() {
               </div>
               <picture>
                 <source
-                  srcSet="/rany-u-detej-prevyu-310x210.webp 1x, /rany-u-detej-prevyu-620x420.webp 2x"
+                  srcSet="/rany-u-detej-prevyu-246x166.webp, /rany-u-detej-prevyu-246x166.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/rany-u-detej-prevyu-620x420.webp"
+                  src="/rany-u-detej-prevyu-246x166.webp"
                   alt="Раны у детей-превью"
                   width={310}
                   height={210}
@@ -734,11 +752,11 @@ export default function PovidonJod() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}
@@ -758,11 +776,11 @@ export default function PovidonJod() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rany-s-infekcziej-prevyu-491x332.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="Раны с инфекцией-превью"
                         width={246}
                         height={166}
@@ -789,11 +807,11 @@ export default function PovidonJod() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/lechenie-troficheskih-yazv-prevyu-246x166.webp 1x, /lechenie-troficheskih-yazv-prevyu-491x332.webp 2x"
+                        srcSet="/lechenie-troficheskih-yazv-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/lechenie-troficheskih-yazv-prevyu-491x332.webp"
+                        src="/lechenie-troficheskih-yazv-prevyu-246x166.webp"
                         alt="Лечение трофических язв-превью"
                         width={246}
                         height={166}
@@ -820,12 +838,12 @@ export default function PovidonJod() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/svechi-ot-vaginita-prevyu-246x166.webp 1x, /svechi-ot-vaginita-prevyu-491x332.webp 2x"
+                        srcSet="/svechi-ot-vaginita-prevyu-246x166 (1).webp, /svechi-ot-vaginita-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/svechi-ot-vaginita-prevyu-491x332.webp"
-                        alt="Свечи от вагинита - превью"
+                        src="/svechi-ot-vaginita-prevyu-246x166 (1).webp"
+                        alt="Vaginit şamları - önizləmə"
                         width={246}
                         height={166}
                         loading="lazy"

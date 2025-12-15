@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function RanySInfekciej() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -147,7 +175,7 @@ export default function RanySInfekciej() {
             </div>
 
             {/* Navigation Menu */}
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#chto-mozhet-stat-prichinoy-inficirovaniya-rany">
@@ -180,13 +208,13 @@ export default function RanySInfekciej() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Содержание</div>
             </nav>
           </div>
         </div>
 
         {/* Fixed Navigation */}
-        <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#chto-mozhet-stat-prichinoy-inficirovaniya-rany">
@@ -219,7 +247,7 @@ export default function RanySInfekciej() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Содержание</div>
         </nav>
 
         {/* Disclaimer */}
@@ -749,14 +777,14 @@ export default function RanySInfekciej() {
               </div>
               <picture>
                 <source
-                  srcSet="/obrabotka-ran-prevyu-310x210.webp 1x, /obrabotka-ran-prevyu-620x420.webp 2x"
+                  srcSet="/obrabotka-ran-prevyu-246x166.webp, /obrabotka-ran-prevyu-246x166.webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={210}
                   width={310}
-                  src="/obrabotka-ran-prevyu-310x210.webp"
+                  src="/obrabotka-ran-prevyu-246x166.webp"
                   alt="Обработка ран - превью"
                 />
               </picture>
@@ -858,14 +886,14 @@ export default function RanySInfekciej() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={203}
                   width={203}
-                  src="/moshkova-novyj-203x203.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Автор статьи"
                 />
               </picture>
@@ -881,7 +909,7 @@ export default function RanySInfekciej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp 1x, /maz-dlya-zazhivleniya-ran-prevyu-491x332.webp 2x"
+                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp, /maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
@@ -908,7 +936,7 @@ export default function RanySInfekciej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/obrabotka-ran-prevyu-246x166.webp 1x, /obrabotka-ran-prevyu-491x332.webp 2x"
+                        srcSet="/obrabotka-ran-prevyu-246x166.webp, /obrabotka-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
@@ -938,14 +966,14 @@ export default function RanySInfekciej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
-                        height={166}
-                        width={246}
-                        src="/povidon-jod-prevyu-246x166.webp"
+                        height={210}
+                        width={310}
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Повидон-йод - превью"
                       />
                     </picture>

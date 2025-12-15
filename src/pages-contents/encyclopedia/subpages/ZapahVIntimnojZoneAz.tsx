@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,10 @@ interface Triggered {
 }
 
 export default function ZapahVIntimnojZoneAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -60,6 +64,37 @@ export default function ZapahVIntimnojZoneAz() {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <article>
@@ -92,13 +127,13 @@ export default function ZapahVIntimnojZoneAz() {
                   <h1 className="page-header-title-text">İntim zonada xoşagəlməz qoxu: səbəbləri və aradan qaldırılması</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/zapah-icon.png"
+                      src="/icon-230x224.webp"
                       alt="başlıq yanında şəkil"
                     />
                   </picture>
@@ -145,7 +180,7 @@ export default function ZapahVIntimnojZoneAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#kakie-vidy-zapaha-mogut-prisutstvovat-vo-vlagalishche-i-o-chem-oni-svidetelstvuyut">
@@ -170,12 +205,19 @@ export default function ZapahVIntimnojZoneAz() {
                   <a href="#literatura">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened(!navOpened)}
+              >
+                Məzmun
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${navTitleHidden ? '' : ' nav-content-title-hidden'}${secondaryNavOpened ? ' nav-content__open' : ''}`}
+        >
           <ul>
             <li>
               <a href="#kakie-vidy-zapaha-mogut-prisutstvovat-vo-vlagalishche-i-o-chem-oni-svidetelstvuyut">
@@ -200,7 +242,12 @@ export default function ZapahVIntimnojZoneAz() {
               <a href="#literatura">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+          >
+            Məzmun
+          </div>
         </nav>
 
         <div className="home-container">

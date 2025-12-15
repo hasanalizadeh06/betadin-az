@@ -122,13 +122,13 @@ export default function BakterialnyjVaginoz() {
                   <h1 className="page-header-title-text">{t('header.title')}</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/vaginoz-icon.png"
+                      src="/icon-230x224.webp"
                       alt="картинка у заголовка"
                     />
                   </picture>

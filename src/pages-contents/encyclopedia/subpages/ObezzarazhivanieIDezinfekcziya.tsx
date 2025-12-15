@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface ScrollGoals {
@@ -13,6 +13,9 @@ interface Triggered {
 }
 
 export default function ObezzarazhivanieIDezinfekcziya() {
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -56,6 +59,29 @@ export default function ObezzarazhivanieIDezinfekcziya() {
 
     window.addEventListener('scroll', checkScroll);
     return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
   }, []);
 
   return (
@@ -128,14 +154,14 @@ export default function ObezzarazhivanieIDezinfekcziya() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/banner-1-730x615.webp 1x, /banner-1-1460x1230.webp 2x"
+                      srcSet="/banner-1-1460x1230.webp"
                       type="image/webp"
                     />
                     <Image
                       fetchPriority="high"
                       height={615}
                       width={730}
-                      src="/banner-1-730x615.webp"
+                      src="/banner-1-1460x1230.webp"
                       alt="Обеззараживание"
                       priority
                     />
@@ -145,7 +171,7 @@ export default function ObezzarazhivanieIDezinfekcziya() {
             </div>
 
             {/* Navigation Menu */}
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
                   <a href="#chem-mozhno-prodezinficirovat-ranu">
@@ -164,13 +190,13 @@ export default function ObezzarazhivanieIDezinfekcziya() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>Содержание</div>
             </nav>
           </div>
         </div>
 
         {/* Fixed Navigation */}
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
               <a href="#chem-mozhno-prodezinficirovat-ranu">Чем можно продезинфицировать рану?</a>
@@ -187,7 +213,7 @@ export default function ObezzarazhivanieIDezinfekcziya() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>Содержание</div>
         </nav>
 
         {/* Disclaimer */}
@@ -750,14 +776,14 @@ export default function ObezzarazhivanieIDezinfekcziya() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={203}
                   width={203}
-                  src="/moshkova-novyj-203x203.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Автор статьи"
                 />
               </picture>
@@ -800,14 +826,14 @@ export default function ObezzarazhivanieIDezinfekcziya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp 1x, /maz-dlya-zazhivleniya-ran-prevyu-491x332.webp 2x"
+                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
+                        src="/maz-dlya-zazhivleniya-ran-prevyu-246x166 (1).webp"
                         alt="Мазь для заживления ран- превью"
                       />
                     </picture>
@@ -827,14 +853,14 @@ export default function ObezzarazhivanieIDezinfekcziya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/rany-s-infekcziej-prevyu-246x166.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="Раны с инфекцией-превью"
                       />
                     </picture>

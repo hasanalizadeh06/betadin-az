@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface ScrollGoals {
@@ -12,6 +12,10 @@ interface Triggered {
 }
 
 export default function Porezy() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -53,8 +57,28 @@ export default function Porezy() {
       }
     };
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
-    return () => window.removeEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -136,14 +160,14 @@ export default function Porezy() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-1-730x615.webp 1x, /kartinka-banner-1-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-1460x1230.webp"
                       type="image/webp"
                     />
                     <Image
                       fetchPriority="high"
-                      height={615}
-                      width={730}
-                      src="/kartinka-banner-1-730x615.webp"
+                      height={1230}
+                      width={1460}
+                      src="/kartinka-banner-1460x1230.webp"
                       alt="Порезы"
                       priority
                     />
@@ -153,7 +177,7 @@ export default function Porezy() {
             </div>
 
             {/* Navigation Menu */}
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#osobennosti-stroeniya-kozhi">Особенности строения кожи</a>
@@ -193,13 +217,20 @@ export default function Porezy() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
         {/* Fixed Navigation */}
-        <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#osobennosti-stroeniya-kozhi">Особенности строения кожи</a>
@@ -239,7 +270,12 @@ export default function Porezy() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Содержание
+          </div>
         </nav>
 
         {/* Disclaimer */}
@@ -253,13 +289,13 @@ export default function Porezy() {
             {/* First Image */}
             <picture className="img-normal">
               <source
-                srcSet="/medical-kit-and-bandaid-509398-488-1-18-650x370.webp 1x, /medical-kit-and-bandaid-509398-488-1-18-1300x740.webp 2x"
+                srcSet="/medical-kit-and-bandaid-509398-488-1-18-1300x740.webp"
                 type="image/webp"
               />
               <Image
-                height={370}
-                width={650}
-                src="/medical-kit-and-bandaid-509398-488-1-18-650x370.webp"
+                height={740}
+                width={1300}
+                src="/medical-kit-and-bandaid-509398-488-1-18-1300x740.webp"
                 alt="Глубокая рана"
               />
             </picture>
@@ -267,7 +303,7 @@ export default function Porezy() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
@@ -304,14 +340,14 @@ export default function Porezy() {
 
             <picture className="img-normal">
               <source
-                srcSet="/medical-kit-and-bandaid-509398-488-1-19-650x325.webp 1x, /medical-kit-and-bandaid-509398-488-1-19-1300x651.webp 2x"
+                srcSet="/medical-kit-and-bandaid-509398-488-1-19-1300x651.webp"
                 type="image/webp"
               />
               <Image
                 loading="lazy"
-                height={326}
-                width={650}
-                src="/medical-kit-and-bandaid-509398-488-1-19-650x325.webp"
+                height={651}
+                width={1300}
+                src="/medical-kit-and-bandaid-509398-488-1-19-1300x651.webp"
                 alt="Особенности строения кожи"
               />
             </picture>
@@ -600,7 +636,7 @@ export default function Porezy() {
                 <picture>
                   <source
                     media="(max-width: 767px)"
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
@@ -673,7 +709,7 @@ export default function Porezy() {
                 <picture>
                   <source
                     media="(max-width: 767px)"
-                    srcSet="/banner-betadin-maz-927x916.webp 1x, /banner-betadin-maz-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-maz-927x916.webp"
                     type="image/webp"
                   />
                   <Image
@@ -827,14 +863,14 @@ export default function Porezy() {
 
             <picture className="img-normal">
               <source
-                srcSet="/rectangle-213-1-650x151.webp 1x, /rectangle-213-1-1300x301.webp 2x"
+                srcSet="/rectangle-213-1-1300x301.webp"
                 type="image/webp"
               />
               <Image
                 loading="lazy"
-                height={151}
-                width={650}
-                src="/rectangle-213-1-650x151.webp"
+                height={301}
+                width={1300}
+                src="/rectangle-213-1-1300x301.webp"
                 alt="Обработка пореза"
               />
             </picture>
@@ -842,7 +878,7 @@ export default function Porezy() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
@@ -906,14 +942,14 @@ export default function Porezy() {
               </div>
               <picture>
                 <source
-                  srcSet="/kraskovskij-novyj-235x203.webp 1x, /kraskovskij-novyj-470x406.webp 2x"
+                  srcSet="/kraskovskij-novyj-470x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
-                  height={203}
-                  width={235}
-                  src="/kraskovskij-novyj-235x203.webp"
+                  height={406}
+                  width={470}
+                  src="/kraskovskij-novyj-470x406 (1).webp"
                   alt="Автор статьи"
                 />
               </picture>
@@ -983,14 +1019,14 @@ export default function Porezy() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/rany-s-infekcziej-prevyu-246x166.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="Раны с инфекцией-превью"
                       />
                     </picture>

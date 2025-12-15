@@ -1,6 +1,6 @@
- 'use client';
+﻿'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function RanySInfekciejAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -148,7 +176,7 @@ export default function RanySInfekciejAz() {
             </div>
 
             {/* Navigation Menu */}
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#chto-mozhet-stat-prichinoy-inficirovaniya-rany">
@@ -181,13 +209,13 @@ export default function RanySInfekciejAz() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Mündəricat</div>
             </nav>
           </div>
         </div>
 
         {/* Fixed Navigation */}
-        <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#chto-mozhet-stat-prichinoy-inficirovaniya-rany">
@@ -220,7 +248,7 @@ export default function RanySInfekciejAz() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Mündəricat</div>
         </nav>
 
         {/* Disclaimer */}
@@ -646,14 +674,14 @@ export default function RanySInfekciejAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/obrabotka-ran-prevyu-310x210.webp 1x, /obrabotka-ran-prevyu-620x420.webp 2x"
+                  srcSet="/obrabotka-ran-prevyu-246x166.webp, /obrabotka-ran-prevyu-246x166.webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={210}
                   width={310}
-                  src="/obrabotka-ran-prevyu-310x210.webp"
+                  src="/obrabotka-ran-prevyu-246x166.webp"
                   alt="Yaraların emalı - prevyu"
                 />
               </picture>
@@ -720,14 +748,14 @@ export default function RanySInfekciejAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={203}
                   width={203}
-                  src="/moshkova-novyj-203x203.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Məqalənin müəllifi"
                 />
               </picture>
@@ -741,7 +769,7 @@ export default function RanySInfekciejAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp 1x, /maz-dlya-zazhivleniya-ran-prevyu-491x332.webp 2x"
+                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp, /maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
@@ -768,7 +796,7 @@ export default function RanySInfekciejAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/obrabotka-ran-prevyu-246x166.webp 1x, /obrabotka-ran-prevyu-491x332.webp 2x"
+                        srcSet="/obrabotka-ran-prevyu-246x166.webp, /obrabotka-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
@@ -795,14 +823,14 @@ export default function RanySInfekciejAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
-                        height={166}
-                        width={246}
-                        src="/povidon-jod-prevyu-246x166.webp"
+                        height={210}
+                        width={310}
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-yod - prevyu"
                       />
                     </picture>
@@ -831,39 +859,39 @@ export default function RanySInfekciejAz() {
                 инфекция»// Учебное пособие// Саранск 2012.
               </li>
               <li id="literature-1">
-                Руднов В.А. Клинические рекомендации по диагностике и лечению тяжелого сепсиса и
-                септического шока в лечебно-профилактических организациях Санкт-Петербурга//
-                Вестник анестезиологии и реаниматологии 2016;13(5):88-94.
+                Rudnov V.A. Sankt-Peterburq müalicə-profilaktika təşkilatlarında ağır sepsis və
+                septik şokun diaqnostikası və müalicəsi üzrə klinik tövsiyələr//
+                Anesteziyologiya və reanimatologiya xəbərləri 2016;13(5):88-94.
               </li>
               <li id="literature-2">
-                Ключевский В.В. Хирургия повреждений//Руководство для фельдшеров, хирургов,
-                травматологов// ОАО Рыбинский Дом печати 2004, Ярославль.
+                Klyuçevski V.V. Zədələnmələr cərrahiyyəsi//Feldşerlər, cərrahlar,
+                travmatoloqlar üçün təlimat// OAO Ryabinsk Mətbəə Evi 2004, Yaroslavl.
               </li>
               <li id="literature-3">
-                Инструкция по медицинскому применению метиленовый синий, РЛС.
+                Metilen mavisi tibbi tətbiq təlimatı, RLS.
               </li>
               <li id="literature-4">
-                Инструкция по медицинскому применению фурацилин, РЛС.
+                Furatsilin tibbi tətbiq təlimatı, RLS.
               </li>
               <li id="literature-5">
-                Инструкция по медицинскому применению перекись водорода, РЛС.
+                Hidrogen peroksid tibbi tətbiq təlimatı, RLS.
               </li>
               <li id="literature-6">
-                Кудыкин М.Н. Повидон-йод в основе лечения инфицированных ран// РМЖ, №34 от
+                Kudykin M.N. İnfeksiyalaşmış yaraların müalicəsində povidon-iyod// RMJ, №34
                 18.12.2013.
               </li>
               <li id="literature-7">
-                Михальский В. В., Богданов А. Е., Жилина С. В., Привиденцев А. И., Аникин А. И.,
-                Ульянина А. А.. Применение препарата Бетадин в лечении инфицированных ран// РМЖ
-                №29 от 23.12.2010.
+                Mixalski V.V., Boqdanov A.E., Jilina S.V., Prividensev A.İ., Anikin A.İ.,
+                Ulyanina A.A. İnfeksiyalaşmış yaraların müalicəsində Betadin preparatının tətbiqi// RMJ
+                №29 23.12.2010.
               </li>
               <li id="literature-8">
-                Инструкция по медицинскому применению ЛП Бетадин® (раствор, мазь, суппозиторий)
-                РУ П N015282/03, РУ П N015282/02, РУ П N015282/01.
+                Betadin® (məhlul, məlhəm, suppozitoriya) preparatının tibbi tətbiq təlimatı
+                RÜ P N015282/03, RÜ P N015282/02, RÜ P N015282/01.
               </li>
               <li id="literature-9">
-                РМЖ №25 от 15.12.2005 «Стоит ли так активно использовать 3% раствор перекиси
-                водорода при хирургических вмешательствах?» Н. Трошин.
+                RMJ №25 15.12.2005 "Cərrahi müdaxilələrdə 3% hidrogen peroksid məhlulundan
+                bu qədər aktiv istifadə etməyə dəyərmi?" N. Troşin.
               </li>
             </ol>
           </div>

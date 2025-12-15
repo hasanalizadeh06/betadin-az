@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -471,7 +471,7 @@ export default function Gidradenit() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp, /povidon-jod-prevyu-620x420.webp"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -581,16 +581,16 @@ export default function Gidradenit() {
                         <picture>
                         <source
                           srcSet={idx === 0 
-                          ? '/povidon-jod-prevyu-246x166 (1).webp, /povidon-jod-prevyu-491x332 (1).webp'
+                          ? '/povidon-jod-prevyu-620x420.webp'
                           : idx === 1
-                          ? '/follikulit-prevyu-246x166 (1).webp, /follikulit-prevyu-491x332 (1).webp'
-                          : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp, /karbunkul-lechenie-mazi-kremy-sredstva-prevyu-491x332 (1).webp'
+                          ? '/follikulit-prevyu-246x166 (1).webp'
+                          : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'
                           }
                           type="image/webp"
                         />
                         <Image
                           src={idx === 0 
-                          ? '/povidon-jod-prevyu-246x166 (1).webp'
+                          ? '/povidon-jod-prevyu-620x420.webp'
                           : idx === 1
                           ? '/follikulit-prevyu-246x166 (1).webp'
                           : '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'

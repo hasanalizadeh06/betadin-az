@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 
 export default function ObrabotkaProlezhnejAz () {
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     // Analytics scroll tracking logic adapted from the original script
     // Guard for browsers and the global ym function (Yandex Metrica)
@@ -59,6 +63,29 @@ export default function ObrabotkaProlezhnejAz () {
     };
   }, []);
 
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === "undefined") return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener("scroll", checkPosition);
+    window.addEventListener("resize", checkPosition);
+
+    return () => {
+      window.removeEventListener("scroll", checkPosition);
+      window.removeEventListener("resize", checkPosition);
+    };
+  }, []);
+
   return (
     <main>
       <div className="container-page-header">
@@ -100,15 +127,14 @@ export default function ObrabotkaProlezhnejAz () {
                 </h1>
                 <picture>
                   <source
-                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                    srcSet="/icon-230x224.webp"
                     type="image/webp"
                   />
-                  <img
+                  <Image
                     decoding="async"
                     height={112}
                     width={115}
-                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
-                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                    src="/icon-230x224.webp"
                     alt="başlıq yanında şəkil"
                   />
                 </picture>
@@ -163,7 +189,7 @@ export default function ObrabotkaProlezhnejAz () {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
             <ul>
               <li>
                 <a href="/encyclopedia/obrabotka-prolezhnej/#kak-obrabatyvat-prolezhni">
@@ -191,7 +217,7 @@ export default function ObrabotkaProlezhnejAz () {
                 </a>
               </li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross">
+            <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>
               {" "}
               Məzmun
             </div>
@@ -199,7 +225,7 @@ export default function ObrabotkaProlezhnejAz () {
         </div>
       </div>
 
-      <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+      <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
         <ul>
           <li>
             <a href="/encyclopedia/obrabotka-prolezhnej/#kak-obrabatyvat-prolezhni">
@@ -227,7 +253,7 @@ export default function ObrabotkaProlezhnejAz () {
             </a>
           </li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross"> Məzmun</div>
+        <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}> Məzmun</div>
       </nav>
 
       <div className="home-container">
@@ -712,10 +738,6 @@ export default function ObrabotkaProlezhnejAz () {
           <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
             <div
               className="swiper-wrapper"
-              style={{
-                transform: "translate3d(-284.078px, 0px, 0px)",
-                transitionDuration: "0ms",
-              }}
             >
               <div
                 className="swiper-slide swiper-slide-prev"
@@ -758,15 +780,15 @@ export default function ObrabotkaProlezhnejAz () {
                 <div className="slide-image">
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                      srcSet="/povidon-jod-prevyu-620x420.webp"
                       type="image/webp"
                     />
                     <img
                       loading="lazy"
                       decoding="async"
-                      height={166}
-                      width={246}
-                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp"
+                      height={210}
+                      width={310}
+                      src="/povidon-jod-prevyu-620x420.webp"
                       alt="Povidon-yod - önizləmə"
                     />
                   </picture>
@@ -793,7 +815,7 @@ export default function ObrabotkaProlezhnejAz () {
                 <div className="slide-image">
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-491x332.webp 2x"
+                      srcSet="/rastvor-joda-prevyu-246x166 (2).webp"
                       type="image/webp"
                     />
                     <img
@@ -801,7 +823,7 @@ export default function ObrabotkaProlezhnejAz () {
                       decoding="async"
                       height={166}
                       width={246}
-                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-246x166.png.webp"
+                      src="/rastvor-joda-prevyu-246x166 (2).webp"
                       alt="Yod məhlulu - önizləmə"
                     />
                   </picture>

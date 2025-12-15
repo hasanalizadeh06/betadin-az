@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,10 +19,37 @@ interface Triggered {
 }
 
 export default function RastvorJodaAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
   const [scrollTriggered, setScrollTriggered] = useState<Triggered>({
     40: false,
     80: false,
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -105,7 +132,7 @@ export default function RastvorJodaAz() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -143,23 +170,23 @@ export default function RastvorJodaAz() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-2-1-730x615.webp 1x, /kartinka-banner-2-1-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-2-1-730x615.webp, /kartinka-banner-2-1-730x615.webp"
                       type="image/webp"
                     />
-                      <Image
-                        src="/kartinka-banner-2-1-1460x1230.webp"
-                        alt="İyod məhlulu"
-                        width={730}
-                        height={615}
-                        fetchPriority="high"
-                        decoding="async"
-                      />
+                    <Image
+                      src="/kartinka-banner-2-1-730x615.webp"
+                      alt="İyod məhlulu"
+                      width={730}
+                      height={615}
+                      fetchPriority="high"
+                      decoding="async"
+                    />
                   </picture>
                 </div>
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#yodnye-rastvory-pokazaniya-k-primeneniyu">
@@ -193,12 +220,12 @@ export default function RastvorJodaAz() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Məzmun</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#yodnye-rastvory-pokazaniya-k-primeneniyu">
@@ -232,7 +259,7 @@ export default function RastvorJodaAz() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Məzmun</div>
         </nav>
 
         <div className="home-container">
@@ -445,7 +472,7 @@ export default function RastvorJodaAz() {
                 <strong>
                   Povidon-iyod əsasında yaradılmış Betadin preparatları seriyası:
                   <span style={{ color: '#0f780b' }}>
-                    Бетадин<sup>®</sup>
+                    Betadin<sup>®</sup>
                   </span>
                 </strong>
               </p>
@@ -706,7 +733,7 @@ export default function RastvorJodaAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -723,7 +750,7 @@ export default function RastvorJodaAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-1115x1084.webp"
                   type="image/webp"
                 />
                 <Image
@@ -752,53 +779,53 @@ export default function RastvorJodaAz() {
             </p>
 
             <h3 className="h3">
-              Возможно ли совместное использование 10% раствора Бетадин® со спиртовым раствором йода, зелёнки,
-              фукорцина?
+              10% Betadin® məhlulunu spirtli iyod məhlulu, yaşıl antiseptik və ya fukortsin ilə birlikdə
+              istifadə etmək olarmı?
             </h3>
 
             <p>
-              10% раствор{' '}
+              10% məhlul{' '}
               <mark style={{ backgroundColor: 'rgba(0, 0, 0, 0)', color: '#0f780b' }}>
-                Бетадин<sup>®</sup>
+                Betadin<sup>®</sup>
               </mark>{' '}
-              несовместим с другими дезинфицирующими <br />
-              и антисептическими средствами, особенно содержащими щелочи, ферменты <br />и ртуть. С
-              обеззараживающей и лечебной целью вместо комбинации средств можно использовать раствор{' '}
+              digər dezinfeksiyaedici <br />
+              və antiseptik vasitələrlə, xüsusilə qələvi, ferment <br />və civə tərkibli olanlarla uyğun gəlmir.
+              Dezinfeksiya və müalicə məqsədilə vasitələrin kombinasiyası əvəzinə məhlul{' '}
               <mark style={{ backgroundColor: 'rgba(0, 0, 0, 0)', color: '#0f780b' }}>
-                Бетадин<sup>®</sup>
+                Betadin<sup>®</sup>
               </mark>
-              . Препарат активен в отношении большинства бактерий и простейших одноклеточных организмов,
-              возбудителей грибковой инфекции, вирусов
+              istifadə edilə bilər. Preparat əksər bakteriyalara, sadə birhüceyrəli orqanizmlərə,
+              göbələk infeksiyasının törədicilərinə və viruslara qarşı aktivdir
               <sup>
                 <a href="#spisok-literatury">5</a>
               </sup>
-              . Используется для лечения ран в период воспаления и формирования новых покровных тканей, не
-              вызывает жжения.
+              . İltihab dövründə və yeni örtük toxumalarının formalaşması zamanı yaraların müalicəsi üçün istifadə
+              olunur, yanma hissi yaratmır.
             </p>
 
-            <h3 className="h3">Как долго можно использовать средства на основе повидон-йода?</h3>
+            <h3 className="h3">Povidon-iyod əsaslı vasitələri nə qədər müddət istifadə etmək olar?</h3>
 
             <p>
-              Длительность использования препаратов на основе повидон-йода определяется инструкцией к
-              лекарственному средству или по решению врача. Однако, если после начала лечения наблюдается
-              ухудшение, появилось жжение и зуд, терапию повидон-йодом необходимо прекратить и обратиться к своему
-              лечащему врачу.
+              Povidon-iyod əsaslı preparatların istifadə müddəti dərman vasitəsinin təlimatına
+              və ya həkimin qərarına əsasən müəyyən edilir. Lakin müalicəyə başladıqdan sonra vəziyyət
+              pisləşərsə, yanma və qaşınma yaranarsa, povidon-iyod ilə müalicəni dayandırmaq və
+              müalicə edən həkimə müraciət etmək lazımdır.
             </p>
 
             <div className="autor">
               <div className="autor-left">
-                <p className="autor-title">Мошкова Елена Михайловна</p>
+                <p className="autor-title">Moşkova Yelena Mixaylovna</p>
                 <div className="autor-subtitle"></div>
-                <p className="autor-footer">Автор статьи</p>
+                <p className="autor-footer">Məqalənin müəllifi</p>
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
-                  alt="Мошкова Елена Михайловна"
+                  src="/moshkova-novyj-406x406 (1).webp"
+                  alt="Moşkova Yelena Mixaylovna"
                   width={203}
                   height={203}
                   loading="lazy"
@@ -808,7 +835,7 @@ export default function RastvorJodaAz() {
             </div>
 
             <div className="h2 h2-read-more" id="chitat-po-teme">
-              Читать по теме
+              Mövzu üzrə oxuyun
             </div>
 
             <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
@@ -817,11 +844,11 @@ export default function RastvorJodaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp 1x, /polivinilpirrolidon-povidon-prevyu-491x332.webp 2x"
+                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/polivinilpirrolidon-povidon-prevyu-491x332.webp"
+                        src="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         alt="Polivinilpirrolidon (povidon) - önizləmə"
                         width={246}
                         height={166}
@@ -832,11 +859,11 @@ export default function RastvorJodaAz() {
                   </div>
                   <div className="slide-body">
                     <p className="slide-title">
-                      <strong>Поливинилпирро­лидон (повидон)</strong>
+                      <strong>Polivinilpirrolidon (povidon)</strong>
                     </p>
-                    <p>Поливинилпирролидон (повидон): применение, использование в комплексе повидон-йод.</p>
+                    <p>Polivinilpirrolidon (povidon): tətbiqi, povidon-iyod kompleksində istifadəsi.</p>
                     <p className="slide-more">
-                      <Link href="/encyclopedia/polivinilpirrolidon/">Подробнее</Link>
+                      <Link href="/encyclopedia/polivinilpirrolidon/">Ətraflı</Link>
                     </p>
                   </div>
                 </div>
@@ -845,11 +872,11 @@ export default function RastvorJodaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-iyod - önizləmə"
                         width={246}
                         height={166}
@@ -860,14 +887,14 @@ export default function RastvorJodaAz() {
                   </div>
                   <div className="slide-body">
                     <p className="slide-title">
-                      <strong>Повидон йод</strong>
+                      <strong>Povidon-yod</strong>
                     </p>
                     <p>
-                      Характеристики и свойства повидон-йода. Для чего применяется повидон-йод? Инструкция по
-                      применению раствора, мази, свечей Бетадин<sup>®</sup> с повидон-йодом.
+                      Povidon-yodun xarakteristikaları və xassələri. Povidon-yod nə üçün istifadə olunur?
+                      Betadin<sup>®</sup> məhlulu, məlhəmi və şamlarının tətbiq təlimatı.
                     </p>
                     <p className="slide-more">
-                      <Link href="/encyclopedia/povidon-jod/">Подробнее</Link>
+                      <Link href="/encyclopedia/povidon-jod/">Ətraflı</Link>
                     </p>
                   </div>
                 </div>
@@ -876,11 +903,11 @@ export default function RastvorJodaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp 1x, /maz-dlya-zazhivleniya-ran-prevyu-491x332.webp 2x"
+                        srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp, /maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/maz-dlya-zazhivleniya-ran-prevyu-491x332.webp"
+                        src="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp"
                         alt="Yaraların sağalması üçün məlhəm - önizləmə"
                         width={246}
                         height={166}
@@ -891,11 +918,11 @@ export default function RastvorJodaAz() {
                   </div>
                   <div className="slide-body">
                     <p className="slide-title">
-                      <strong>Мазь для заживления ран</strong>
+                      <strong>Yaraların sağalması üçün məlhəm</strong>
                     </p>
-                    <p>Какие бывают заживляющие мази, и как выбрать самую эффективную.</p>
+                    <p>Sağaldıcı məlhəmlərin növləri və ən effektivini necə seçmək olar.</p>
                     <p className="slide-more">
-                      <Link href="/encyclopedia/maz-dlya-zazhivleniya-ran/">Подробнее</Link>
+                      <Link href="/encyclopedia/maz-dlya-zazhivleniya-ran/">Ətraflı</Link>
                     </p>
                   </div>
                 </div>
@@ -903,7 +930,7 @@ export default function RastvorJodaAz() {
             </div>
 
             <h2 className="h2" id="spisok-literatury">
-              Список литературы
+              Ədəbiyyat siyahısı
             </h2>
 
             <ol className="literature">

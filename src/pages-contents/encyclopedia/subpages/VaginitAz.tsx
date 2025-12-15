@@ -1,7 +1,12 @@
-"use client"
-import React, { useEffect } from 'react';
+﻿"use client"
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const VaginitAz: React.FC = () => {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     // Console/debug similar to original script
     // eslint-disable-next-line no-console
@@ -47,6 +52,37 @@ const VaginitAz: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <div className="container-page-header">
@@ -77,15 +113,14 @@ const VaginitAz: React.FC = () => {
                 <h1 className="page-header-title-text">Vaginit: səbəbləri, simptomları və müasir müalicəsi</h1>
                 <picture>
                   <source
-                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                    srcSet="/icon-230x224.webp"
                     type="image/webp"
                   />
-                  <img
+                  <Image
                     decoding="async"
                     height={112}
                     width={115}
-                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
-                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                    src="/icon-230x224.webp"
                     alt="başlıq yanında şəkil"
                   />
                 </picture>
@@ -128,60 +163,72 @@ const VaginitAz: React.FC = () => {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
             <ul>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#prichiny-poyavleniya-vaginita">Vaginitin yaranma səbəbləri</a>
+                <a href="#prichiny-poyavleniya-vaginita">Vaginitin yaranma səbəbləri</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#formy-vaginita">Vaginitin formaları</a>
+                <a href="#formy-vaginita">Vaginitin formaları</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#simptomy-vaginita">Vaginitin simptomları</a>
+                <a href="#simptomy-vaginita">Vaginitin simptomları</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#diagnostika">Diaqnostika</a>
+                <a href="#diagnostika">Diaqnostika</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#lechenie-vaginita">Vaginitin müalicəsi</a>
+                <a href="#lechenie-vaginita">Vaginitin müalicəsi</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#profilaktika">Profilaktika</a>
+                <a href="#profilaktika">Profilaktika</a>
               </li>
               <li>
-                <a href="https://betadin.ru/encyclopedia/vaginit/#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
+                <a href="#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
               </li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+            <div
+              className="nav-content-title nav-content-title-cross"
+              onClick={() => setNavOpened(!navOpened)}
+            >
+              Məzmun
+            </div>
           </nav>
         </div>
       </div>
 
-      <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+      <nav
+        className={`nav-content nav-content-fixed${navTitleHidden ? '' : ' nav-content-title-hidden'}${secondaryNavOpened ? ' nav-content__open' : ''}`}
+      >
         <ul>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#prichiny-poyavleniya-vaginita">Vaginitin yaranma səbəbləri</a>
+            <a href="#prichiny-poyavleniya-vaginita">Vaginitin yaranma səbəbləri</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#formy-vaginita">Vaginitin formaları</a>
+            <a href="#formy-vaginita">Vaginitin formaları</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#simptomy-vaginita">Vaginitin simptomları</a>
+            <a href="#simptomy-vaginita">Vaginitin simptomları</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#diagnostika">Diaqnostika</a>
+            <a href="#diagnostika">Diaqnostika</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#lechenie-vaginita">Vaginitin müalicəsi</a>
+            <a href="#lechenie-vaginita">Vaginitin müalicəsi</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#profilaktika">Profilaktika</a>
+            <a href="#profilaktika">Profilaktika</a>
           </li>
           <li>
-            <a href="https://betadin.ru/encyclopedia/vaginit/#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
+            <a href="#chasto-zadavaemye-voprosy">Tez-tez verilən suallar</a>
           </li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+        <div
+          className="nav-content-title nav-content-title-cross"
+          onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+        >
+          Məzmun
+        </div>
       </nav>
 
       <div className="home-container">
@@ -435,8 +482,8 @@ const VaginitAz: React.FC = () => {
               <div className="swiper-slide swiper-slide-active" style={{ marginRight: '29px' }}>
                 <div className="slide-image">
                   <picture>
-                    <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x" type="image/webp" />
-                    <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp" alt="Povidon-yod - önizləmə" />
+                    <source srcSet="/povidon-jod-prevyu-620x420.webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={210} width={310} src="/povidon-jod-prevyu-620x420.webp" alt="Povidon-yod - önizləmə" />
                   </picture>
                 </div>
                 <div className="slide-body">

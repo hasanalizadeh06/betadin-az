@@ -441,7 +441,7 @@ export default function Jod() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image

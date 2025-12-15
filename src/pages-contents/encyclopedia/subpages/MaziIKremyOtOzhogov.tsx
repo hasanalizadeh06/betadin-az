@@ -19,6 +19,9 @@ export default function MaziIKremyOtOzhogov() {
     40: false,
     80: false,
   });
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -67,6 +70,29 @@ export default function MaziIKremyOtOzhogov() {
     };
   }, []);
 
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
+  }, []);
+
   return (
     <main>
       <article>
@@ -101,7 +127,7 @@ export default function MaziIKremyOtOzhogov() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp, /icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -157,42 +183,42 @@ export default function MaziIKremyOtOzhogov() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
-                  <a href="#chem-lechat-ozhogi">{t('sections.nav_treat_burns')}</a>
+                  <a href="#chem-lechat-ozhogi">{t.raw('sections.nav_treat_burns')}</a>
                 </li>
                 <li>
-                  <a href="#kak-vybrat-maz-ot-ozhogov">{t('sections.nav_choose_ointment')}</a>
+                  <a href="#kak-vybrat-maz-ot-ozhogov">{t.raw('sections.nav_choose_ointment')}</a>
                 </li>
                 <li>
-                  <a href="#chasto-zadavaemye-voprosy">{t('sections.nav_faq')}</a>
+                  <a href="#chasto-zadavaemye-voprosy">{t.raw('sections.nav_faq')}</a>
                 </li>
                 <li>
-                  <a href="#spisok-literatury">{t('sections.nav_literature')}</a>
+                  <a href="#spisok-literatury">{t.raw('sections.nav_literature')}</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">{t('sections.table_of_contents')}</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t.raw('sections.table_of_contents')}</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+        <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
-              <a href="#chem-lechat-ozhogi">{t('sections.nav_treat_burns')}</a>
+              <a href="#chem-lechat-ozhogi">{t.raw('sections.nav_treat_burns')}</a>
             </li>
             <li>
-              <a href="#kak-vybrat-maz-ot-ozhogov">{t('sections.nav_choose_ointment')}</a>
+              <a href="#kak-vybrat-maz-ot-ozhogov">{t.raw('sections.nav_choose_ointment')}</a>
             </li>
             <li>
-              <a href="#chasto-zadavaemye-voprosy">{t('sections.nav_faq')}</a>
+              <a href="#chasto-zadavaemye-voprosy">{t.raw('sections.nav_faq')}</a>
             </li>
             <li>
-              <a href="#spisok-literatury">{t('sections.nav_literature')}</a>
+              <a href="#spisok-literatury">{t.raw('sections.nav_literature')}</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">{t('sections.table_of_contents')}</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t.raw('sections.table_of_contents')}</div>
         </nav>
 
         <div className="home-container">
@@ -284,11 +310,11 @@ export default function MaziIKremyOtOzhogov() {
               </div>
               <picture>
                 <source
-                  srcSet="/termicheskij-ozhog-kozhi-prevyu-310x210.webp 1x, /termicheskij-ozhog-kozhi-prevyu-620x420.webp 2x"
+                  srcSet="/termicheskij-ozhog-kozhi-prevyu-246x166 (1).webp, /termicheskij-ozhog-kozhi-prevyu-246x166 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/termicheskij-ozhog-kozhi-prevyu-620x420.webp"
+                  src="/termicheskij-ozhog-kozhi-prevyu-246x166 (1).webp"
                   alt={t('sections.alt_thermal_burn_preview')}
                   width={310}
                   height={210}
@@ -811,11 +837,11 @@ export default function MaziIKremyOtOzhogov() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp, /moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt={t('sections.author_name')}
                   width={203}
                   height={203}
@@ -835,11 +861,11 @@ export default function MaziIKremyOtOzhogov() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rastvor-joda-prevyu-246x166.webp 1x, /rastvor-joda-prevyu-491x332.webp 2x"
+                        srcSet="/rastvor-joda-prevyu-246x166 (2).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rastvor-joda-prevyu-491x332.webp"
+                        src="/rastvor-joda-prevyu-246x166 (2).webp"
                         alt="Раствор йода - превью"
                         width={246}
                         height={166}
@@ -863,11 +889,11 @@ export default function MaziIKremyOtOzhogov() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rany-s-infekcziej-prevyu-491x332.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="Раны с инфекцией-превью"
                         width={246}
                         height={166}
@@ -891,16 +917,16 @@ export default function MaziIKremyOtOzhogov() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/termicheskij-ozhog-kozhi-prevyu-246x166.webp 1x, /termicheskij-ozhog-kozhi-prevyu-491x332.webp 2x"
-                        type="image/webp"
+                      srcSet="/termicheskij-ozhog-kozhi-prevyu-246x166 (1).webp"
+                      type="image/webp"
                       />
                       <Image
-                        src="/termicheskij-ozhog-kozhi-prevyu-491x332.webp"
-                        alt="Термический ожог кожи-превью"
-                        width={246}
-                        height={166}
-                        loading="lazy"
-                        decoding="async"
+                      src="/termicheskij-ozhog-kozhi-prevyu-246x166 (1).webp"
+                      alt="Термический ожог кожи-превью"
+                      width={246}
+                      height={166}
+                      loading="lazy"
+                      decoding="async"
                       />
                     </picture>
                   </div>

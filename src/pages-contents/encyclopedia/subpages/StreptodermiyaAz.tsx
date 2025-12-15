@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function StreptodermiyaAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -92,7 +120,7 @@ export default function StreptodermiyaAz() {
                   <h1 className="page-header-title-text">Streptodermiya: səbəbləri, əlamətləri, müalicəsi</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -139,11 +167,11 @@ export default function StreptodermiyaAz() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/banner-streptodermiya-730x615.webp 1x, /banner-streptodermiya-1460x1230.webp 2x"
+                      srcSet="/banner-streptodermiya-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/banner-streptodermiya-1460x1230.webp"
+                      src="/banner-streptodermiya-730x615.webp"
                       alt="Streptodermiya"
                       width={730}
                       height={615}
@@ -155,7 +183,7 @@ export default function StreptodermiyaAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#streptodermiya-yaranma-sebəbləri">Streptodermiya yaranma səbəbləri?</a>
@@ -179,12 +207,12 @@ export default function StreptodermiyaAz() {
                   <a href="#edebiyyat-siyahisi">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Məzmun</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#streptodermiya-yaranma-sebəbləri">Streptodermiya yaranma səbəbləri?</a>
@@ -208,7 +236,7 @@ export default function StreptodermiyaAz() {
               <a href="#edebiyyat-siyahisi">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Məzmun</div>
         </nav>
 
         <div className="home-container">
@@ -224,11 +252,11 @@ export default function StreptodermiyaAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Dekorativ elementlər"
                   width={503}
                   height={505}
@@ -274,11 +302,11 @@ export default function StreptodermiyaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp 1x, /streptodermiya-illyustracziya-s-1-1at4x-1300x301.webp 2x"
+                srcSet="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp"
                 type="image/webp"
               />
               <Image
-                src="/streptodermiya-illyustracziya-s-1-1at4x-1300x301.webp"
+                src="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp"
                 alt="Uşaqda streptodermiya inkişafı"
                 width={650}
                 height={151}
@@ -392,17 +420,12 @@ export default function StreptodermiyaAz() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
-                    alt="Бетадин"
+                    src="/banner-betadin-927x916.webp"
+                    alt="Betadin"
                     width={927}
                     height={916}
                     loading="lazy"
@@ -474,11 +497,11 @@ export default function StreptodermiyaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/od-a4-2at4x-650x167.webp 1x, /od-a4-2at4x-1300x334.webp 2x"
+                srcSet="/od-a4-2at4x-650x167.webp"
                 type="image/webp"
               />
               <Image
-                src="/od-a4-2at4x-1300x334.webp"
+                src="/od-a4-2at4x-650x167.webp"
                 alt="Zelyonka"
                 width={650}
                 height={167}
@@ -499,11 +522,11 @@ export default function StreptodermiyaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/saliczilovaya-kislota-1-scaled-650x150.webp 1x, /saliczilovaya-kislota-1-scaled-1300x300.webp 2x"
+                srcSet="/saliczilovaya-kislota-1-scaled-650x150.webp"
                 type="image/webp"
               />
               <Image
-                src="/saliczilovaya-kislota-1-scaled-1300x300.webp"
+                src="/saliczilovaya-kislota-1-scaled-650x150.webp"
                 alt="Salisil turşusu"
                 width={650}
                 height={150}
@@ -574,11 +597,11 @@ export default function StreptodermiyaAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/quastion-1115x1084.webp"
+                  src="/quastion-558x542.webp"
                   alt="Dekorativ elementlər"
                   width={558}
                   height={542}
@@ -612,11 +635,11 @@ export default function StreptodermiyaAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Moşkova Yelena Mixaylovna"
                   width={203}
                   height={203}
@@ -636,11 +659,11 @@ export default function StreptodermiyaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/prevyubanner-infekczionnyj-dermatit-246x166.webp 1x, /prevyubanner-infekczionnyj-dermatit-491x332.webp 2x"
+                        srcSet="/prevyubanner-infekczionnyj-dermatit-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/prevyubanner-infekczionnyj-dermatit-491x332.webp"
+                        src="/prevyubanner-infekczionnyj-dermatit-246x166.webp"
                         alt="İnfeksion dermatit anons"
                         width={246}
                         height={166}
@@ -666,11 +689,11 @@ export default function StreptodermiyaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-yod - anons"
                         width={246}
                         height={166}

@@ -222,9 +222,6 @@ export default function SvechiPage() {
                       <a href="/betadin-maz/" target="_blank" className="btn btn-green">Подробнее</a>
                     </div>
                   </div>
-                  <div className="swiper-scrollbar swiper-scrollbar-horizontal swiper-scrollbar-lock" style={{ display: 'none' }}>
-                    <div className="swiper-scrollbar-drag" style={{ transform: 'translate3d(0px, 0px, 0px)', width: 0, transitionDuration: '0ms' }}></div>
-                  </div>
                 </div>
               </div>
 

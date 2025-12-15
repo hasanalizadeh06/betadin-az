@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const ObrabotkaProlezhnej: React.FC = () => {
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     // Analytics scroll tracking logic adapted from the original script
     // Guard for browsers and the global ym function (Yandex Metrica)
@@ -46,6 +50,29 @@ const ObrabotkaProlezhnej: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
+  }, []);
+
   return (
     <main>
       <div className="container-page-header">
@@ -76,15 +103,14 @@ const ObrabotkaProlezhnej: React.FC = () => {
                 <h1 className="page-header-title-text">Мази и кремы для пролежней: виды, применение, советы</h1>
                 <picture>
                   <source
-                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                    srcSet="/icon-230x224.webp"
                     type="image/webp"
                   />
-                  <img
+                  <Image
                     decoding="async"
                     height={112}
                     width={115}
-                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
-                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                    src="/icon-230x224.webp"
                     alt="картинка у заголовка"
                   />
                 </picture>
@@ -131,7 +157,7 @@ const ObrabotkaProlezhnej: React.FC = () => {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
             <ul>
               <li>
                 <a href="/encyclopedia/obrabotka-prolezhnej/#kak-obrabatyvat-prolezhni">Как обрабатывать пролежни</a>
@@ -149,12 +175,12 @@ const ObrabotkaProlezhnej: React.FC = () => {
                 <a href="/encyclopedia/obrabotka-prolezhnej/#spisok-literatury">Список литературы</a>
               </li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+            <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}> Содержание</div>
           </nav>
         </div>
       </div>
 
-      <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+      <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
         <ul>
           <li>
             <a href="/encyclopedia/obrabotka-prolezhnej/#kak-obrabatyvat-prolezhni">Как обрабатывать пролежни</a>
@@ -172,7 +198,7 @@ const ObrabotkaProlezhnej: React.FC = () => {
             <a href="/encyclopedia/obrabotka-prolezhnej/#spisok-literatury">Список литературы</a>
           </li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+        <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}> Содержание</div>
       </nav>
 
       <div className="home-container">
@@ -445,7 +471,7 @@ const ObrabotkaProlezhnej: React.FC = () => {
           </div>
           <div className="h2 h2-read-more" id="chitat-po-teme">Читать по теме</div>
           <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
-            <div className="swiper-wrapper" style={{ transform: 'translate3d(-284.078px, 0px, 0px)', transitionDuration: '0ms' }}>
+            <div className="swiper-wrapper">
               <div className="swiper-slide swiper-slide-prev" style={{ marginRight: '29px' }}>
                 <div className="slide-image">
                   <picture>
@@ -477,15 +503,15 @@ const ObrabotkaProlezhnej: React.FC = () => {
                 <div className="slide-image">
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                      srcSet="/povidon-jod-prevyu-620x420.webp"
                       type="image/webp"
                     />
                     <img
                       loading="lazy"
                       decoding="async"
-                      height={166}
-                      width={246}
-                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp"
+                      height={210}
+                      width={310}
+                      src="/povidon-jod-prevyu-620x420.webp"
                       alt="Повидон-йод - превью"
                     />
                   </picture>

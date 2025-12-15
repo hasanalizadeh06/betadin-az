@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 interface ScrollGoals {
@@ -12,6 +12,10 @@ interface Triggered {
 }
 
 export default function PorezyAz() {
+	const [navOpened, setNavOpened] = useState(false);
+	const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+	const [navTitleHidden, setNavTitleHidden] = useState(false);
+
 	useEffect(() => {
 		const scrollGoals: ScrollGoals = {
 			40: () => {
@@ -53,8 +57,28 @@ export default function PorezyAz() {
 			}
 		};
 
+		const handleScroll = () => {
+			const shouldHideTitle = window.scrollY >= 1000;
+			setNavTitleHidden(shouldHideTitle);
+
+			if (shouldHideTitle) {
+				setSecondaryNavOpened(false);
+			}
+		};
+
+		const handleResize = () => {
+			setNavOpened(false);
+			setSecondaryNavOpened(false);
+		};
+
 		window.addEventListener('scroll', checkScroll);
-		return () => window.removeEventListener('scroll', checkScroll);
+		window.addEventListener('scroll', handleScroll);
+		window.addEventListener('resize', handleResize);
+		return () => {
+			window.removeEventListener('scroll', checkScroll);
+			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleResize);
+		};
 	}, []);
 
 	return (
@@ -121,15 +145,15 @@ export default function PorezyAz() {
 							<div className="page-header-right">
 								<div className="page-header-img">
 									<picture>
-										<source srcSet="/kartinka-banner-1-730x615.webp 1x, /kartinka-banner-1-1460x1230.webp 2x" type="image/webp" />
-										<Image fetchPriority="high" height={615} width={730} src="/kartinka-banner-1-730x615.webp" alt="Kəsiklər" priority />
+										<source srcSet="/kartinka-banner-1460x1230.webp" type="image/webp" />
+										<Image fetchPriority="high" height={1230} width={1460} src="/kartinka-banner-1460x1230.webp" alt="Kəsiklər" priority />
 									</picture>
 								</div>
 							</div>
 						</div>
 
 						{/* Navigation Menu */}
-						<nav className="nav-content">
+						<nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
 							<ul>
 								<li>
 									<a href="#osobennosti-stroeniya-kozhi">Dərinin quruluş xüsusiyyətləri</a>
@@ -165,13 +189,20 @@ export default function PorezyAz() {
 									<a href="#spisok-literatury">İstinadlar</a>
 								</li>
 							</ul>
-							<div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+							<div
+								className="nav-content-title nav-content-title-cross"
+								onClick={() => setNavOpened((prev) => !prev)}
+							>
+								Mündəricat
+							</div>
 						</nav>
 					</div>
 				</div>
 
 				{/* Fixed Navigation */}
-				<nav className="nav-content nav-content-fixed nav-content-title-hidden">
+				<nav
+					className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+				>
 					<ul>
 						<li>
 							<a href="#osobennosti-stroeniya-kozhi">Dərinin quruluş xüsusiyyətləri</a>
@@ -207,7 +238,12 @@ export default function PorezyAz() {
 							<a href="#spisok-literatury">İstinadlar</a>
 						</li>
 					</ul>
-					<div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+					<div
+						className="nav-content-title nav-content-title-cross"
+						onClick={() => setSecondaryNavOpened((prev) => !prev)}
+					>
+						Mündəricat
+					</div>
 				</nav>
 
 				{/* Disclaimer */}
@@ -220,13 +256,13 @@ export default function PorezyAz() {
 					<div className="container container-middle page-content">
 						{/* First Image */}
 						<picture className="img-normal">
-							<source srcSet="/medical-kit-and-bandaid-509398-488-1-18-650x370.webp 1x, /medical-kit-and-bandaid-509398-488-1-18-1300x740.webp 2x" type="image/webp" />
-							<Image height={370} width={650} src="/medical-kit-and-bandaid-509398-488-1-18-650x370.webp" alt="Dərin yara" />
+							<source srcSet="/medical-kit-and-bandaid-509398-488-1-18-1300x740.webp" type="image/webp" />
+							<Image height={740} width={1300} src="/medical-kit-and-bandaid-509398-488-1-18-1300x740.webp" alt="Dərin yara" />
 						</picture>
 
 						<div className="exlude-turbo">
 							<picture className="banner-betadin banner-circle">
-								<source srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x" type="image/webp" />
+								<source srcSet="/circle-503x505.webp" type="image/webp" />
 								<Image loading="lazy" height={505} width={503} src="/circle-503x505.webp" alt="Dekorativ elementlər" />
 							</picture>
 						</div>
@@ -250,8 +286,8 @@ export default function PorezyAz() {
 						</p>
 
 						<picture className="img-normal">
-							<source srcSet="/medical-kit-and-bandaid-509398-488-1-19-650x325.webp 1x, /medical-kit-and-bandaid-509398-488-1-19-1300x651.webp 2x" type="image/webp" />
-							<Image loading="lazy" height={326} width={650} src="/medical-kit-and-bandaid-509398-488-1-19-650x325.webp" alt="Dərinin quruluşu" />
+							<source srcSet="/medical-kit-and-bandaid-509398-488-1-19-1300x651.webp" type="image/webp" />
+							<Image loading="lazy" height={651} width={1300} src="/medical-kit-and-bandaid-509398-488-1-19-1300x651.webp" alt="Dərinin quruluşu" />
 						</picture>
 
 						<div className="two-column">
@@ -490,7 +526,7 @@ export default function PorezyAz() {
 						<div className="product-block">
 							<div className="banner-product-img">
 								<picture>
-									<source media="(max-width: 767px)" srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x" type="image/webp" />
+									<source media="(max-width: 767px)" srcSet="/banner-betadin-927x916.webp" type="image/webp" />
 									<Image loading="lazy" width={927} height={916} src="/banner-betadin-927x916.webp" alt="Betadin" />
 								</picture>
 							</div>
@@ -532,7 +568,7 @@ export default function PorezyAz() {
 						<div className="product-block">
 							<div className="banner-product-img">
 								<picture>
-									<source media="(max-width: 767px)" srcSet="/banner-betadin-maz-927x916.webp 1x, /banner-betadin-maz-1853x1832.webp 2x" type="image/webp" />
+									<source media="(max-width: 767px)" srcSet="/banner-betadin-maz-927x916.webp" type="image/webp" />
 									<Image loading="lazy" width={927} height={916} src="/banner-betadin-maz-927x916.webp" alt="Betadin məlhəm" />
 								</picture>
 							</div>
@@ -619,13 +655,13 @@ export default function PorezyAz() {
 						</div>
 
 						<picture className="img-normal">
-							<source srcSet="/rectangle-213-1-650x151.webp 1x, /rectangle-213-1-1300x301.webp 2x" type="image/webp" />
-							<Image loading="lazy" height={151} width={650} src="/rectangle-213-1-650x151.webp" alt="Kəsiyin emalı" />
+							<source srcSet="/rectangle-213-1-1300x301.webp" type="image/webp" />
+							<Image loading="lazy" height={301} width={1300} src="/rectangle-213-1-1300x301.webp" alt="Kəsiyin emalı" />
 						</picture>
 
 						<div className="exlude-turbo">
 							<picture className="banner-betadin banner-quastion">
-								<source srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x" type="image/webp" />
+								<source srcSet="/quastion-558x542.webp" type="image/webp" />
 								<Image loading="lazy" height={542} width={558} src="/quastion-558x542.webp" alt="Dekorativ elementlər" />
 							</picture>
 						</div>
@@ -663,8 +699,8 @@ export default function PorezyAz() {
 								<p className="autor-footer">Məqalənin müəllifi</p>
 							</div>
 							<picture>
-								<source srcSet="/kraskovskij-novyj-235x203.webp 1x, /kraskovskij-novyj-470x406.webp 2x" type="image/webp" />
-								<Image loading="lazy" height={203} width={235} src="/kraskovskij-novyj-235x203.webp" alt="Müəllif" />
+								<source srcSet="/kraskovskij-novyj-470x406 (1).webp" type="image/webp" />
+								<Image loading="lazy" height={406} width={470} src="/kraskovskij-novyj-470x406 (1).webp" alt="Müəllif" />
 							</picture>
 						</div>
 
@@ -703,8 +739,8 @@ export default function PorezyAz() {
 								<div className="swiper-slide">
 									<div className="slide-image">
 										<picture>
-											<source srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x" type="image/webp" />
-											<Image loading="lazy" height={166} width={246} src="/rany-s-infekcziej-prevyu-246x166.webp" alt="İnkişaf etmiş infeksiyalı yaralar - prevyu" />
+											<source srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp" type="image/webp" />
+											<Image loading="lazy" height={166} width={246} src="/rany-s-infekcziej-prevyu-246x166 (1).webp" alt="İnkişaf etmiş infeksiyalı yaralar - prevyu" />
 										</picture>
 									</div>
 									<div className="slide-body">

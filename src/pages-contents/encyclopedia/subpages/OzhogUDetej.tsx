@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 declare global {
   interface Window {
@@ -20,6 +20,10 @@ interface Triggered {
 
 export default function OzhogUDetej() {
   // useState for scroll triggers was unused; the effect uses a local `triggered` object.
+
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -61,10 +65,28 @@ export default function OzhogUDetej() {
       }
     }
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -102,7 +124,7 @@ export default function OzhogUDetej() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -139,7 +161,7 @@ export default function OzhogUDetej() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-4-730x615.webp 1x, /kartinka-banner-4-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-4-1460x1230.webp, /kartinka-banner-4-1460x1230.webp"
                       type="image/webp"
                     />
                     <Image
@@ -155,7 +177,7 @@ export default function OzhogUDetej() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#stepeni-tyazhesti-ozhogov">Степени тяжести ожогов</a>
@@ -176,12 +198,19 @@ export default function OzhogUDetej() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#stepeni-tyazhesti-ozhogov">Степени тяжести ожогов</a>
@@ -202,7 +231,12 @@ export default function OzhogUDetej() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">
@@ -830,7 +864,7 @@ export default function OzhogUDetej() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -986,11 +1020,11 @@ export default function OzhogUDetej() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}
@@ -1010,11 +1044,11 @@ export default function OzhogUDetej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/termicheskij-ozhog-kozhi-prevyu-246x166.webp 1x, /termicheskij-ozhog-kozhi-prevyu-491x332.webp 2x"
+                        srcSet="/termicheskij-ozhog-kozhi-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/termicheskij-ozhog-kozhi-prevyu-491x332.webp"
+                        src="/termicheskij-ozhog-kozhi-prevyu-620x420.webp"
                         alt="Термический ожог кожи-превью"
                         width={246}
                         height={166}
@@ -1041,11 +1075,11 @@ export default function OzhogUDetej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp 1x, /polivinilpirrolidon-povidon-prevyu-491x332.webp 2x"
+                        srcSet="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/polivinilpirrolidon-povidon-prevyu-491x332.webp"
+                        src="/polivinilpirrolidon-povidon-prevyu-246x166.webp"
                         alt="Поливинилпирролидон (повидон) - превью"
                         width={246}
                         height={166}
@@ -1069,11 +1103,11 @@ export default function OzhogUDetej() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-246x166.webp 1x, /mazi-i-kremy-ot-ozhogov-prevyu-491x332.webp 2x"
+                        srcSet="/mazi-i-kremy-ot-ozhogov-prevyu-246x166%20(1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/mazi-i-kremy-ot-ozhogov-prevyu-491x332.webp"
+                        src="/mazi-i-kremy-ot-ozhogov-prevyu-246x166%20(1).webp"
                         alt="Мази и кремы от ожогов-превью"
                         width={246}
                         height={166}

@@ -121,7 +121,7 @@ export default function Karbunkul() {
                   <h1 className="page-header-title-text">{t('header.title')}</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -142,13 +142,13 @@ export default function Karbunkul() {
 
                 <ul className="page-header-anchors page-header-anchors-detail">
                   <li>
-                    <a href="#diagnostika">{t('header.anchors')[0]}</a>
+                    <a href="#diagnostika">{t.raw('header.anchors')[0]}</a>
                   </li>
                   <li>
-                    <a href="#lechenie">{t('header.anchors')[1]}</a>
+                    <a href="#lechenie">{t.raw('header.anchors')[1]}</a>
                   </li>
                   <li>
-                    <a href="#rastvor-povidon-yoda">{t('header.anchors')[2]}</a>
+                    <a href="#rastvor-povidon-yoda">{t.raw('header.anchors')[2]}</a>
                   </li>
                 </ul>
               </div>
@@ -176,28 +176,28 @@ export default function Karbunkul() {
             <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
-                  <a href="#simptomy">{t('nav_headers')[0]}</a>
+                  <a href="#simptomy">{t.raw('nav_headers')[0]}</a>
                 </li>
                 <li>
-                  <a href="#prichiny-poyavleniya-karbunkula">{t('nav_headers')[1]}</a>
+                  <a href="#prichiny-poyavleniya-karbunkula">{t.raw('nav_headers')[1]}</a>
                 </li>
                 <li>
-                  <a href="#diagnostika">{t('nav_headers')[2]}</a>
+                  <a href="#diagnostika">{t.raw('nav_headers')[2]}</a>
                 </li>
                 <li>
-                  <a href="#lechenie">{t('nav_headers')[3]}</a>
+                  <a href="#lechenie">{t.raw('nav_headers')[3]}</a>
                 </li>
                 <li>
-                  <a href="#profilaktika">{t('nav_headers')[4]}</a>
+                  <a href="#profilaktika">{t.raw('nav_headers')[4]}</a>
                 </li>
                 <li>
-                  <a href="#chasto-zadavaemye-voprosy">{t('nav_headers')[5]}</a>
+                  <a href="#chasto-zadavaemye-voprosy">{t.raw('nav_headers')[5]}</a>
                 </li>
                 <li>
-                  <a href="#spisok-literatury">{t('nav_headers')[6]}</a>
+                  <a href="#spisok-literatury">{t.raw('nav_headers')[6]}</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t('tableOfContents')}</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t.raw('tableOfContents')}</div>
             </nav>
           </div>
         </div>
@@ -205,28 +205,28 @@ export default function Karbunkul() {
         <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
-              <a href="#simptomy">{t('nav_headers')[0]}</a>
+              <a href="#simptomy">{t.raw('nav_headers')[0]}</a>
             </li>
             <li>
-              <a href="#prichiny-poyavleniya-karbunkula">{t('nav_headers')[1]}</a>
+              <a href="#prichiny-poyavleniya-karbunkula">{t.raw('nav_headers')[1]}</a>
             </li>
             <li>
-              <a href="#diagnostika">{t('nav_headers')[2]}</a>
+              <a href="#diagnostika">{t.raw('nav_headers')[2]}</a>
             </li>
             <li>
-              <a href="#lechenie">{t('nav_headers')[3]}</a>
+              <a href="#lechenie">{t.raw('nav_headers')[3]}</a>
             </li>
             <li>
-              <a href="#profilaktika">{t('nav_headers')[4]}</a>
+              <a href="#profilaktika">{t.raw('nav_headers')[4]}</a>
             </li>
             <li>
-              <a href="#chasto-zadavaemye-voprosy">{t('nav_headers')[5]}</a>
+              <a href="#chasto-zadavaemye-voprosy">{t.raw('nav_headers')[5]}</a>
             </li>
             <li>
-              <a href="#spisok-literatury">{t('nav_headers')[6]}</a>
+              <a href="#spisok-literatury">{t.raw('nav_headers')[6]}</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t('tableOfContents')}</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t.raw('tableOfContents')}</div>
         </nav>
 
         <div className="home-container">
@@ -470,7 +470,7 @@ export default function Karbunkul() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -680,11 +680,11 @@ export default function Karbunkul() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp, /moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt={t('sections.author_alt')}
                   width={203}
                   height={203}
@@ -704,18 +704,20 @@ export default function Karbunkul() {
                   <div key={idx} className={idx === 0 ? 'swiper-slide swiper-slide-active' : 'swiper-slide'}>
                     <div className="slide-image">
                       <picture>
-                        <source
-                          srcSet={`/${article.imageName}-246x166.webp 1x, /${article.imageName}-491x332.webp 2x`}
-                          type="image/webp"
-                        />
-                        <Image
-                          src={`/${article.imageName}-491x332.webp`}
-                          alt={article.alt}
-                          width={246}
-                          height={166}
-                          loading="lazy"
-                          decoding="async"
-                        />
+                      <Image
+                        src={
+                        idx === 0
+                          ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp'
+                          : idx === 1
+                          ? '/povidon-jod-prevyu-620x420.webp'
+                          : '/follikulit-prevyu-246x166 (1).webp'
+                        }
+                        alt={article.alt}
+                        width={246}
+                        height={166}
+                        loading="lazy"
+                        decoding="async"
+                      />
                       </picture>
                     </div>
                     <div className="slide-body">

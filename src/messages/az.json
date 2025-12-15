@@ -241,20 +241,12 @@
         }
       },
   "footer": {
-    "adverse_reaction_notice": "Əgər EGIS-RUS MMC-nin portfelindəki məhsuldan istifadə edərkən arzuolunmaz reaksiya haqqında məlumatınız varsa, xahiş edirik bu məlumatı sizin üçün uyğun olan əlaqə formalarından biri vasitəsilə bildirəsiniz:",
-    "contacts": {
-      "email": "E-poçt",
-      "phone": "Telefon",
-      "form": "Formu saytda doldurun",
-      "website": "sayt"
-    },
-    "registration": {
-      "number1": "Qeydiyyat nömrəsi: ЛП-№(002589)-(РГ-RU)",
-      "number2": "Qeydiyyat nömrəsi: ЛП-№(002552)-(РГ-RU)",
-      "number3": "Qeydiyyat nömrəsi: ЛП-№(002550)-(РГ-RU)",
-      "additional": "2000001381892-15.12.2023",
-      "privacy_policy": "Şəxsi məlumatların işlənməsi siyasəti"
-    },
+    "privacy_policy": "Şəxsi məlumatların işlənməsi siyasəti",
+    "company_info": "\"Egis Pharmaceutical PLC\" şirkətinin Azərbaycandakı nümayəndəliyi",
+    "address": "Bakı, 8 Noyabr prospekti 15, Azure Business Center",
+    "phone_label": "Telefon",
+    "phone": "+994 (012) 488 10 61",
+    "form_text": "Saytda formanı doldurun",
     "alt": {
       "betadin": "Betadin",
       "egis": "EGIS Loqosu"
@@ -998,8 +990,31 @@
         "firstAid": "İlkin yara işlənməsi",
         "bandage": "Sarğı qoyma",
         "author": "Müəllif",
-        "bannerProduct": "Betadin"
+        "bannerProduct": "Betadin",
+        "slide1": "Yod-prevyu",
+        "slide2": "Povidon-yod - prevyu",
+        "slide3": "İnfeksiyalı yaralar - prevyu"
       },
+      "relatedSlides": [
+        {
+          "title": "Yod",
+          "description": "Yodun istifadə sahələri. Povidon-yodun spirt məhlulundan fərqləri.",
+          "more": "Ətraflı",
+          "href": "/encyclopedia/jod/"
+        },
+        {
+          "title": "Povidon-yod",
+          "description": "Povidon-yodun xüsusiyyətləri və xassələri. Povidon-yod nə üçün istifadə olunur? Betadin® məhlul, məlhəm, şamların istifadə təlimatı.",
+          "more": "Ətraflı",
+          "href": "/encyclopedia/povidon-jod/"
+        },
+        {
+          "title": "İnfeksiyalı yaralar",
+          "description": "Bütün cızıqlar və kəsiklər tez və fəsadsız sağalmır. İnfeksiyalı yaraları necə müalicə etmək olar?",
+          "more": "Ətraflı",
+          "href": "/encyclopedia/rany-s-infekciej/"
+        }
+      ],
       "literature": {
         "title": "Ədəbiyyat siyahısı",
         "items": [
@@ -1088,11 +1103,13 @@
       },
       "postCare": {
         "title": "Aradan qaldırmadan sonra qulluq və mümkün fəsadlar",
+        "intro": "Fiziki və ya kimyəvi üsullarla borzavakların aradan qaldırılması zamanı virusun təkrar ortaya çıxması (residiv) və ikincil infeksiyanın qoşulması riski qalır.",
         "p1": "Qaynama (destruksiya) sonrası yaranan qabığı sökə bilməzsiniz; qabıq aradan qalxana qədər gündəlik antiseptiklə emal tələb olunur.",
         "p2": "Krio-desktruksiya sonrası ilk günlərdə su qabarcığı əmələ gələ bilər; steril iynə ilə boşaldılır və antiseptiklə emal olunur."
       },
       "products": {
         "intro_p1": "Betadin® antıseptik istifadə edildikdə infeksiyanın və rеtsidivin azalmasına kömək etdiyi bəzi tədqiqatlarda göstərilmişdir.",
+        "research": "Tədqiqatda göstərilmişdir ki, geniş spektrli antimikrob və antiviral aktivliyə malik Betadin® antiseptikinin istifadəsi kondilomaların aradan qaldırılmasından sonra müalicə effektivliyini artırır: infeksiyalaşma və papillomavirus infeksiyasının residiv ehtimalı azalır. Betadin® preparatları məhlul, məlhəm və ya vaginal şam şəklində istifadə olunur, bu da preparatın yüksək təhlükəsizlik profilindən xəbər verir.",
         "solution_p1": "Betadin® məhlulu — spirt ehtiva etməyən müasir antiseptik; povidon-yod antimikrob təsirə malikdir və qan dövranına demək olar ki, sovrulmur.",
         "afterRemoval": "Borzavakların/kondilomaların aradan qaldırılmasından dərhal sonra və bir neçə gün ərzində antiseptik emal üçün 10% Betadin® məhlulu tövsiyə olunur.",
         "instructionButton": "İstifadə təlimatı"
@@ -1552,6 +1569,7 @@
         "lechat_follikulit": "Follikulitin müalicəsi",
         "obrabotka": "İşləmə"
       },
+      "diagnosis_footer": ". Bunun üçün həkim bir sıra diaqnostik tədbirlər aparır:",
       "tableOfContents": "Mündəricat",
       "nav": [
         { "href": "#faktory-predraspolagayushchie-k-poyavleniyu-follikulita", "text": "Follikulitin yaranmasına səbəb olan amillər" },
@@ -1865,6 +1883,7 @@
         "povidon_block_title": "Povidon yod",
         "povidon_block_desc": "Povidon-yodun xüsusiyyətləri və xüsusiyyətləri. Povidon-yod nə üçün istifadə olunur? Povidon-yod məhlulu, məlhəm, Betadin® ilə mumlar istifadə üçün təlimat.",
         "more_button": "Ətraflı",
+        "phase2_title": "II yaranın mərhələsi",
         "phase2_p1": "İltihab əlamətləri azaldıqda və orqanizmin sağalmaq imkanı olduqda, trofiк yaranın dibindən yeni (granülasyon) toxuma böyüməyə başlayır, bu da çəhrayı rənglə fərqlənir. Yaranın xirurji plastikası tam bu mərhələdə aparılır.",
         "preparations_intro": "Yaranın zədələnməsi sahəsinin müalicəsi üçün uyğun olan antiseptik vasitələr:",
         "chlorhexidine_p1": "Xlorgeqsidin biglyukonatının su məhlulu dezinfeksiya vəsaitləri və antiseptiklər qrupuna aiddir. Pozitif və mənfi qramla bakteriyalar üçün ölümdür, 10 dəqiqə ekspozu zamanı göbələk infeksiyasına qarşı fəallıq göstərir. Pyurulent yaralar, yoluxmuş yanıqlıqların müalicəsi üçün göstərilir.",
@@ -1924,6 +1943,7 @@
         "octenidine_use": "Yalnız seyrəltilmiş formada istifadə edilə bilərlər (0,2% və 0,1%). Dərmanın lazımi miqdarı (təlimatla) 1 litr Ringer məhlulu (laktatsız) və ya fiziologiya məhlulu əlavə olunur.",
         "octenidine_contraindicated": "18 yaşdan aşağı olan şəxslərdə istifadə qadağandır.",
         "eosin_title": "Eozin məhlulu",
+        "eosin_p1": "Eozin məhlulu antiseptik və dezinfeksiya edən qurulaşdırıcı vasitə kimi istifadə olunur. Yaranın səthi emalı eozin məhluluna isladılmış tampona tətbiq olunur. Allergik reaksiyalara səbəb ola bilər",
         "eosin_desc": "Eozin məhlulu antiseptik və dezinfeksiya qurutur vasitəsi olaraq istifadə olunur. Eozin məhlulu ilə sıçan yaranın səthi emalı aparılır. Allergik reaksiyaları yarada bilərlər.",
         "eosin_note": "Yerli antiseptiklər I (iltihab mərhələsi) və II regenerasiya mərhələsində, həmçinin xirurji müalicədən sonra istifadə olunur.",
         "prevention_title": "Trofiк yaraların profilaktikası",
@@ -3976,7 +3996,157 @@
         "intro_paragraph": "Hər bir insan, xüsusən də şəkər xəstəliyi, aşağı ətraf veynlarının variköz xəstəliyi, obliterasyon ateroskleroz, arterial hipertoniya kimi xəstəlikləri olan şəxslər öz sağlığına diqqət yetirməlidir. Bu xəstəliklər trofik xoralar əmələ gəlməsinə səbəb ola biləcəkdir.",
         "block_image_title": "Trofik xoralar müalicəsi",
         "block_image_description": "Trofik xoralar — uzun müddət sağalmayan yaralardir, toxuma qidasının pozulması səbəbindən yaranır. Belə əmələ gəlmiş şeylər necə və nə ilə müalicə etmək olar?",
-        "block_image_button": "Ətraflı"
+        "block_image_button": "Ətraflı",
+
+        "primary_symptoms_title": "Əsas simptomlar",
+        "primary_symptoms_p1": "Xora qüsuru əmələ gəlmədən əvvəl dərində trof dəyişikliklər müşahidə olunur: rəng dəyişir, ağrı, yanğı ortaya çıxır, dəri nazikləşə bilər. Hətta kiçik təsir də travmatizasiyaya səbəb ola bilər ki, bunun nəticəsində trof xora inkişaf edir.",
+        "primary_symptoms_p2": "Əvvəlcə xora qüsurunun döşəmə yaranın ifrazı ilə örtülü olur, sonra qranulasyon toxuması ilə örtülür, sonra sağalma başlayır.",
+        "causes_intro_p1": "Dəri və altındakı toxumaların xoraları müstəqil xəstəlik hesab edilmir, onlar xəstənin mövcud xəstəliklərinin və ya sindromlarının ağırlaşması sayılır",
+        "causes_intro_p2": "Xora qüsurunun inkişafında əsas mexanizm yerli qan dövranının pozulması və nəticə etibarilə toxumalarda oksigen çatışmazlığı sayılır. Bunun nəticəsində dəri və/və ya muskul toxumasının ölməsi baş verir.",
+        "cause_1": "Xronik venos yetməzliyinin fonunda",
+        "cause_2": "Aşağı ətraf arteriyalarının xəstəlikləri (işemik xoralar) fonunda",
+        "cause_3": "Vena və arteriya arasında əlaqənin meydana gəlməsi (arterial venöz fistul) fonunda",
+        "cause_4": "Neyrotrof xoralaşmalar (periferik sinirlərə zədə ilə əlaqəli)",
+        "cause_5": "Ümumi (çox vaxt revmatologiya) xəstəliklərinin fonunda",
+        "cause_6": "Bulaşıcı, viral və parazitar dəri xəstəliklərinin fonunda",
+        "cause_7": "Tərab neoplasiyaların fonunda",
+        "cause_8": "Kəskin və ya xronik dəri xəstəliklərinin fonunda",
+        "cause_9": "Özünə zərarı, narkotik inyeksiyaları və s. maddələrin nəticəsi olaraq süni xoralaşmalar",
+        "cause_10": "Qarışıq xoralaşmalar (yuxarıda təsvir edilən bir neçə səbəbin kombinasiyası)",
+        "diagnostics_intro": "Diaqnoz qoyarkən trof xora əmələ gəlməsinin səbəbini müəyyən etmək lazımdır. Bu ağırlaşmaya səbəb olan xəstəliyin müalicəsi olmadan, xoradan qurtulmaq və ya yeni xoralar əmələ gəlməsindən qorunmaq çox çətindir.",
+        "diagnostic_method_1": "Arteriyaların və venaların ultrasəs duplex skanlaması",
+        "diagnostic_method_2": "Angiografiya – damar xəstəliklərini müəyyən etmək üçün rentgenniloq metodu, burada kontrastlı maddə tətbiq edilir",
+        "diagnostic_method_3": "Sümüklərin rentgen tədqiqi və digər tədqiqatlar",
+        "ulcer_depth_1": "Səth xorası — dəri daxilində",
+        "ulcer_depth_2": "Dərialtı yağ toxumasına çatan xora",
+        "ulcer_depth_3": "Fasiya, muskul, tendon, sümükləri əhatə edən xora",
+        "ulcer_size_classification": "Xora kiçik hesab olunur, əgər onun sahəsi 5 sm²-dən çox deyilsə, orta — 20 sm²-ə qədər, böyük — 50 sm²-ə qədər, dev – 50 sm²-dən çoxdur.",
+        "treatment_intro": "Trof xoralaşmaların müalicəsində əsas rolu xora qüsuru əmələ gətirən xəstəliyin düzəldilməsinə verilir.",
+        "treatment_varicose_intro": "Varis xəstəliyində xəstəliyin müalicəsinin adekvat metodu və xora qüsurlarının əmələ gəlməsinin qarşısının alınması aşağıdakılar hesab olunur:",
+        "treatment_varicose_1": "Kompresyon çoraplarının geyilməsi",
+        "treatment_varicose_2": "Venaların sklerobilitirasiyası (kosmetik qüsuru aradan qaldıran xüsusi maddələrin tətbiqi)",
+        "treatment_varicose_3": "Venaların cərrahi çıxarılması",
+        "treatment_arterial_intro": "Arterial qan dövranının pozulmasında tətbiq olunur:",
+        "treatment_arterial_1": "Angioplastika (tıxanmış arteriyanı balon vasitəsilə açmaq)",
+        "treatment_arterial_2": "Stentləşdirmə (dar arteriyayı genişləndirmək üçün stent quraşdırmaq)",
+        "treatment_nerve_intro": "Sinir keçiriciliyinin pozulmasında:",
+        "treatment_nerve_1": "Terapevtik bədən tərbiləsi",
+        "treatment_nerve_2": "Sinir sistem fəaliyyətini yaxşılaşdıran dərmanlar",
+        "treatment_nerve_3": "Sinir keçiriciliyinin cərrahi bərpası",
+        "treatment_medications": "Mikrosikulyasiyanı stimulyasiya etmək üçün damar tonus yaxşılaşdıran müxtəlif dərmanlar təyin olunur. İltihab və ağrını azaltmaq üçün antitoxin, venotonik dərmanlar istifadə olunur. Qan dövranı yetməzliyində və ödəm zamanı diuretiklər, ürək glikozidləri və s.",
+        "surgical_treatment_intro": "Trof xoralaşmaların cərrahi müalicəsi yerli terapiyaya baxmayaraq, uzun müddət qalan geniş toxuma ölümu zamanı aparılır. Cərrahi işlənmə ürək yetməzliyi, aşağı ətraf arteriyalarının obliterasyon xəstəlikləri, diabetes mellitus ilə bağlı trof xoralaşmalarda tövsiyə olunmur.",
+        "external_therapy_title_p": "Trof xoralaşmaların müalicəsində xarici terapiyanın əhəmiyyətli rolu var.",
+        "all_ulcers_infected": "Bütün trof xoralaşmalar infektə sayılır. Buna görə yarağda zərərverici mikroorqanizmlərin çoxalmasını təhqir etmək, onu çirkindən qorumalı, yaranın qurumağından qorunmalı və düzgün təmizlənməsini təmin etməlidir.",
+        "ulcer_toilet_procedure": "Xora səthi təmizliyi günə 2-3 dəfə aparılır: təmiz su ilə yuyulur və antiseptiklər ilə suvarılır (məsələn, povidon-yod Betadin® məhlulu).",
+        "peripheral_dermatitis": "Yaranın kənarında dermatit ortaya çıxa bilər. Onun profilaktikası və müalicəsi üçün sink və hormon dərmanları təyin olunur.",
+        "draining_sorbents": "Proteolitik fermentləri ehtiva edən drenaj sorbentləri istifadə olunur — onlar eyni zamanda ölü toxumaları həll edir və artıq maye (ekssudat) sorub alırlar.",
+        "granulation_care": "Yarağa qranulasiya (gənc, böyüyən toxuma) meydana gəldikdən sonra bandaj dəyişiklikləri daha az - həftədə 3 dəfə aparılır, böyüyən toxumaya zədə verməmək üçün işlənmə üçün peroxid istifadə edilmir.",
+        "ointment_types_title": "Trof xoralaşmaların müalicəsi və sağalması üçün məlhəm və kremlərin növləri",
+        "water_soluble_ointments_title": "Su əriməsi əsasında məlhəmlər",
+        "water_soluble_ointments_intro": "Nəm nekrotik toxumaları və infeksiya riski olan trof xoralaşmalar su əriməsi əsasında məlhəmlər ilə işlənir.",
+        "betadin_ointment_title": "Povidon-yod əsasında məlhəm Betadin®",
+        "betadin_povidon_iod_intro": "Povidon-yod — antiseptik vasitədir. Yod molekulunun povidona bağlanması sayəsində dərmanın yüksək təhlükəsizlik profilini saxlamaq və aktivin tədricən çıxarılması hesabına hərəkət müddətini artırmaq mümkün oldu. Betadin® məlhəminin tərkibində olan makroqol isə infektə yaraqdan pursu daha yaxşı «çıxarmağa» imkan verir.",
+        "betadin_ointment_uses_title": "Betadin® məlhəmi trof xoralaşmalarda aşağıdakı məqsədlər üçün təyin olunur:",
+        "betadin_use_1": "Dezinfeksiya, çünki povidon-yod bakteriyalara, viruslara, fungal infeksiya agentlərinə, primitiv orqanizmlərə və sporalara təsir göstərir",
+        "betadin_use_2": "Purlu ifrazat azalması",
+        "betadin_use_3": "Şişkinlik azalması",
+        "betadin_use_4": "Ağrı azalması",
+        "betadin_application_procedure": "Bandaj dəyişdirmə zamanı Betadin® məlhəmi sürtmədən trof xora səthinə paylayın, sonra ətraf bağlayın. Bandaj dəyişiklikləri günə 2-3 dəfə aparıla bilər. Kurs müalicə həkimi tərəfindən fərdi olaraq seçilir.",
+        "instruction_button": "Təlimat",
+        "betadin_solution_description": "Betadin® dərmanlar sırasında povidon-yod 10% mәhlul da var. Betadin® məhlulu antiseptik, antiviral, antifunqal hərəkət göstərir. Betadin® məhlulu yaraların profilaktik və terapevtik işlənməsi üçün, həmçinin trof xoralar daxil olmaqla yaranın səthlərinin suvarılması üçün təyin olunur.",
+        "solution_properties": "Xüsusi qeyd etmək lazımdır ki, məhlul yaranın sahəsində pisirmə hissi yaratmır. Vasitə qəhvəyi rəngə malik, yaraya tətbiq edərkən hava keçən nazik sarı-qəhvəyi film əmələ gəlir ki, su ilə asanlıqla yuyulur. Betadin® məhlulu qatışdırılmadan və ya fizoloji əriyin 1:10 nisbətində suvarılması üçün istifadə oluna bilər.",
+        "video_title_povidon_iod": "Povidon-yodun tətbiqi haqqında qısa videoda baxın:",
+        "video_desc_povidon_iod": "Videoda siz povidon-yodun hansı unikal xassələri olduğunu, istiqamətlərini, məhlul və məlhəmin byt istifadəsini öyrənəcəksiniz.",
+        "other_ointment_title": "Dioksimetiltetre qidropropimidin + xloramfenikol əsasında məlhəm",
+        "other_ointment_description": "Bu məlhəm antimikrob və antitoxin hərəkət göstərir. Məlhəm purlu boşluqlara daxil edilə bilər və ya maraqsız peçələri sulandurmaq üçün istifadə olunur. Bandaj dəyişiklikləri günü aparılır, kurs fərdi olaraq seçilir.",
+        "hydrogel_products_title": "Hidrogel vasitələri",
+        "hydrogel_products_intro": "Quru nekrozlarda hidrogel xarici dərmanları istifadə olunur. Yaranın sağalması üçün hidrogellər antiseptiklər və ağrı kəsici komponentləri ehtiva edə bilər. Müalicə kursu və sxemi fərdi olaraq seçilir.",
+        "metronidazole_gel_title": "Metronidazol əsasında gel",
+        "metronidazole_gel_description": "Metronidazol jeli antimikrob, antitoxin effekt göstərir, primitiv orqanizmlərə (birxanəli mikroorqanizmlər) təsir göstərir. Trof xoralaşmaların və uzun müddət sağalmayan yaralarının müalicəsində istifadə mümkündür. Xarici olaraq günə 2 dəfə təyin olunur.",
+        "draining_sorbents_enzymes": "Belə məse nəmli xora qüsurlarına proteolitik fermentləri olan drenaj sorbentləri tətbiq oluna bilər, bu da ifrazatı sorub alır, ölü toxumaları həll edir və trof xoraya dezinfeksiya tətbiq edir.",
+        "clostridiopeptidase_ointment_title": "Klostridiopeptidaza və xloramfenikol əsasında məlhəm",
+        "clostridiopeptidase_ointment_description": "Bu məlhəm yaranın təmizlənməsinə və qranulasiyasına kömək edir, regenerasiyanı sürətləndirir. Məlhəm islənmiş zədələnmiş səthə günə 1 dəfə tətbiq olunur.",
+        "venotonics_title": "Venotonik",
+        "venotonics_description": "Aşağı ətraf vəzilərinin varix xəstəliyində tez-tez venotonik dərmanlar tövsiyə olunur — vena divarının strukturu və funksiyasını yaxşılaşdıran, venoz ödəmin açıq-aydınlığını azaldan dərmanlar. Daxili istifadə üçün tabletka formasında (məsələn, mikronizə edilmiş diosmini) və xarici istifadə üçün jel və krem şəklində istehsal olunur.",
+
+        "heparin_ointments_title": "Heparin əsasında məlhəm və kremlər",
+        "heparin_ointments_description": "Heparin natrium əsasında xarici dərmanlar antikoaqulantlar qrupuna aiddir. Onlar yalnız aşağı ətraf vena varix xəstəliyinin müalicəsində deyil, tromboflebitlərdə, venalar üzərində əməliyyatdan sonra da tövsiyə olunur. Vasitə baldır dərisinə gündə 1-3 dəfə tətbiq olunur, kurs fərdi olaraq seçilir",
+        "heparin_ointments_warning": "Tətbiq zamanı vasitənin yara səthinə düşməsindən qaçmaq vacibdir.",
+
+        "troxerutin_title": "Trokserutin əsasında məlhəm və jellər",
+        "troxerutin_description": "Toxumalarda mikrosikulasiyanı yaxşılaşdıran xarici dərmanlara trokserutin əsasında jel/məlhəm aiddir. Bu məlhəmlər həmçinin venotonik, antitoxin və ödem əleyhinə təsir göstərir, kapilyarların keçiriciliyini və qırılma qabiliyyətini azaldır. Bu tip dərmanlar zədələnməmiş dəriyə gündə 2 dəfə tətbiq olunur",
+
+        "combined_ointments_title": "Heparin, trokserutin və dekspantenol əsasında kombinə edilmiş məlhəm və kremlər",
+        "combined_ointments_description_1": "Heparin natrium + trokserutin + dekspantenol əsasında kombinə edilmiş dərmanlar",
+        "combined_ointments_description_2": " trombların əmələ gəlməsinin qarşısını almaq üçün qan laxtalanmasını azaldır, həmçinin venoprotektiv və antitoxin təsir göstərir. Dərmanlar aşağı ətraf vena varix xəstəliyində, tromboflebitdə istifadə oluna bilər. Bundan əlavə, bu vasitələr regenerasiya fazasında (yeni, qranulasion toxumanın formalaşması zamanı) və aşkar nəmlik olmayan trof xoralaşmalarda göstərilir. Bu halda dərman trof xoranın bütün sahəsinə bərabər qatla paylanır, sonra isə sarğı qoyulur. Sarğılar hər gün dəyişdirilir.",
+
+        "antiallergenic_creams_title": "Antiallergenik kremlər",
+        "antiallergenic_creams_description": "Antihistamin kremlər qıcıqlanma və ya allergik kontakt dermatit zamanı dəri qaşınmasını aradan qaldırır. Buraya dimetinden ehtiva edən dərmanlar da daxildir",
+        "antiallergenic_creams_or": " və ya difenhidramin",
+        "antiallergenic_creams_application": "Onlar zədələnməmiş dəriyə gündə bir neçə dəfə tətbiq olunur.",
+
+        "nsaid_ointments_title": "Qeyri-steroid antitoxin məlhəm və kremlər",
+        "nsaid_ointments_description": "Diklofenak, ketonal, ibuprofen ehtiva edən qeyri-steroid antitoxin məlhəm/kremlər kəskin tromboflebit (vena divarının iltihabı və tromb əmələ gəlməsi) zamanı ağrını kəsmək və iltihabı azaltmaq üçün, bəzən isə venalar üzərində cərrahi müdaxilədən sonra təyin olunur. Vasitələr xarici olaraq gündə bir neçə dəfə istifadə olunur.",
+
+        "zinc_oxide_title": "Sink oksidi əsasında məlhəm və pastalar",
+        "zinc_oxide_description": "Sink oksidi olan pastalar xora ifrazatının sağlam dəridə dermatitə səbəb olmasının qarşısını almaq üçün xora qüsurunun kənarlarında dərini işləmək üçün istifadə oluna bilər. Bu halda belə pasta mexaniki qoruyucu funksiya yerinə yetirəcək. Eyni zamanda sink oksidi dezinfeksiyaedici təsir göstərir.",
+
+        "hormonal_ointments_title": "Hormonal məlhəm və kremlər",
+        "hormonal_ointments_description": "Əgər dermatit inkişaf edibsə, müalicə üçün həkimlər hormonal (steroid) antitoxin məlhəm/kremlər tövsiyə edə bilər. Onlar sürətlə iltihabı və qaşınmanı aradan qaldırır. Çox vaxt bunlar antibiotik əlavə edilmiş kombinə vasitələrdir (məsələn, gentamisin + betametazon). Həmçinin bu qrupdan xarici vasitələr variköz ekzema müalicəsində, dəri dəyişiklikləri olduqda, lakin hələ xora qüsuru olmadıqda təyin oluna bilər. Müalicə kursu həkim tərəfindən fərdi olaraq seçilir.",
+
+        "silver_ointments_title": "İonlaşdırılmış gümüş əsasında məlhəm və kremlər",
+        "silver_ointments_description": "İonlaşdırılmış gümüş əsasında krem/məlhəmlər antibakterial effekt göstərir, trof xoranın sağalmasının istənilən mərhələsində zədələnmiş səthə gündə 1-2 dəfə tətbiq oluna bilər. Krem trof xoraya 4 mm-ə qədər qalınlıqda paylayılır, üstündən sarğı aparmaq olar",
+
+        "doctor_control_warning": "İstənilən məlhəm və ya krem müalicə həkiminin nəzarəti altında tətbiq olunmalıdır!",
+
+        "prevention_title": "Profilaktika",
+        "prevention_intro": "Trof xoralaşmaların əmələ gəlməsinin profilaktikasında əsas rol müşayiət edən xəstəliklərin vaxtında aşkarlanmasına və adekvat terapiyasına məxsusdur, çünki trof xora — bütün orqanizmdə baş verən pozuntuların nəticəsidir.",
+        "prevention_control": "Şəkər səviyyəsini, arterial təzyiqi nəzarət etmək, gizli xəstəlikləri aşkar etmək üçün həkimlərdə profilaktik müayinələrdən keçmək lazımdır. Aşağı ətraf vena varix xəstəliyində kompresion çorapların geyilməsi, venotonik dərmanların istifadəsi, alçaq dabanli ayaqqabı geyilməsi, müalicə bədən tərbiyəsi məşqlərinin yerinə yetirilməsi vacibdir.",
+        "prevention_smoking": "Xronik damar xəstəliklərinin profilaktikasında siqareti tərk etmək olduqca vacibdir. Trof xoranın əmələ gəlməsinin ilkin mərhələlərində artıq həkimə müraciət etmək lazımdır. Yara üçün düzgün qulluq olmalıdır, o cümlədən Betadin® dərmanının köməyi ilə infeksiyanın qarşısını almaq üçün antiseptik işlənmə.",
+
+        "faq_title": "Suallara cavablar",
+        "faq_q1": "Bu trof xora olduğunu necə başa düşmək olar?",
+        "faq_a1": "Trof xoralar ən çox aşağı ətrafların dərisində (baldır, ayaq) meydana gəlir. Əgər qüsur 1,5 aydan çox sağalmırsa, çox güman ki, bu trof xoradır.",
+        "faq_q2": "Trof xoranın cərrahi müalicəsi həmişə lazımdırmı?",
+        "faq_a2": "Trof xora öz-özünə sağala bilər, lakin səy göstərmək lazım olacaq: trof xoranın yaranma səbəbini müəyyən etmək və bu xəstəliyin müalicəsi ilə məşğul olmaq. Təəssüf ki, böyük faizli hallarda trof xoralar müxtəlif konservativ və cərrahi müalicə metodlarına davamlıdır. Məsələn, «hipertonik» trof xoralaşmalar, qangrenos piodermiya, diabetik ayaq zamanı cərrahi müalicə həmişə göstərilmir.",
+        "faq_q3": "Xarici vasitələrlə müalicənin kömək etdiyini necə başa düşmək olar?",
+        "faq_a3": "Əgər ağrı, şişkinlik və irinli ifrazatın miqdarı azalırsa, bu xarici terapiyanın effektivliyinin ilk əlamətləridir. Trof xoranın dibindəki gənc toxuma (çəhrayı rəngli qranulasiyalar) — qüsurun bağlanmağa başlamasının əmin əlamətidir.",
+
+        "author_name": "Qallyamova Yuliya Albertovna",
+        "author_role": "Məqalə müəllifi",
+
+        "read_more_title": "Mövzuya dair oxu",
+        "read_more_button": "Ətraflı",
+
+        "slide_1_title": "Trof xoralaşmaların müalicəsi",
+        "slide_1_description": "Trof xoralar — toxuma qidasının pozulması nəticəsində uzun müddət sağalmayan yaralar. Bu əmələ gəlişləri necə və nə ilə müalicə etmək olar?",
+        "slide_1_alt": "Trof xoralaşmaların müalicəsi - önbaxış",
+
+        "slide_2_title": "Ayaqların trof xoraları",
+        "slide_2_description": "Ayaqda trof xoranı necə tanımaq olar və bu dəri qüsurunun əmələ gəlməsinin səbəbi nədir?",
+        "slide_2_alt": "Trof xoralaşmaların müalicəsi üçün məlhəm - önbaxış",
+
+        "slide_3_title": "Yod əsasında məlhəm",
+        "slide_3_description": "Yod əsasında məlhəm: təsir mexanizmi, tətbiq sahəsi. Müxtəlif dəri xəstəliklərinin müalicəsi üçün povidon-yod əsasında Betadin® məlhəmi.",
+        "slide_3_alt": "Yod əsasında məlhəm - önbaxış",
+
+        "literatura_title": "Ədəbiyyat Siyahısı",
+        "literatura_item_0": "Savelyeva V. S., Kiriyenko A. İ. Cərrəhiyyə üzrə Milli Bələdçi// GEHOTAR Media, 2008 Moskva.",
+        "literatura_item_1": "Shahray S. V., Semenchuk İ. D. Aşağı ətraf xoralaşmaları//Tədris metodlaşdırması vəsaiti// BGMU 2009, Minsk.",
+        "literatura_item_2": "Stoiko Yu. M., Kiriyenko A. İ., Zatevakhin İ. İ. Xronik vena xəstəliklərinin diaqnostikası və müalicəsinə dair Rusiya klinik tövsiyələri// Fleboloji. 2018;12(3): 146 240.",
+        "literatura_item_3": "Betadin® məhlul istifadəsi üçün təlimat, RN: P№015282/03.",
+        "literatura_item_4": "Mikhialskiy V. V., Bogdanov A. E., Zhilina S. V., Prividentsev A. İ., Anikin A. İ., Ulyanina A. A. Betadin dərmanının infektə yaralar müalicəsində istifadəsi// RMZh №29 23.12.2010.",
+        "literatura_item_5": "Levomekol® məlhəm istifadəsi üçün tədris, RLS",
+        "literatura_item_6": "Dioksikol® məlhəm istifadəsi üçün tədris, RLS.",
+        "literatura_item_7": "Betadin® məlhəm istifadəsi üçün təlimat, RN: P№015282/02.",
+        "literatura_item_8": "Metrogil® jel istifadəsi üçün təlimat, RLS.",
+        "literatura_item_9": "Lipton® jel istifadəsi üçün təlimat, RLS.",
+        "literatura_item_10": "Troxserutin® jel/məlhəm istifadəsi üçün təlimat, RLS.",
+        "literatura_item_11": "Venolayf® jel istifadəsi üçün təlimat, RLS.",
+        "literatura_item_12": "Fenistil® istifadəsi üçün təlimat, RLS.",
+        "literatura_item_13": "Psilo-balzam® istifadəsi üçün təlimat, RLS.",
+        "literatura_item_14": "Dermazin® istifadəsi üçün təlimat, RLS.",
+        "literatura_item_15": "Iruksol® istifadəsi üçün təlimat, RLS."
       }
     }
   }

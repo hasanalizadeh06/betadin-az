@@ -17,6 +17,9 @@ export default function PovidonJodAz() {
     40: false,
     80: false,
   });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -58,10 +61,28 @@ export default function PovidonJodAz() {
       }
     }
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -99,7 +120,7 @@ export default function PovidonJodAz() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -137,11 +158,11 @@ export default function PovidonJodAz() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/polivinilpirrolidon-povidon-730x615.webp 1x, /polivinilpirrolidon-povidon-1460x1230.webp 2x"
+                      srcSet="/polivinilpirrolidon-povidon-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/polivinilpirrolidon-povidon-1460x1230.webp"
+                      src="/polivinilpirrolidon-povidon-730x615.webp"
                       alt="Polivinilpirrolidon"
                       width={730}
                       height={615}
@@ -153,7 +174,7 @@ export default function PovidonJodAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#otkrytie-yoda-i-povidon-yoda">Yodun və povidon-yodun kəşfi</a>
@@ -178,12 +199,19 @@ export default function PovidonJodAz() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Mündəricat
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#otkrytie-yoda-i-povidon-yoda">Yodun və povidon-yodun kəşfi</a>
@@ -208,7 +236,12 @@ export default function PovidonJodAz() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Mündəricat
+          </div>
         </nav>
 
         <div className="home-container">
@@ -231,11 +264,11 @@ export default function PovidonJodAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Dekorativ elementlər"
                   width={503}
                   height={505}
@@ -299,7 +332,7 @@ export default function PovidonJodAz() {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  title="Видео о эффектах повидон-йода"
+                  title="Povidon-iyodun təsirləri haqqında video"
                 ></iframe>
               </div>
               <div className="iframe_desc">
@@ -329,11 +362,11 @@ export default function PovidonJodAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/mask-group-7-scaled-650x325.webp 1x, /mask-group-7-scaled-1300x650.webp 2x"
+                srcSet="/mask-group-7-scaled-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/mask-group-7-scaled-1300x650.webp"
+                src="/mask-group-7-scaled-650x325.webp"
                 alt="Povidon-yod əsasında məhsullar"
                 width={650}
                 height={325}
@@ -370,16 +403,11 @@ export default function PovidonJodAz() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Betadin"
                     width={927}
                     height={916}
@@ -417,16 +445,11 @@ export default function PovidonJodAz() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-maz-mobile-315x226.webp 1x, /banner-betadin-maz-mobile-630x451.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-maz-927x916.webp 1x, /banner-betadin-maz-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-maz-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-maz-1853x1832.webp"
+                    src="/banner-betadin-maz-927x916.webp"
                     alt="Betadin"
                     width={927}
                     height={916}
@@ -477,19 +500,14 @@ export default function PovidonJodAz() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-svechi-mobile-315x235.webp 1x, /banner-betadin-svechi-mobile-630x470.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-svechi-927x916.webp 1x, /banner-betadin-svechi-1853x1832.webp 2x"
+                    srcSet="/svechi-553x512.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-svechi-1853x1832.webp"
+                    src="/svechi-553x512.webp"
                     alt="Betadin"
-                    width={927}
-                    height={916}
+                    width={553}
+                    height={512}
                     loading="lazy"
                     decoding="async"
                   />
@@ -626,11 +644,11 @@ export default function PovidonJodAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/rany-u-detej-prevyu-310x210.webp 1x, /rany-u-detej-prevyu-620x420.webp 2x"
+                  srcSet="/rany-u-detej-prevyu-246x166.webp, /rany-u-detej-prevyu-246x166.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/rany-u-detej-prevyu-620x420.webp"
+                  src="/rany-u-detej-prevyu-246x166.webp"
                   alt="Uşaqlarda yaralar - önizləmə"
                   width={310}
                   height={210}
@@ -706,11 +724,11 @@ export default function PovidonJodAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Moqkova Elena Mixaylovna"
                   width={203}
                   height={203}
@@ -730,11 +748,11 @@ export default function PovidonJodAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/rany-s-infekcziej-prevyu-491x332.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="İnfeksiyalı yaralar - önizləmə"
                         width={246}
                         height={166}
@@ -761,11 +779,11 @@ export default function PovidonJodAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/lechenie-troficheskih-yazv-prevyu-246x166.webp 1x, /lechenie-troficheskih-yazv-prevyu-491x332.webp 2x"
+                        srcSet="/lechenie-troficheskih-yazv-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/lechenie-troficheskih-yazv-prevyu-491x332.webp"
+                        src="/lechenie-troficheskih-yazv-prevyu-246x166.webp"
                         alt="Trofik xoraların müalicəsi - önizləmə"
                         width={246}
                         height={166}
@@ -792,11 +810,11 @@ export default function PovidonJodAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/svechi-ot-vaginita-prevyu-246x166.webp 1x, /svechi-ot-vaginita-prevyu-491x332.webp 2x"
+                        srcSet="/svechi-ot-vaginita-prevyu-246x166 (1).webp, /svechi-ot-vaginita-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/svechi-ot-vaginita-prevyu-491x332.webp"
+                        src="/svechi-ot-vaginita-prevyu-246x166 (1).webp"
                         alt="Vaginit şamları - önizləmə"
                         width={246}
                         height={166}
@@ -827,7 +845,7 @@ export default function PovidonJodAz() {
 
             <ol className="literature">
               <li id="literatura-0">
-                Инструкция по применению ЛП Бетадин<sup>®</sup> (раствор, мазь), РУ П №015282/03,
+                Betadin<sup>®</sup> (məhlul, məlhəm) preparatlarının tibbi tətbiq təlimatı, RÜ P №015282/03,
                 №015282/02.
               </li>
               <li id="literatura-1">
@@ -882,12 +900,12 @@ export default function PovidonJodAz() {
                 26 (1): 20-25.
               </li>
               <li id="literatura-12">
-                Кудыкин М. Н. Повидон-йод в основе лечения инфицированных ран. //РМЖ. 2013; 34:
+                Kudykin M.N. İnfeksiyalaşmış yaraların müalicəsində povidon-iyod. //RMJ. 2013; 34:
                 1755.
               </li>
               <li id="literatura-13">
-                Родин А. В., Привольнев В. В., Савкин В. А. Применение повидон-йода для лечения и
-                профилактики раневых инфекций в практике врача-хирурга. Амбулаторная хирургия.
+                Rodin A.V., Privolnev V.V., Savkin V.A. Cərrah-həkim praktikasinda yara infeksiyalarinin
+                müalicəsi və profilaktikası üçün povidon-iyodun tətbiqi. Ambulator cərrahiyyə.
                 2017; 3-4 (67-68): 43-51.
               </li>
               <li id="literatura-14">
@@ -905,21 +923,21 @@ export default function PovidonJodAz() {
                 383-387.
               </li>
               <li id="literatura-17">
-                Королева И.А., Кожухов А.А. Место повидон-йода в офтальмологической практике //
-                РМЖ «Клиническая офтальмология». 2018;1:45–49.
+                Koroleva İ.A., Kojuxov A.A. Oftalmoloji praktikada povidon-iyodun yeri //
+                RMJ "Klinik oftalmologiya". 2018;1:45-49.
               </li>
               <li id="literatura-18">
-                Дубровина С.О., Красильникова Л.В., Ардинцева О.А. и др. Влияние повидон-йода на
-                эрадикацию высокоонкогенных типов ВПЧ у женщин с поражением шейки матки. РМЖ. Мать
-                и дитя. 2018;1(2):156-161. DOI: 10.32364/2618-8430-2018-1-2-156-161.
+                Dubrovina S.O., Krasilnikova L.V., Ardinseva O.A. və b. Povidon-iyodun uşaqlıq boynu
+                zədələnməsi olan qadınlarda yüksək onkogen HPV tiplərinin eradikasiyasına təsiri. RMJ. Ana
+                və uşaq. 2018;1(2):156-161. DOI: 10.32364/2618-8430-2018-1-2-156-161.
               </li>
               <li id="literatura-19">
-                Блатун Л.А. Местное медикаментозное лечение ран. Хирургия. Журнал им. Н.И.
-                Пирогова. 2011;(4):51 59.
+                Blatun L.A. Yaraların yerli dərman müalicəsi. Cərrahiyyə. N.İ. Piroqov adına jurnal.
+                2011;(4):51-59.
               </li>
               <li id="literatura-20">
-                R. Rahn Postgrad Med J, 1993; 69(Suppl.3): 4-9, Отделение хирургической стоматологии,
-                университет г. Франкфурта, Германия.
+                R. Rahn Postgrad Med J, 1993; 69(Suppl.3): 4-9, Cərrahi stomatologiya şöbəsi,
+                Frankfurt Universiteti, Almaniya.
               </li>
             </ol>
           </div>

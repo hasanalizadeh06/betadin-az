@@ -143,15 +143,15 @@ export default function KesarevoSechenie() {
                 </div>
                 <ul className="page-header-anchors page-header-anchors-detail">
                   <li>
-                    <a href="#vidy-razrezov-pri-kesarevom-sechenii">{t('header.anchors')[0]}</a>
+                    <a href="#vidy-razrezov-pri-kesarevom-sechenii">{t.raw('header.anchors')[0]}</a>
                   </li>
                   <li>
                     <a href="#algoritm-obrabotki-shvov-posle-kesareva-secheniya">
-                      {t('header.anchors')[1]}
+                      {t.raw('header.anchors')[1]}
                     </a>
                   </li>
                   <li>
-                    <a href="#rastvor-povidon-yoda-betadin">{t('header.anchors')[2]}</a>
+                    <a href="#rastvor-povidon-yoda-betadin">{t.raw('header.anchors')[2]}</a>
                   </li>
                 </ul>
               </div>
@@ -160,14 +160,14 @@ export default function KesarevoSechenie() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-2-730x615.webp 1x, /kartinka-banner-2-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-2-1460x1230.webp, /kartinka-banner-2-1460x1230.webp"
                       type="image/webp"
                     />
                     <Image
                       fetchPriority="high"
                       height={615}
                       width={730}
-                      src="/kartinka-banner-2-730x615.webp"
+                      src="/kartinka-banner-2-1460x1230.webp"
                       alt={t('header.banner_alt')}
                       priority
                     />
@@ -181,22 +181,22 @@ export default function KesarevoSechenie() {
               <ul>
                 <li>
                   <a href="#algoritm-obrabotki-shvov-posle-kesareva-secheniya">
-                    {t('nav_headers')[0]}
+                    {t.raw('nav_headers')[0]}
                   </a>
                 </li>
                 <li>
                   <a href="#vozmozhnye-oslozhneniya--pri-nepravilnoy-obrabotke-ili-ee-otsutstvii">
-                    {t('nav_headers')[1]}
+                    {t.raw('nav_headers')[1]}
                   </a>
                 </li>
                 <li>
-                  <a href="#chasto-zadavaemye-voprosy">{t('nav_headers')[2]}</a>
+                  <a href="#chasto-zadavaemye-voprosy">{t.raw('nav_headers')[2]}</a>
                 </li>
                 <li>
-                  <a href="#spisok-literatury">{t('nav_headers')[3]}</a>
+                  <a href="#spisok-literatury">{t.raw('nav_headers')[3]}</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t('tableOfContents')}</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>{t.raw('tableOfContents')}</div>
             </nav>
           </div>
         </div>
@@ -206,22 +206,22 @@ export default function KesarevoSechenie() {
           <ul>
             <li>
               <a href="#algoritm-obrabotki-shvov-posle-kesareva-secheniya">
-                {t('nav_headers')[0]}
+                {t.raw('nav_headers')[0]}
               </a>
             </li>
             <li>
               <a href="#vozmozhnye-oslozhneniya--pri-nepravilnoy-obrabotke-ili-ee-otsutstvii">
-                {t('nav_headers')[1]}
+                {t.raw('nav_headers')[1]}
               </a>
             </li>
             <li>
-              <a href="#chasto-zadavaemye-voprosy">{t('nav_headers')[2]}</a>
+              <a href="#chasto-zadavaemye-voprosy">{t.raw('nav_headers')[2]}</a>
             </li>
             <li>
-              <a href="#spisok-literatury">{t('nav_headers')[3]}</a>
+              <a href="#spisok-literatury">{t.raw('nav_headers')[3]}</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t('tableOfContents')}</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>{t.raw('tableOfContents')}</div>
         </nav>
 
         {/* Disclaimer */}
@@ -293,14 +293,14 @@ export default function KesarevoSechenie() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={210}
                   width={310}
-                  src="/povidon-jod-prevyu-310x210.webp"
+                  src="/povidon-jod-prevyu-620x420.webp"
                   alt={t('sections.block_alt')}
                 />
               </picture>
@@ -347,7 +347,7 @@ export default function KesarevoSechenie() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-1-650x326.webp 1x, /istockphoto-1341663000-2048x2048-2-1-1300x652.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-1-1300x652.webp, /istockphoto-1341663000-2048x2048-2-1-1300x652.webp 2x"
                 type="image/webp"
               />
               <Image
@@ -454,14 +454,14 @@ export default function KesarevoSechenie() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-3-2-650x150.webp 1x, /istockphoto-1341663000-2048x2048-2-3-2-1300x300.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-3-2-1300x300 (1).webp, /istockphoto-1341663000-2048x2048-2-3-2-1300x300 (1).webp 2x"
                 type="image/webp"
               />
               <Image
                 loading="lazy"
                 height={150}
                 width={650}
-                src="/istockphoto-1341663000-2048x2048-2-3-2-650x150.webp"
+                src="/istockphoto-1341663000-2048x2048-2-3-2-1300x300 (1).webp"
                 alt={t('sections.algorithm_image_alt')}
               />
             </picture>
@@ -622,14 +622,14 @@ export default function KesarevoSechenie() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-1-1-650x325.webp 1x, /istockphoto-1341663000-2048x2048-2-1-1-1300x650.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-1-1-1300x650.webp, /istockphoto-1341663000-2048x2048-2-1-1-1300x650.webp"
                 type="image/webp"
               />
               <Image
                 loading="lazy"
                 height={325}
                 width={650}
-                src="/istockphoto-1341663000-2048x2048-2-1-1-650x325.webp"
+                src="/istockphoto-1341663000-2048x2048-2-1-1-1300x650.webp"
                 alt={t('sections.scar_image_alt')}
               />
             </picture>
@@ -783,14 +783,14 @@ export default function KesarevoSechenie() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp, /moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={203}
                   width={203}
-                  src="/moshkova-novyj-203x203.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt={t('sections.author_alt')}
                 />
               </picture>
@@ -806,17 +806,17 @@ export default function KesarevoSechenie() {
                   <div key={idx} className={`swiper-slide ${idx === 0 ? 'swiper-slide-active' : ''}`}>
                     <div className="slide-image">
                       <picture>
-                        <source
-                          srcSet={`/${article.imageName}-246x166.webp 1x, /${article.imageName}-491x332.webp 2x`}
-                          type="image/webp"
-                        />
-                        <Image
-                          loading="lazy"
-                          height={166}
-                          width={246}
-                          src={`/${article.imageName}-246x166.webp`}
-                          alt={article.alt}
-                        />
+                      <source
+                        srcSet={idx === 0 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : idx === 1 ? '/povidon-jod-prevyu-620x420.webp' : '/rany-s-infekcziej-prevyu-246x166 (1).webp'}
+                        type="image/webp"
+                      />
+                      <Image
+                        loading="lazy"
+                        height={166}
+                        width={246}
+                        src={idx === 0 ? '/maz-na-osnove-joda-prevyu-246x166 (1).webp' : idx === 1 ? '/povidon-jod-prevyu-620x420.webp' : '/rany-s-infekcziej-prevyu-246x166 (1).webp'}
+                        alt={article.alt}
+                      />
                       </picture>
                     </div>
                     <div className="slide-body">

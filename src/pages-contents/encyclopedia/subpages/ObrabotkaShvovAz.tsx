@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,6 +13,9 @@ interface Triggered {
 }
 
 export default function ObrabotkaShvovAz() {
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -56,6 +59,29 @@ export default function ObrabotkaShvovAz() {
 
     window.addEventListener('scroll', checkScroll);
     return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
   }, []);
 
   return (
@@ -150,7 +176,7 @@ export default function ObrabotkaShvovAz() {
             </div>
 
             {/* Navigation Menu */}
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
                   <a href="#pravila-obrabotki-shvov">Dikişlərin işlənməsi qaydaları</a>
@@ -170,13 +196,13 @@ export default function ObrabotkaShvovAz() {
                   <a href="#spisok-literatury">İstinadlar</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}>Mündəricat</div>
             </nav>
           </div>
         </div>
 
         {/* Fixed Navigation */}
-        <nav className="nav-content nav-content-fixed nav-content-title-hidden">
+        <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
               <a href="#pravila-obrabotki-shvov">Dikişlərin işlənməsi qaydaları</a>
@@ -196,7 +222,7 @@ export default function ObrabotkaShvovAz() {
               <a href="#spisok-literatury">İstinadlar</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}>Mündəricat</div>
         </nav>
 
         {/* Disclaimer */}
@@ -611,14 +637,14 @@ export default function ObrabotkaShvovAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
                   loading="lazy"
                   height={203}
                   width={203}
-                  src="/moshkova-novyj-203x203.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Məqalə müəllifi"
                 />
               </picture>
@@ -664,14 +690,14 @@ export default function ObrabotkaShvovAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/rany-s-infekcziej-prevyu-246x166.webp 1x, /rany-s-infekcziej-prevyu-491x332.webp 2x"
+                        srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/rany-s-infekcziej-prevyu-246x166.webp"
+                        src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                         alt="İnfeldə olan yaralar - önizləmə"
                       />
                     </picture>
@@ -693,14 +719,14 @@ export default function ObrabotkaShvovAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
-                        height={166}
-                        width={246}
-                        src="/povidon-jod-prevyu-246x166.webp"
+                        height={210}
+                        width={310}
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-yod - önizləmə"
                       />
                     </picture>

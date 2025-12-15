@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,10 @@ interface Triggered {
 }
 
 export default function ZhzhenieVoVlagalishche() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -60,6 +64,37 @@ export default function ZhzhenieVoVlagalishche() {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <article>
@@ -92,13 +127,13 @@ export default function ZhzhenieVoVlagalishche() {
                   <h1 className="page-header-title-text">Жжение во влагалище: причины и устранение</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/zhzhenie-icon.png"
+                      src="/icon-230x224.webp"
                       alt="картинка у заголовка"
                     />
                   </picture>
@@ -149,7 +184,7 @@ export default function ZhzhenieVoVlagalishche() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#diagnostika-prichiny-zhzheniya-vo-vlagalishcha">
@@ -171,12 +206,19 @@ export default function ZhzhenieVoVlagalishche() {
                   <a href="#literatura">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened(!navOpened)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${navTitleHidden ? '' : ' nav-content-title-hidden'}${secondaryNavOpened ? ' nav-content__open' : ''}`}
+        >
           <ul>
             <li>
               <a href="#diagnostika-prichiny-zhzheniya-vo-vlagalishcha">
@@ -198,7 +240,12 @@ export default function ZhzhenieVoVlagalishche() {
               <a href="#literatura">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">

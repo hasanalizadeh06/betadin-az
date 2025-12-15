@@ -38,10 +38,6 @@ const RelatedArticles: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* <div className="swiper-scrollbar swiper-scrollbar-horizontal">
-          <div className="swiper-scrollbar-drag" style={{ width: '100px' }} />
-        </div> */}
       </div>
     </div>
   );

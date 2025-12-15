@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -635,11 +635,11 @@ export default function Follikulit() {
                     <div className="slide-image">
                         <picture>
                         <source
-                          srcSet={`${idx < 2 ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-246x166 (1).webp'} 1x, ${idx < 2 ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-246x166 (1).webp'} 2x`}
+                          srcSet={idx < 2 ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-620x420.webp'}
                           type="image/webp"
                         />
                         <Image
-                          src={idx < 2 ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-246x166 (1).webp'}
+                          src={idx < 2 ? '/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-620x420.webp'}
                           alt={article.alt}
                           width={246}
                           height={166}

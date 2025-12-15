@@ -1,8 +1,37 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useRef, useState } from 'react';
 
 const RanaIliTsarapinaNaRukeAz: React.FC = () => {
   const triggeredRef = useRef<Record<number, boolean>>({ 25: false, 50: false, 75: false, 100: false });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldHide = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHide);
+      if (shouldHide) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const scrollGoals: { [k: number]: () => void } = {
@@ -62,8 +91,8 @@ const RanaIliTsarapinaNaRukeAz: React.FC = () => {
                 <div className="page-header-title">
                   <h1 className="page-header-title-text">Əldə yara və ya cızıq: ilkin yardım və emal</h1>
                   <picture>
-                    <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x" type="image/webp" />
-                    <img decoding="async" height={112} width={115} src="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png" srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png 1x,https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png 2x" alt="başlıq şəkli" />
+                    <source srcSet="/icon-230x224.webp" type="image/webp" />
+                    <Image decoding="async" height={112} width={115} src="/icon-230x224.webp" alt="başlıq şəkli" />
                   </picture>
                 </div>
                 <h2 className="page-header-subtitle">Əldə yara nədir</h2>
@@ -296,9 +325,61 @@ const RanaIliTsarapinaNaRukeAz: React.FC = () => {
             <h3 className="h3" id="chem-mazat-ranu-chtoby-ona-bystree-zatyanulas">Yarayı nə ilə yağlamaq daha tez sağalsın?</h3>
             <p>Yod məhlulları və <strong style={{color:'#0f780b'}}>Betadin<sup>®</sup></strong> yara sağaldıcı xüsusiyyətlərə malikdir<sup><a href="#spisok-literatury">11</a></sup>.</p>
             <p><strong style={{color:'#0f780b'}}>Betadin<sup>®</sup></strong> məlhəmini işə və səyahətə götürmək rahatdır və lazım olduqda yaranın emalı üçün istifadə edilə bilər.</p>
-            <div className="autor"><div className="autor-left"><p className="autor-title">Kraskovski Fyodor Yanoviç</p><div className="autor-subtitle" /><p className="autor-footer">Məqalənin müəllifi</p></div><picture><source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-470x406.webp 2x" type="image/webp" /><img loading="lazy" decoding="async" height={203} width={235} src="https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.png" alt="" /></picture></div>
+            <div className="autor">
+              <div className="autor-left">
+                <p className="autor-title">Kraskovski Fyodor Yanoviç</p>
+                <div className="autor-subtitle" />
+                <p className="autor-footer">Məqalənin müəllifi</p>
+              </div>
+              <picture>
+                <source srcSet="/kraskovskij-novyj-470x406 (1).webp" type="image/webp" />
+                <Image loading="lazy" decoding="async" height={203} width={235} src="/kraskovskij-novyj-470x406 (1).webp" alt="Kraskovski Fyodor Yanoviç" />
+              </picture>
+            </div>
             <div className="h2 h2-read-more" id="chitat-po-teme">Mövzu üzrə oxuyun</div>
-            <div className="slider-normal"><div className="swiper-wrapper"><div className="swiper-slide"><div className="slide-image"><picture><source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-491x332.webp 2x" type="image/webp" /><img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.png" alt="Yaraların emalı - prevyu" /></picture></div><div className="slide-body"><p className="slide-title"><strong>Yaraların emalı</strong></p><p>Yaraları düzgün emal etməyin yolları və ağırlaşmaların qarşısını almaq.</p><p className="slide-more"><a href="/encyclopedia/obrabotka-ran/"> Ətraflı </a></p></div></div></div></div>
+            <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide swiper-slide-active">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/obrabotka-ran-prevyu-246x166.webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/obrabotka-ran-prevyu-246x166.webp" alt="Yaraların emalı - önbaxış" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Yaraların emalı</strong></p>
+                    <p>Yaraları düzgün emal etməyin yolları və ağırlaşmaların qarşısını almaq.</p>
+                    <p className="slide-more"><a href="/encyclopedia/obrabotka-ran/">Ətraflı</a></p>
+                  </div>
+                </div>
+                <div className="swiper-slide">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp" alt="Yara sağaldıcı məlhəm - önbaxış" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Yara sağaldıcı məlhəm</strong></p>
+                    <p>Sağaldıcı məlhəmlərin növləri və ən effektivini necə seçmək olar.</p>
+                    <p className="slide-more"><a href="/encyclopedia/maz-dlya-zazhivleniya-ran/">Ətraflı</a></p>
+                  </div>
+                </div>
+                <div className="swiper-slide">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/rany-s-infekcziej-prevyu-246x166 (1).webp" alt="Yoluxmuş yaralar - önbaxış" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Yoluxmuş yaralar</strong></p>
+                    <p>Bütün cızıqlar və kəsiklər tez və ağırlaşmasız sağalmır. Yoluxmuş yaraları necə müalicə etmək olar?</p>
+                    <p className="slide-more"><a href="/encyclopedia/rany-s-infekciej/">Ətraflı</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <h2 className="h2" id="spisok-literatury">Ədəbiyyat siyahısı</h2>
             <ol className="literature">
               <li id="literature-0">Zavrajanov A. A., Gvozdev M. Yu., Krutova V. A. və b. Rəna və yara prosesi. Tədris-metodik vəsait, Krasnodar 2016.</li>

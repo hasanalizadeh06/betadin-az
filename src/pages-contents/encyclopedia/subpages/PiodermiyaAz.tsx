@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,10 @@ interface Triggered {
 }
 
 export default function Piodermiya() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -53,10 +57,28 @@ export default function Piodermiya() {
       }
     }
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -92,7 +114,7 @@ export default function Piodermiya() {
                   <h1 className="page-header-title-text">Piodermiya: növləri, simptomları, müalicəsi</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -132,11 +154,11 @@ export default function Piodermiya() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/kartinka-banner-1-730x615.webp 1x, /kartinka-banner-1-1460x1230.webp 2x"
+                      srcSet="/kartinka-banner-1-1460x12302.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/kartinka-banner-1-1460x1230.webp"
+                      src="/kartinka-banner-1-1460x12302.webp"
                       alt="Piodermiya: müalicə, məlhəmlər, kremlər, vasitələr"
                       width={730}
                       height={615}
@@ -148,7 +170,7 @@ export default function Piodermiya() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#prichiny-poyavleniya-piodermii">Piodermiyanın yaranma səbəbləri</a>
@@ -175,12 +197,19 @@ export default function Piodermiya() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Mündəricat
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#prichiny-poyavleniya-piodermii">Piodermiyanın yaranma səbəbləri</a>
@@ -207,7 +236,12 @@ export default function Piodermiya() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Mündəricat
+          </div>
         </nav>
 
         <div className="home-container">
@@ -232,11 +266,11 @@ export default function Piodermiya() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Dekorativ elementlər"
                   width={503}
                   height={505}
@@ -360,14 +394,14 @@ export default function Piodermiya() {
               </div>
               <picture>
                 <source
-                  srcSet="/impetigo-prevyu-310x210.webp 1x, /impetigo-prevyu-620x420.webp 2x"
+                  srcSet="/impetigo-prevyu-246x166.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/impetigo-prevyu-620x420.webp"
+                  src="/impetigo-prevyu-246x166.webp"
                   alt="İmpetiqo-önbaxış"
-                  width={310}
-                  height={210}
+                  width={246}
+                  height={166}
                   loading="lazy"
                   decoding="async"
                 />
@@ -417,11 +451,11 @@ export default function Piodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/mask-group-2-650x350.webp 1x, /mask-group-2-1300x700.webp 2x"
+                srcSet="/mask-group-2-650x350.webp"
                 type="image/webp"
               />
               <Image
-                src="/mask-group-2-1300x700.webp"
+                src="/mask-group-2-650x350.webp"
                 alt="Stafilodermiyalar"
                 width={650}
                 height={350}
@@ -452,11 +486,11 @@ export default function Piodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-5-650x325.webp 1x, /istockphoto-1341663000-2048x2048-2-5-1300x650.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-5-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/istockphoto-1341663000-2048x2048-2-5-1300x650.webp"
+                src="/istockphoto-1341663000-2048x2048-2-5-650x325.webp"
                 alt="İmpetiqo Foks"
                 width={650}
                 height={325}
@@ -502,11 +536,11 @@ export default function Piodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/istockphoto-1341663000-2048x2048-2-6-650x325.webp 1x, /istockphoto-1341663000-2048x2048-2-6-1300x650.webp 2x"
+                srcSet="/istockphoto-1341663000-2048x2048-2-6-650x325.webp"
                 type="image/webp"
               />
               <Image
-                src="/istockphoto-1341663000-2048x2048-2-6-1300x650.webp"
+                src="/istockphoto-1341663000-2048x2048-2-6-650x325.webp"
                 alt="Sipil iltihabı"
                 width={650}
                 height={325}
@@ -617,16 +651,11 @@ export default function Piodermiya() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Betadin"
                     width={927}
                     height={916}
@@ -792,11 +821,11 @@ export default function Piodermiya() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/quastion-1115x1084.webp"
+                  src="/quastion-558x542.webp"
                   alt="Dekorativ elementlər"
                   width={558}
                   height={542}
@@ -854,11 +883,11 @@ export default function Piodermiya() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Moşkova Yelena Mixaylovna"
                   width={203}
                   height={203}
@@ -878,11 +907,11 @@ export default function Piodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/gidradenit-lechenie-mazi-kremy-sredstva-pervyu-246x166.webp 1x, /gidradenit-lechenie-mazi-kremy-sredstva-pervyu-491x332.webp 2x"
+                        srcSet="/gidradenit-lechenie-mazi-kremy-sredstva-pervyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/gidradenit-lechenie-mazi-kremy-sredstva-pervyu-491x332.webp"
+                        src="/gidradenit-lechenie-mazi-kremy-sredstva-pervyu-246x166.webp"
                         alt="Hidradenit: müalicə, məlhəmlər, kremlər, vasitələr-önizləmə"
                         width={246}
                         height={166}
@@ -909,11 +938,11 @@ export default function Piodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/impetigo-prevyu-246x166.webp 1x, /impetigo-prevyu-491x332.webp 2x"
+                        srcSet="/impetigo-prevyu-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/impetigo-prevyu-491x332.webp"
+                        src="/impetigo-prevyu-246x166.webp"
                         alt="İmpetiqo-önizləmə"
                         width={246}
                         height={166}
@@ -940,11 +969,11 @@ export default function Piodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166.webp 1x, /karbunkul-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp 2x"
+                        srcSet="/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166%20(1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp"
+                        src="/karbunkul-lechenie-mazi-kremy-sredstva-prevyu-246x166%20(1).webp"
                         alt="Karbunkul: müalicə, məlhəmlər, kremlər, vasitələr-önizləmə"
                         width={246}
                         height={166}

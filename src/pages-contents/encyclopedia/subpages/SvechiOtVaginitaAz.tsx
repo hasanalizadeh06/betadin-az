@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function SvechiOtVaginitaAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -92,13 +120,13 @@ export default function SvechiOtVaginitaAz() {
                   <h1 className="page-header-title-text">Vaginitdən şamlar: növləri və necə seçmək</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/svechi-icon.png"
+                      src="/icon-230x224.webp"
                       alt="başlıqda şəkil"
                     />
                   </picture>
@@ -141,7 +169,7 @@ export default function SvechiOtVaginitaAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#svechi-ot-vaginita--kakie-luchshe">Vaginitdən şamlar – hansılar daha yaxşıdır?</a>
@@ -159,12 +187,12 @@ export default function SvechiOtVaginitaAz() {
                   <a href="#literatura">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Məzmun</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#svechi-ot-vaginita--kakie-luchshe">Vaginitdən şamlar – hansılar daha yaxşıdır?</a>
@@ -182,7 +210,7 @@ export default function SvechiOtVaginitaAz() {
               <a href="#literatura">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Məzmun</div>
         </nav>
 
         <div className="home-container">
@@ -667,14 +695,14 @@ export default function SvechiOtVaginitaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/images/encyclopedia/povidon-jod-preview.png"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-yod - anons"
                       />
                     </picture>

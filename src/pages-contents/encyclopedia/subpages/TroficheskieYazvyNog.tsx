@@ -1,8 +1,12 @@
-"use client";
-import React, { useEffect, useRef } from 'react';
+﻿"use client";
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const TroficheskieYazvyNog: React.FC = () => {
   const triggeredRef = useRef<Record<number, boolean>>({ 25: false, 50: false, 75: false, 100: false });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
   // Scroll tracking (converted from inline script). Guarded for SSR and when ym is defined.
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -45,6 +49,37 @@ const TroficheskieYazvyNog: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <main>
       <article>
@@ -77,15 +112,14 @@ const TroficheskieYazvyNog: React.FC = () => {
                   <h1 className="page-header-title-text">Трофические язвы ног: лечение и уход</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
-                    <img
+                    <Image
                       decoding="async"
                       height={112}
                       width={115}
-                      src="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png"
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png 2x"
+                      src="/icon-230x224.webp"
                       alt="картинка у заголовка"
                     />
                   </picture>
@@ -130,7 +164,7 @@ const TroficheskieYazvyNog: React.FC = () => {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#simptomy-troficheskoy-yazvy">Симптомы трофической язвы</a>
@@ -154,12 +188,19 @@ const TroficheskieYazvyNog: React.FC = () => {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened(!navOpened)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${navTitleHidden ? '' : ' nav-content-title-hidden'}${secondaryNavOpened ? ' nav-content__open' : ''}`}
+        >
           <ul>
             <li>
               <a href="#simptomy-troficheskoy-yazvy">Симптомы трофической язвы</a>
@@ -183,7 +224,12 @@ const TroficheskieYazvyNog: React.FC = () => {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">
@@ -756,8 +802,8 @@ const TroficheskieYazvyNog: React.FC = () => {
                 <div className="swiper-slide">
                   <div className="slide-image">
                     <picture>
-                      <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x" type="image/webp" />
-                      <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png" alt="Повидон-йод - превью" />
+                      <source srcSet="/povidon-jod-prevyu-620x420.webp" type="image/webp" />
+                      <img loading="lazy" decoding="async" height={210} width={310} src="/povidon-jod-prevyu-620x420.webp" alt="Повидон-йод - превью" />
                     </picture>
                   </div>
                   <div className="slide-body">

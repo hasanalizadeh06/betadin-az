@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function PuzyrchatkaAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldHide = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHide);
+      if (shouldHide) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -92,7 +120,7 @@ export default function PuzyrchatkaAz() {
                   <h1 className="page-header-title-text">Pemfiqus: simptomlar, diaqnostika, müalicə</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -129,11 +157,11 @@ export default function PuzyrchatkaAz() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/frame-758-730x615.webp 1x, /frame-758-1460x1230.webp 2x"
+                      srcSet="/frame-758-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/frame-758-1460x1230.webp"
+                      src="/frame-758-730x615.webp"
                       alt="Pemfiqus"
                       width={730}
                       height={615}
@@ -145,7 +173,7 @@ export default function PuzyrchatkaAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#pochemu-voznikaet-puzyrchatka">Pemfiqus niyə yaranır?</a>
@@ -169,12 +197,19 @@ export default function PuzyrchatkaAz() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Mündəricat
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#pochemu-voznikaet-puzyrchatka">Pemfiqus niyə yaranır?</a>
@@ -198,7 +233,12 @@ export default function PuzyrchatkaAz() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Mündəricat</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Mündəricat
+          </div>
         </nav>
 
         <div className="home-container">
@@ -227,11 +267,11 @@ export default function PuzyrchatkaAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Dekorativ elementlər"
                   width={503}
                   height={505}
@@ -246,11 +286,11 @@ export default function PuzyrchatkaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/mask-group-2-scaled-650x350.webp 1x, /mask-group-2-scaled-1300x700.webp 2x"
+                srcSet="/mask-group-2-scaled-650x350.webp"
                 type="image/webp"
               />
               <Image
-                src="/mask-group-2-scaled-1300x700.webp"
+                src="/mask-group-2-scaled-650x350.webp"
                 alt="Pemfiqusun meydana çıxması"
                 width={650}
                 height={350}
@@ -398,11 +438,11 @@ export default function PuzyrchatkaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/medical-kit-and-bandaid-509398-488-1-39-650x352.webp 1x, /medical-kit-and-bandaid-509398-488-1-39-1300x704.webp 2x"
+                srcSet="/medical-kit-and-bandaid-509398-488-1-39-650x352.webp"
                 type="image/webp"
               />
               <Image
-                src="/medical-kit-and-bandaid-509398-488-1-39-1300x704.webp"
+                src="/medical-kit-and-bandaid-509398-488-1-39-650x352.webp"
                 alt="Dərinin səth təbəqəsinin strukturu"
                 width={650}
                 height={352}
@@ -428,11 +468,11 @@ export default function PuzyrchatkaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/mask-group-5-scaled-650x350.webp 1x, /mask-group-5-scaled-1300x700.webp 2x"
+                srcSet="/mask-group-5-scaled-650x350.webp"
                 type="image/webp"
               />
               <Image
-                src="/mask-group-5-scaled-1300x700.webp"
+                src="/mask-group-5-scaled-650x350.webp"
                 alt="Vulqar pemfiqus"
                 width={650}
                 height={350}
@@ -470,11 +510,11 @@ export default function PuzyrchatkaAz() {
 
             <picture className="img-normal">
               <source
-                srcSet="/ris-puzyrchatka-listovideaya-scaled-650x350.webp 1x, /ris-puzyrchatka-listovideaya-scaled-1300x700.webp 2x"
+                srcSet="/ris-puzyrchatka-listovideaya-scaled-650x350.webp"
                 type="image/webp"
               />
               <Image
-                src="/ris-puzyrchatka-listovideaya-scaled-1300x700.webp"
+                src="/ris-puzyrchatka-listovideaya-scaled-650x350.webp"
                 alt="Yarpaqlı pemfiqus"
                 width={650}
                 height={350}
@@ -759,16 +799,11 @@ export default function PuzyrchatkaAz() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Betadin"
                     width={927}
                     height={916}
@@ -810,11 +845,11 @@ export default function PuzyrchatkaAz() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/quastion-1115x1084.webp"
+                  src="/quastion-558x542.webp"
                   alt="Dekorativ elementlər"
                   width={558}
                   height={542}
@@ -886,11 +921,11 @@ export default function PuzyrchatkaAz() {
               </div>
               <picture>
                 <source
-                  srcSet="/tamrazova-olga-borisovna-1-179x203.webp 1x, /tamrazova-olga-borisovna-1-359x406.webp 2x"
+                  srcSet="/tamrazova-olga-borisovna-1-179x203.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/tamrazova-olga-borisovna-1-359x406.webp"
+                  src="/tamrazova-olga-borisovna-1-179x203.webp"
                   alt="Tamrazova Olga Borisovna"
                   width={179}
                   height={203}
@@ -910,11 +945,11 @@ export default function PuzyrchatkaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-246x166 (1).webp"
                         alt="Povidon-yod - prevyu"
                         width={246}
                         height={166}
@@ -941,11 +976,11 @@ export default function PuzyrchatkaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166.webp 1x, /piodermiya-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp 2x"
+                        srcSet="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp"
+                        src="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp"
                         alt="Piodermiya: müalicə, məlhəmlər - prevyu"
                         width={246}
                         height={166}
@@ -972,11 +1007,11 @@ export default function PuzyrchatkaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/impetigo-prevyu-246x166.webp 1x, /impetigo-prevyu-491x332.webp 2x"
+                        srcSet="/impetigo-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/impetigo-prevyu-491x332.webp"
+                        src="/impetigo-prevyu-246x166 (1).webp"
                         alt="İmpetigo - prevyu"
                         width={246}
                         height={166}

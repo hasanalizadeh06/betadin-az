@@ -127,7 +127,7 @@ export default function JodMaz() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp, /icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -148,13 +148,13 @@ export default function JodMaz() {
 
                 <ul className="page-header-anchors page-header-anchors-detail">
                   <li>
-                    <a href="#povidon-yod">{t('header.anchors')[0]}</a>
+                    <a href="#povidon-yod">{t.raw('header.anchors')[0]}</a>
                   </li>
                   <li>
-                    <a href="#maz-na-osnove-povidon-yoda-betadin">{t('header.anchors')[1]}</a>
+                    <a href="#maz-na-osnove-povidon-yoda-betadin">{t.raw('header.anchors')[1]}</a>
                   </li>
                   <li>
-                    <a href="#chasto-zadavaemye-voprosy">{t('header.anchors')[2]}</a>
+                    <a href="#chasto-zadavaemye-voprosy">{t.raw('header.anchors')[2]}</a>
                   </li>
                 </ul>
               </div>
@@ -290,7 +290,7 @@ export default function JodMaz() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-310x210.webp 1x, /povidon-jod-prevyu-620x420.webp 2x"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
@@ -562,11 +562,11 @@ export default function JodMaz() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp, /moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt={t('sections.author_alt')}
                   width={203}
                   height={203}
@@ -585,20 +585,20 @@ export default function JodMaz() {
                 {t.raw('sections.slider_articles').map((article: any, idx: number) => (
                   <div key={idx} className={idx === 0 ? 'swiper-slide swiper-slide-active' : 'swiper-slide'}>
                     <div className="slide-image">
-                      <picture>
+                        <picture>
                         <source
-                          srcSet={`/${article.imageName}-246x166.webp 1x, /${article.imageName}-491x332.webp 2x`}
+                          srcSet={idx === 0 ? '/chem-obrabotat-ranu-rebenku-prevyu-246x166.webp' : idx === 1 ? '/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-620x420.webp'}
                           type="image/webp"
                         />
                         <Image
-                          src={`/${article.imageName}-491x332.webp`}
+                          src={idx === 0 ? '/chem-obrabotat-ranu-rebenku-prevyu-246x166.webp' : idx === 1 ? '/mazi-i-kremy-ot-ozhogov-prevyu-246x166 (1).webp' : '/povidon-jod-prevyu-620x420.webp'}
                           alt={article.alt}
                           width={246}
                           height={166}
                           loading="lazy"
                           decoding="async"
                         />
-                      </picture>
+                        </picture>
                     </div>
                     <div className="slide-body">
                       <p className="slide-title">

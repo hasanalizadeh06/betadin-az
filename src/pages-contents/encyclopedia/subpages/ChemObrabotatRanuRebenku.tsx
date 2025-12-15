@@ -1,4 +1,4 @@
- 'use client';
+﻿ 'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -542,10 +542,10 @@ const ChemObrabotatRanuRebenku: React.FC = () => {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166 (1).webp"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
-                      <img loading="lazy" decoding="async" height={166} width={246} src="/povidon-jod-prevyu-246x166 (1).webp" alt={t('imageAlts.slide2')} />
+                      <img loading="lazy" decoding="async" height={210} width={310} src="/povidon-jod-prevyu-620x420.webp" alt={t('imageAlts.slide2')} />
                     </picture>
                   </div>
                   <div className="slide-body">

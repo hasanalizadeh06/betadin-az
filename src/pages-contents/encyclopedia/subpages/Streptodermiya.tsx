@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,34 @@ interface Triggered {
 }
 
 export default function Streptodermiya() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -92,7 +120,7 @@ export default function Streptodermiya() {
                   <h1 className="page-header-title-text">Стрептодермия: причины, симптомы, лечение</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -139,11 +167,11 @@ export default function Streptodermiya() {
                 <div className="page-header-img">
                   <picture>
                     <source
-                      srcSet="/banner-streptodermiya-730x615.webp 1x, /banner-streptodermiya-1460x1230.webp 2x"
+                      srcSet="/banner-streptodermiya-730x615.webp"
                       type="image/webp"
                     />
                     <Image
-                      src="/banner-streptodermiya-1460x1230.webp"
+                      src="/banner-streptodermiya-730x615.webp"
                       alt="Стрептодермия"
                       width={730}
                       height={615}
@@ -155,7 +183,7 @@ export default function Streptodermiya() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#prichiny-vozniknoveniya-streptodermii">Причины возникновения стрептодермии?</a>
@@ -179,12 +207,12 @@ export default function Streptodermiya() {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Содержание</div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#prichiny-vozniknoveniya-streptodermii">Причины возникновения стрептодермии?</a>
@@ -193,13 +221,13 @@ export default function Streptodermiya() {
               <a href="#osobennosti-streptodermii">Особенности стрептодермии</a>
             </li>
             <li>
-              <a href="#vidy-streptodermii">Виды стрептодermии</a>
+              <a href="#vidy-streptodermii">Виды стрептодермии</a>
             </li>
             <li>
               <a href="#lechenie-streptodermii">Лечение стрептодермии</a>
             </li>
             <li>
-              <a href="#profilaktika-streptodermii">Профилактика стрептодermии</a>
+              <a href="#profilaktika-streptodermii">Профилактика стрептодермии</a>
             </li>
             <li>
               <a href="#chasto-zadavaemye-voprosy">Популярные вопросы</a>
@@ -208,7 +236,7 @@ export default function Streptodermiya() {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Содержание</div>
         </nav>
 
         <div className="home-container">
@@ -224,11 +252,11 @@ export default function Streptodermiya() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-circle">
                 <source
-                  srcSet="/circle-503x505.webp 1x, /circle-1006x1010.webp 2x"
+                  srcSet="/circle-503x505.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/circle-1006x1010.webp"
+                  src="/circle-503x505.webp"
                   alt="Декоративные элементы"
                   width={503}
                   height={505}
@@ -274,11 +302,11 @@ export default function Streptodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp 1x, /streptodermiya-illyustracziya-s-1-1at4x-1300x301.webp 2x"
+                srcSet="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp"
                 type="image/webp"
               />
               <Image
-                src="/streptodermiya-illyustracziya-s-1-1at4x-1300x301.webp"
+                src="/streptodermiya-illyustracziya-s-1-1at4x-650x151.webp"
                 alt="Развитие стрептодермии у ребёнка"
                 width={650}
                 height={151}
@@ -391,16 +419,11 @@ export default function Streptodermiya() {
               <div className="banner-product-img">
                 <picture>
                   <source
-                    media="(max-width: 767px)"
-                    srcSet="/banner-betadin-mobile-315x252.webp 1x, /banner-betadin-mobile-630x503.webp 2x"
-                    type="image/webp"
-                  />
-                  <source
-                    srcSet="/banner-betadin-927x916.webp 1x, /banner-betadin-1853x1832.webp 2x"
+                    srcSet="/banner-betadin-927x916.webp"
                     type="image/webp"
                   />
                   <Image
-                    src="/banner-betadin-1853x1832.webp"
+                    src="/banner-betadin-927x916.webp"
                     alt="Бетадин"
                     width={927}
                     height={916}
@@ -481,11 +504,11 @@ export default function Streptodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/od-a4-2at4x-650x167.webp 1x, /od-a4-2at4x-1300x334.webp 2x"
+                srcSet="/od-a4-2at4x-650x167.webp"
                 type="image/webp"
               />
               <Image
-                src="/od-a4-2at4x-1300x334.webp"
+                src="/od-a4-2at4x-650x167.webp"
                 alt="«Зелёнка»"
                 width={650}
                 height={167}
@@ -508,11 +531,11 @@ export default function Streptodermiya() {
 
             <picture className="img-normal">
               <source
-                srcSet="/saliczilovaya-kislota-1-scaled-650x150.webp 1x, /saliczilovaya-kislota-1-scaled-1300x300.webp 2x"
+                srcSet="/saliczilovaya-kislota-1-scaled-650x150.webp"
                 type="image/webp"
               />
               <Image
-                src="/saliczilovaya-kislota-1-scaled-1300x300.webp"
+                src="/saliczilovaya-kislota-1-scaled-650x150.webp"
                 alt="«Салициловая кислота»"
                 width={650}
                 height={150}
@@ -599,11 +622,11 @@ export default function Streptodermiya() {
             <div className="exlude-turbo">
               <picture className="banner-betadin banner-quastion">
                 <source
-                  srcSet="/quastion-558x542.webp 1x, /quastion-1115x1084.webp 2x"
+                  srcSet="/quastion-558x542.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/quastion-1115x1084.webp"
+                  src="/quastion-558x542.webp"
                   alt="Декоративные элементы"
                   width={558}
                   height={542}
@@ -643,11 +666,11 @@ export default function Streptodermiya() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}
@@ -667,11 +690,11 @@ export default function Streptodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/prevyubanner-infekczionnyj-dermatit-246x166.webp 1x, /prevyubanner-infekczionnyj-dermatit-491x332.webp 2x"
+                        srcSet="/prevyubanner-infekczionnyj-dermatit-246x166.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/prevyubanner-infekczionnyj-dermatit-491x332.webp"
+                        src="/prevyubanner-infekczionnyj-dermatit-246x166.webp"
                         alt="Инфекционный дерматит превью"
                         width={246}
                         height={166}
@@ -697,11 +720,11 @@ export default function Streptodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Повидон-йод - превью"
                         width={246}
                         height={166}
@@ -728,11 +751,11 @@ export default function Streptodermiya() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166.webp 1x, /piodermiya-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp 2x"
+                        srcSet="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-491x332.webp"
+                        src="/piodermiya-lechenie-mazi-kremy-sredstva-prevyu-246x166 (1).webp"
                         alt="Пиодермия_ лечение, мази, кремы, средства - превью"
                         width={246}
                         height={166}

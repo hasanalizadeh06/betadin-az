@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals {
   [key: number]: () => void;
@@ -13,6 +13,10 @@ interface Triggered {
 }
 
 export default function VaginalnyeVydeleniyaAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -60,6 +64,37 @@ export default function VaginalnyeVydeleniyaAz() {
     };
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const scrolled = window.scrollY > 1000;
+      setNavTitleHidden(scrolled);
+      if (scrolled) {
+        setSecondaryNavOpened(false);
+      }
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
    <main>
       <article>
@@ -92,13 +127,13 @@ export default function VaginalnyeVydeleniyaAz() {
                   <h1 className="page-header-title-text">Vaginal ifrazatlar: səbəbləri və müalicəsi</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="/images/encyclopedia/vydeleniya-icon.png"
+                      src="/icon-230x224.webp"
                       alt="başlıq yanında şəkil"
                     />
                   </picture>
@@ -143,7 +178,7 @@ export default function VaginalnyeVydeleniyaAz() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#kakie-byvayut-vydeleniya">Hansı ifrazatlar olur?</a>
@@ -164,12 +199,19 @@ export default function VaginalnyeVydeleniyaAz() {
                   <a href="#literatura">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened(!navOpened)}
+              >
+                Məzmun
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${navTitleHidden ? '' : ' nav-content-title-hidden'}${secondaryNavOpened ? ' nav-content__open' : ''}`}
+        >
           <ul>
             <li>
               <a href="#kakie-byvayut-vydeleniya">Hansı ifrazatlar olur?</a>
@@ -190,7 +232,12 @@ export default function VaginalnyeVydeleniyaAz() {
               <a href="#literatura">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}
+          >
+            Məzmun
+          </div>
         </nav>
 
         <div className="home-container">
@@ -657,14 +704,14 @@ export default function VaginalnyeVydeleniyaAz() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
                         loading="lazy"
                         height={166}
                         width={246}
-                        src="/images/encyclopedia/povidon-jod.png"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Povidon-yod - önizləmə"
                       />
                     </picture>

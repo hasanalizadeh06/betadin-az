@@ -121,7 +121,7 @@ export default function InfekcionnyyDermatit() {
                   <h1 className="page-header-title-text">{t('header.title')}</h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -352,11 +352,11 @@ export default function Borodavki() {
               </div>
               <picture>
                 <source
-                  srcSet="/povidon-jod-prevyu-246x166 (1).webp"
+                  srcSet="/povidon-jod-prevyu-620x420.webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/povidon-jod-prevyu-246x166 (1).webp"
+                  src="/povidon-jod-prevyu-620x420.webp"
                   alt={t('imageAlts.povidonPreview')}
                   width={310}
                   height={210}
@@ -579,11 +579,11 @@ export default function Borodavki() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166 (1).webp"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-246x166.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt={t('imageAlts.slide2')}
                         width={246}
                         height={166}

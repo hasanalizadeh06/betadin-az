@@ -1,7 +1,11 @@
-"use client";
-import React, { useEffect } from 'react';
+﻿"use client";
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const ObrabotkaRan: React.FC = () => {
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     // Analytics scroll tracking logic adapted from the original script
     // Guard for browsers and the global ym function (Yandex Metrica)
@@ -43,6 +47,29 @@ const ObrabotkaRan: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
+  }, []);
+
   return (
     <main>
       <script>
@@ -76,15 +103,14 @@ const ObrabotkaRan: React.FC = () => {
                 <h1 className="page-header-title-text">Обработка ран: антисептики, алгоритмы, рекомендации</h1>
                 <picture>
                   <source
-                    srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                    srcSet="/icon-230x224.webp"
                     type="image/webp"
                   />
-                  <img
+                  <Image
                     decoding="async"
                     height={112}
                     width={115}
-                    src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp"
-                    srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x"
+                    src="/icon-230x224.webp"
                     alt="картинка у заголовка"
                   />
                 </picture>
@@ -133,7 +159,7 @@ const ObrabotkaRan: React.FC = () => {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
             <ul>
               <li>
                 <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#prichiny-poyavleniya-ran">Причины появления ран</a>
@@ -163,13 +189,13 @@ const ObrabotkaRan: React.FC = () => {
                 <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#spisok-literatury">Список литературы</a>
               </li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+            <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}> Содержание</div>
           </nav>
         </div>
       </div>
 
       <p />
-      <nav className="nav-content nav-content-fixed">
+      <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
         <ul>
           <li>
             <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#prichiny-poyavleniya-ran">Причины появления ран</a>
@@ -199,7 +225,7 @@ const ObrabotkaRan: React.FC = () => {
             <a href="https://betadin.ru/encyclopedia/obrabotka-ran/#spisok-literatury">Список литературы</a>
           </li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+        <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}> Содержание</div>
       </nav>
       <div className="home-container">
         <div className="new-disclaimer"> Информация в статье не&nbsp;заменяет консультацию врача</div>
@@ -886,22 +912,22 @@ const ObrabotkaRan: React.FC = () => {
             </picture>
           </div>
           <div className="h2 h2-read-more" id="chitat-po-teme">Читать по теме</div>
-          <div className="slider-normal">
+          <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
             <div className="swiper-wrapper">
-              <div className="swiper-slide swiper-slide-active">
+              <div className="swiper-slide swiper-slide-active" style={{ marginRight: "29px" }}>
                 <div className="slide-image">
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.webp 2x"
+                      srcSet="/povidon-jod-prevyu-310x210.webp"
                       type="image/webp"
                     />
                     <img
                       loading="lazy"
                       decoding="async"
-                      height={166}
+                      height={210}
                       width={246}
-                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp"
-                      srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-246x166.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1935/436b689f199a0485392d5ff3651e37b5502544db9b29a638280805fb9dd9d34a-0x166/povidon-jod-prevyu-491x332.png.webp 2x"
+                      src="/povidon-jod-prevyu-310x210.webp"
+                      
                       alt="Повидон-йод - превью"
                     />
                   </picture>
@@ -911,7 +937,65 @@ const ObrabotkaRan: React.FC = () => {
                     <strong>Повидон йод</strong>
                   </p>
                   <p>Характеристики и свойства повидон-йода. Для чего применяется повидон-йод? Инструкция по применению раствора, мази, свечей Бетадин<sup>®</sup> с повидон-йодом.</p>
-                  <p className="slide-more"> <a href="https://betadin.ru/encyclopedia/povidon-jod/"> Подробнее </a> </p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/povidon-jod/">Подробнее</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide swiper-slide-next" style={{ marginRight: "29px" }}>
+                <div className="slide-image">
+                  <picture>
+                    <source
+                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-491x332.webp 2x"
+                      type="image/webp"
+                    />
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      height={210}
+                      width={246}
+                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-246x166.png.webp"
+                      srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-246x166.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1933/826cbef7c32f1943a154e80b6f786c4495636df7ba3ef058df0fcc5103e009ac-0x166/rastvor-joda-prevyu-491x332.png.webp 2x"
+                      alt="Раствор йода - превью"
+                    />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title">
+                    <strong>Раствор йода</strong>
+                  </p>
+                  <p>Какие бывают йодные растворы, и для чего их применяют?</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/rastvor-joda/">Подробнее</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide" style={{ marginRight: "29px" }}>
+                <div className="slide-image">
+                  <picture>
+                    <source
+                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1934/369ec9ef6f435e0f62d191ca50762860a3be5fafa2a6af62d6fb88970c610254-0x166/maz-na-osnove-joda-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1934/369ec9ef6f435e0f62d191ca50762860a3be5fafa2a6af62d6fb88970c610254-0x166/maz-na-osnove-joda-prevyu-491x332.webp 2x"
+                      type="image/webp"
+                    />
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      height={210}
+                      width={246}
+                      src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1934/369ec9ef6f435e0f62d191ca50762860a3be5fafa2a6af62d6fb88970c610254-0x166/maz-na-osnove-joda-prevyu-246x166.png.webp"
+                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1934/369ec9ef6f435e0f62d191ca50762860a3be5fafa2a6af62d6fb88970c610254-0x166/maz-na-osnove-joda-prevyu-246x166.png.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1934/369ec9ef6f435e0f62d191ca50762860a3be5fafa2a6af62d6fb88970c610254-0x166/maz-na-osnove-joda-prevyu-491x332.png.webp 2x"
+                      alt="Мазь на основе йода - превью"
+                    />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title">
+                    <strong>Мазь на основе йода</strong>
+                  </p>
+                  <p>Мазь на основе йода: механизм действия, область применения. Мазь Бетадин® на основе повидон-йода для лечения различных кожных заболеваний.</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/jod-maz/">Подробнее</a>
+                  </p>
                 </div>
               </div>
             </div>

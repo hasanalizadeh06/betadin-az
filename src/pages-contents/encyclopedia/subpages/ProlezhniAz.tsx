@@ -1,7 +1,36 @@
 "use client";
-import React, { useEffect } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
 const ProlezhniAz: React.FC = () => {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldHide = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHide);
+      if (shouldHide) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     // Analytics scroll tracking logic (translated goal names)
     // eslint-disable-next-line no-console
@@ -61,8 +90,8 @@ const ProlezhniAz: React.FC = () => {
               <div className="page-header-title">
                 <h1 className="page-header-title-text">Yetişkinlərdə və uşaqlarda yataq yaraları: profilaktika və qulluq</h1>
                 <picture>
-                  <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x" type="image/webp" />
-                  <img decoding="async" height={112} width={115} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp" srcSet="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png.webp 1x, https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png.webp 2x" alt="başlıq üçün şəkil" />
+                  <source srcSet="/icon-230x224.webp" type="image/webp" />
+                  <Image decoding="async" height={112} width={115} src="/icon-230x224.webp" alt="başlıq üçün şəkil" />
                 </picture>
               </div>
               <h2 className="page-header-subtitle">Yataq yaraları nədir</h2>
@@ -87,7 +116,7 @@ const ProlezhniAz: React.FC = () => {
               </div>
             </div>
           </div>
-          <nav className="nav-content">
+          <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
             <ul>
               <li><a href="#lokalizaciya-prolezhney">Yataq yaralarının yerləşməsi</a></li>
               <li><a href="#simptomy-prolezhney">Yataq yaralarının simptomları</a></li>
@@ -99,12 +128,19 @@ const ProlezhniAz: React.FC = () => {
               <li><a href="#otvety-na-voprosy">Suallara cavablar</a></li>
               <li><a href="#spisok-literatury">Ədəbiyyat siyahısı</a></li>
             </ul>
-            <div className="nav-content-title nav-content-title-cross"> Mündəricat</div>
+            <div
+              className="nav-content-title nav-content-title-cross"
+              onClick={() => setNavOpened((prev) => !prev)}
+            >
+               Mündəricat
+            </div>
           </nav>
         </div>
       </div>
 
-      <nav className="nav-content nav-content-fixed">
+      <nav
+        className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}
+      >
         <ul>
           <li><a href="#lokalizaciya-prolezhney">Yataq yaralarının yerləşməsi</a></li>
           <li><a href="#simptomy-prolezhney">Yataq yaralarının simptomları</a></li>
@@ -116,7 +152,12 @@ const ProlezhniAz: React.FC = () => {
           <li><a href="#otvety-na-voprosy">Suallara cavablar</a></li>
           <li><a href="#spisok-literatury">Ədəbiyyat siyahısı</a></li>
         </ul>
-        <div className="nav-content-title nav-content-title-cross"> Mündəricat</div>
+        <div
+          className="nav-content-title nav-content-title-cross"
+          onClick={() => setSecondaryNavOpened((prev) => !prev)}
+        >
+           Mündəricat
+        </div>
       </nav>
 
       <div className="home-container">
@@ -281,6 +322,16 @@ const ProlezhniAz: React.FC = () => {
             <p>Preparatın tətbiq forması müalicə üsulunu müəyyən edir. Yataq yaralarında Betadin® həll və maz formasında istifadə olunur.</p>
             <p>Xarici istifadə üçün məhlul yaraya seyreltilmədən tətbiq olunur. Maz ince qatla gündə 2 dəfə sağlam dərini də əhatə edərək tətbiq edilir.</p>
           </div>
+          <picture className="img-normal">
+            <source srcSet="/istockphoto-1341663000-2048x2048-2-5-2048x473.png.webp" type="image/webp" />
+            <img loading="lazy" decoding="async" height={473} width={2048} src="/istockphoto-1341663000-2048x2048-2-5-2048x473.png.webp" alt="Betadin® maz formasında" />
+          </picture>
+          <p>Betadin® maz formasında gündə 2 dəfə nazik qatla sağlam dərini də əhatə edərək tətbiq olunur.</p>
+          <picture className="img-normal">
+            <source srcSet="/medical-kit-and-bandaid_509398-488-4-2048x1024.png.webp" type="image/webp" />
+            <img loading="lazy" decoding="async" height={512} width={1024} src="/medical-kit-and-bandaid_509398-488-4-2048x1024.png.webp" alt="Preparatın həkim nəzarəti altında tətbiqi" />
+          </picture>
+          <p>Qeyd etmək vacibdir ki, preparatın bütün formalarının tətbiqi həkim nəzarəti altında həyata keçirilməlidir.</p>
           <h4 className="h4" id="protivopokazaniya-k-ispolzovaniyu-preparatov-betadin">Betadin® istifadə üçün əks göstərişlər</h4>
           <p>Əks göstərişlər arasında aktiv maddəyə qarşı həssaslıq, qalxanvari vəzi adenoması, hipertireoz, Duhring xəstəliyi, radioaktiv yodun tətbiqi var. Preparat vaxtından əvvəl doğulmuş və yenidoğulan uşaqlarda qadağandır. Böyrək xəstəliklərində, hamiləlikdə və laktasiyada ehtiyatla istifadə olunur.</p>
           <div className="buttons"><a className="btn btn-green btn-green-instruction" target="_blank" href="/betadin-rastvor-instruktsiya/">Təlimat</a></div>
@@ -312,13 +363,53 @@ const ProlezhniAz: React.FC = () => {
               <div className="swiper-slide swiper-slide-active" style={{ marginRight: '29px' }}>
                 <div className="slide-image">
                   <picture>
-                    <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-246x166.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-491x332.webp 2x" type="image/webp" />
-                    <img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/1916/9a600dd2bd3191054405c4fd95ab13cb3c7fd4bf50e5915b105e33b92769aa2c-0x166/obrabotka-prolezhnej-mazi-и-kremы-prevyu-246x166.png.webp" alt="Yara müalicəsi: mazlar və kremlər - önizləmə" />
+                    <source srcSet="/obrabotka-prolezhnej-mazi-i-kremy-prevyu-246x166.webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/obrabotka-prolezhnej-mazi-i-kremy-prevyu-246x166.webp" alt="Yataq yaralarının müalicəsi: mazlar və kremlər - önizləmə" />
                   </picture>
                 </div>
-                <div className="slide-body"><p className="slide-title"><strong>Yara müalicəsi: mazlar və kremlər</strong></p><p>Etkili və təhlükəsiz preparatı seçirik.</p></div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Yataq yaralarının müalicəsi: mazlar və kremlər</strong></p>
+                  <p>Yataq yaralarının müalicəsi üçün effektiv və təhlükəsiz preparatı seçirik.</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/obrabotka-prolezhnej/">Ətraflı</a>
+                    <a href="/encyclopedia/obrabotka-prolezhnej/">Ətraflı</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide swiper-slide-next" style={{ marginRight: '29px' }}>
+                <div className="slide-image">
+                  <picture>
+                    <source srcSet="/povidon-jod-prevyu-246x166 (1).webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/povidon-jod-prevyu-246x166 (1).webp" alt="Povidon-yod - önizləmə" />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Povidon-yod</strong></p>
+                  <p>Povidon-yodun xüsusiyyətləri və xassələri. Povidon-yod nə üçün istifadə olunur? Betadin<sup>®</sup> məhlul, maz və şamların istifadə təlimatı.</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/povidon-jod/">Ətraflı</a>
+                    <a href="/encyclopedia/povidon-jod/">Ətraflı</a>
+                  </p>
+                </div>
+              </div>
+              <div className="swiper-slide" style={{ marginRight: '29px' }}>
+                <div className="slide-image">
+                  <picture>
+                    <source srcSet="/maz-dlya-lecheniya-troficheskih-yazv-prevyu-246x166 (1).webp" type="image/webp" />
+                    <img loading="lazy" decoding="async" height={166} width={246} src="/maz-dlya-lecheniya-troficheskih-yazv-prevyu-246x166 (1).webp" alt="Trofik xoraların müalicəsi üçün maz - önizləmə" />
+                  </picture>
+                </div>
+                <div className="slide-body">
+                  <p className="slide-title"><strong>Ayaq trofik xoraları</strong></p>
+                  <p>Ayaqda trofik xoranı necə tanımaq olar və bu dəri qüsurunun səbəbi nədir?</p>
+                  <p className="slide-more">
+                    <a href="/encyclopedia/troficheskie-yazvy-nog/">Ətraflı</a>
+                    <a href="/encyclopedia/troficheskie-yazvy-nog/">Ətraflı</a>
+                  </p>
+                </div>
               </div>
             </div>
+
           </div>
           <h2 className="h2" id="spisok-literatury">Ədəbiyyat siyahısı</h2>
           <ol className="literature">

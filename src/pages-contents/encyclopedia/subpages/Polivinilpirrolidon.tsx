@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,6 +17,9 @@ export default function Polivinilpirrolidon() {
     40: false,
     80: false,
   });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
 
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
@@ -58,10 +61,28 @@ export default function Polivinilpirrolidon() {
       }
     }
 
+    const handleScroll = () => {
+      const shouldHideTitle = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHideTitle);
+
+      if (shouldHideTitle) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
     window.addEventListener('scroll', checkScroll);
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -99,7 +120,7 @@ export default function Polivinilpirrolidon() {
                   </h1>
                   <picture>
                     <source
-                      srcSet="/icon-115x112.webp 1x, /icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
@@ -158,7 +179,7 @@ export default function Polivinilpirrolidon() {
               </div>
             </div>
 
-            <nav className="nav-content">
+            <nav className={`nav-content ${navOpened ? 'nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#oblasti-primeneniya-polivinilpirrolidona">
@@ -175,12 +196,19 @@ export default function Polivinilpirrolidon() {
                   <a href="#chasto-zadavaemye-voprosy">Часто задаваемые вопросы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                Содержание
+              </div>
             </nav>
           </div>
         </div>
 
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed ${secondaryNavOpened ? 'nav-content__open' : ''} ${navTitleHidden ? '' : 'nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#oblasti-primeneniya-polivinilpirrolidona">
@@ -197,7 +225,12 @@ export default function Polivinilpirrolidon() {
               <a href="#chasto-zadavaemye-voprosy">Часто задаваемые вопросы</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Содержание</div>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+            Содержание
+          </div>
         </nav>
 
         <div className="home-container">
@@ -620,11 +653,11 @@ export default function Polivinilpirrolidon() {
               </div>
               <picture>
                 <source
-                  srcSet="/maz-na-osnove-joda-prevyu-310x210.webp 1x, /maz-na-osnove-joda-prevyu-620x420.webp 2x"
+                  srcSet="/maz-na-osnove-joda-prevyu-246x166 (1).webp, /maz-na-osnove-joda-prevyu-246x166 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/maz-na-osnove-joda-prevyu-620x420.webp"
+                  src="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
                   alt="Мазь на основе йода - превью"
                   width={310}
                   height={210}
@@ -733,11 +766,11 @@ export default function Polivinilpirrolidon() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/povidon-jod-prevyu-246x166.webp 1x, /povidon-jod-prevyu-491x332.webp 2x"
+                        srcSet="/povidon-jod-prevyu-620x420.webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/povidon-jod-prevyu-491x332.webp"
+                        src="/povidon-jod-prevyu-620x420.webp"
                         alt="Повидон-йод - превью"
                         width={246}
                         height={166}
@@ -765,11 +798,11 @@ export default function Polivinilpirrolidon() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/svechi-ot-vaginita-prevyu-246x166.webp 1x, /svechi-ot-vaginita-prevyu-491x332.webp 2x"
+                        srcSet="/svechi-ot-vaginita-prevyu-246x166 (1).webp, /svechi-ot-vaginita-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/svechi-ot-vaginita-prevyu-491x332.webp"
+                        src="/svechi-ot-vaginita-prevyu-246x166 (1).webp"
                         alt="Свечи от вагинита - превью"
                         width={246}
                         height={166}
@@ -796,11 +829,11 @@ export default function Polivinilpirrolidon() {
                   <div className="slide-image">
                     <picture>
                       <source
-                        srcSet="/maz-na-osnove-joda-prevyu-246x166.webp 1x, /maz-na-osnove-joda-prevyu-491x332.webp 2x"
+                        srcSet="/maz-na-osnove-joda-prevyu-246x166 (1).webp, /maz-na-osnove-joda-prevyu-246x166 (1).webp"
                         type="image/webp"
                       />
                       <Image
-                        src="/maz-na-osnove-joda-prevyu-491x332.webp"
+                        src="/maz-na-osnove-joda-prevyu-246x166 (1).webp"
                         alt="Мазь на основе йода - превью"
                         width={246}
                         height={166}
@@ -833,11 +866,11 @@ export default function Polivinilpirrolidon() {
               </div>
               <picture>
                 <source
-                  srcSet="/moshkova-novyj-203x203.webp 1x, /moshkova-novyj-406x406.webp 2x"
+                  srcSet="/moshkova-novyj-406x406 (1).webp"
                   type="image/webp"
                 />
                 <Image
-                  src="/moshkova-novyj-406x406.webp"
+                  src="/moshkova-novyj-406x406 (1).webp"
                   alt="Мошкова Елена Михайловна"
                   width={203}
                   height={203}

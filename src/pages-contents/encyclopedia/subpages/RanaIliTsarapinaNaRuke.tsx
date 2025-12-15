@@ -1,8 +1,37 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useRef, useState } from 'react';
 
 const RanaIliTsarapinaNaRuke: React.FC = () => {
   const triggeredRef = useRef<Record<number, boolean>>({ 25: false, 50: false, 75: false, 100: false });
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shouldHide = window.scrollY >= 1000;
+      setNavTitleHidden(shouldHide);
+      if (shouldHide) {
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const scrollGoals: { [k: number]: () => void } = {
@@ -62,8 +91,8 @@ const RanaIliTsarapinaNaRuke: React.FC = () => {
                 <div className="page-header-title">
                   <h1 className="page-header-title-text">Рана или царапина на руке: первая помощь и обработка</h1>
                   <picture>
-                    <source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x" type="image/webp" />
-                    <img decoding="async" height={112} width={115} src="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png" srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png 1x,https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png 2x" alt="картинка у заголовка" />
+                    <source srcSet="/icon-230x224.webp" type="image/webp" />
+                    <Image decoding="async" height={112} width={115} src="/icon-230x224.webp" alt="картинка у заголовка" />
                   </picture>
                 </div>
                 <h2 className="page-header-subtitle">Что такое рана на руке</h2>
@@ -94,7 +123,7 @@ const RanaIliTsarapinaNaRuke: React.FC = () => {
                 </div>
               </div>
             </div>
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}`}>
               <ul>
                 <li>
                   <a href="#simptomy-ran-i-carapin-na-ruke">Симптомы ран и царапин на руке</a>
@@ -139,11 +168,18 @@ const RanaIliTsarapinaNaRuke: React.FC = () => {
                   <a href="#spisok-literatury">Список литературы</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross"> Содержание</div>
+              <div
+                className="nav-content-title nav-content-title-cross"
+                onClick={() => setNavOpened((prev) => !prev)}
+              >
+                 Содержание
+              </div>
             </nav>
           </div>
         </div>
-        <nav className="nav-content nav-content-fixed">
+        <nav
+          className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}
+        >
           <ul>
             <li>
               <a href="#simptomy-ran-i-carapin-na-ruke">Симптомы ран и царапин на руке</a>
@@ -188,6 +224,12 @@ const RanaIliTsarapinaNaRuke: React.FC = () => {
               <a href="#spisok-literatury">Список литературы</a>
             </li>
           </ul>
+          <div
+            className="nav-content-title nav-content-title-cross"
+            onClick={() => setSecondaryNavOpened((prev) => !prev)}
+          >
+             Содержание
+          </div>
         </nav>
         <div className="home-container">
           <div className="new-disclaimer"> Информация в статье не&nbsp;заменяет консультацию врача</div>
@@ -296,9 +338,61 @@ const RanaIliTsarapinaNaRuke: React.FC = () => {
             <h3 className="h3" id="chem-mazat-ranu-chtoby-ona-bystree-zatyanulas">Чем мазать рану, чтобы она быстрее затянулась?</h3>
             <p>Растворы йода, а также <strong style={{color:'#0f780b'}}>Бетадин<sup>®</sup></strong> обладают ранозаживляющими свойствами<sup><a href="#spisok-literatury">11</a></sup>.</p>
             <p><strong style={{color:'#0f780b'}}>Бетадин<sup>®</sup></strong> в форме мази легко можно брать с собой на работу, отдых и пользоваться в любое удобное время для обработки ран.</p>
-            <div className="autor"><div className="autor-left"><p className="autor-title">Красковский Федор Янович</p><div className="autor-subtitle" /><p className="autor-footer">Автор статьи</p></div><picture><source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-470x406.webp 2x" type="image/webp" /><img loading="lazy" decoding="async" height={203} width={235} src="https://betadin.ru/wp-content/uploads/imagesv3/4377/3484383e613339ca1e8d23db36434c23a55f91c619c074ad383292c99606fedb-236x203/kraskovskij-novyj-235x203.png" alt="" /></picture></div>
+            <div className="autor">
+              <div className="autor-left">
+                <p className="autor-title">Красковский Федор Янович</p>
+                <div className="autor-subtitle" />
+                <p className="autor-footer">Автор статьи</p>
+              </div>
+              <picture>
+                <source srcSet="/kraskovskij-novyj-470x406 (1).webp" type="image/webp" />
+                <Image loading="lazy" decoding="async" height={203} width={235} src="/kraskovskij-novyj-470x406 (1).webp" alt="Красковский Федор Янович" />
+              </picture>
+            </div>
             <div className="h2 h2-read-more" id="chitat-po-teme">Читать по теме</div>
-            <div className="slider-normal"><div className="swiper-wrapper"><div className="swiper-slide"><div className="slide-image"><picture><source srcSet="https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.webp 1x,https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-491x332.webp 2x" type="image/webp" /><img loading="lazy" decoding="async" height={166} width={246} src="https://betadin.ru/wp-content/uploads/imagesv3/1907/71967bf3d728e39b9e3b677b75ccfac171301a5dce9cd23fdab1f3852599a5d1-0x166/obrabotka-ran-prevyu-246x166.png" alt="Обработка ран - превью" /></picture></div><div className="slide-body"><p className="slide-title"><strong>Обработка ран</strong></p><p>Как правильно обрабатывать раны, чтобы избежать осложнений на поврежденных участках кожи.</p><p className="slide-more"><a href="/encyclopedia/obrabotka-ran/"> Подробнее </a></p></div></div></div></div>
+            <div className="slider-normal swiper-initialized swiper-horizontal swiper-pointer-events swiper-free-mode swiper-backface-hidden">
+              <div className="swiper-wrapper">
+                <div className="swiper-slide swiper-slide-active">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/obrabotka-ran-prevyu-246x166.webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/obrabotka-ran-prevyu-246x166.webp" alt="Обработка ран - превью" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Обработка ран</strong></p>
+                    <p>Как правильно обрабатывать раны, чтобы избежать осложнений на поврежденных участках кожи.</p>
+                    <p className="slide-more"><a href="/encyclopedia/obrabotka-ran/">Подробнее</a></p>
+                  </div>
+                </div>
+                <div className="swiper-slide">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/maz-dlya-zazhivleniya-ran-prevyu-246x166.webp" alt="Мазь для заживления ран - превью" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Мазь для заживления ран</strong></p>
+                    <p>Какие бывают заживляющие мази, и как выбрать самую эффективную.</p>
+                    <p className="slide-more"><a href="/encyclopedia/maz-dlya-zazhivleniya-ran/">Подробнее</a></p>
+                  </div>
+                </div>
+                <div className="swiper-slide">
+                  <div className="slide-image">
+                    <picture>
+                      <source srcSet="/rany-s-infekcziej-prevyu-246x166 (1).webp" type="image/webp" />
+                      <Image loading="lazy" decoding="async" height={166} width={246} src="/rany-s-infekcziej-prevyu-246x166 (1).webp" alt="Раны с инфекцией - превью" />
+                    </picture>
+                  </div>
+                  <div className="slide-body">
+                    <p className="slide-title"><strong>Раны с инфекцией</strong></p>
+                    <p>Далеко не все ссадины и порезы заживают быстро и без осложнений. Как лечить инфицированные раны?</p>
+                    <p className="slide-more"><a href="/encyclopedia/rany-s-infekciej/">Подробнее</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <h2 className="h2" id="spisok-literatury">Список литературы</h2>
             <ol className="literature">
               <li id="literature-0">Завражанов А. А., Гвоздев М. Ю., Крутова В. А. и др. Раны и раневой процесс// Учебно- методическое пособие для интернов, ординаторов и практических врачей// Краснодар 2016.</li>

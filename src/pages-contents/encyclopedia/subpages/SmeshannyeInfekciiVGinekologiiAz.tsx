@@ -2,12 +2,40 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ScrollGoals { [key: number]: () => void; }
 interface Triggered { [key: number]: boolean; }
 
 export default function SmeshannyeInfekciiVGinekologiiAz() {
+  const [navOpened, setNavOpened] = useState(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState(false);
+  const [navTitleHidden, setNavTitleHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 1000) {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      } else {
+        setNavTitleHidden(false);
+      }
+    };
+
+    const handleResize = () => {
+      setNavOpened(false);
+      setSecondaryNavOpened(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const scrollGoals: ScrollGoals = {
       40: () => {
@@ -80,13 +108,13 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
                   <h1 className="page-header-title-text">Ginekologiyada qarışıq infeksiyalar: müalicə və profilaktika</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
                     <Image
                       height={112}
                       width={115}
-                      src="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png"
+                      src="/icon-230x224.webp"
                       alt="başlıqda şəkil"
                     />
                   </picture>
@@ -124,7 +152,7 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
                 </div>
               </div>
             </div>
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? ' nav-content__open' : ''}${navTitleHidden ? ' nav-content-title-hidden' : ''}`}>
               <ul>
                 <li>
                   <a href="#vidy-infekciy">İnfeksiya növləri</a>
@@ -157,11 +185,11 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
                   <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened((prev) => !prev)}>Məzmun</div>
             </nav>
           </div>
         </div>
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${secondaryNavOpened ? ' nav-content__open' : ''}${navTitleHidden ? '' : ' nav-content-title-hidden'}`}>
           <ul>
             <li>
               <a href="#vidy-infekciy">İnfeksiya növləri</a>
@@ -194,7 +222,7 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
               <a href="#spisok-literatury">Ədəbiyyat siyahısı</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross">Məzmun</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened((prev) => !prev)}>Məzmun</div>
         </nav>
         <div className="home-container">
           <div className="new-disclaimer">Məqalədəki məlumat həkim məsləhətini əvəz etmir</div>
@@ -641,9 +669,6 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
               </div>
             </div>
           </div>
-          <div className="swiper-scrollbar swiper-scrollbar-horizontal">
-            <div className="swiper-scrollbar-drag" style={{ transform: 'translate3d(0px, 0px, 0px)', width: '100px' }}></div>
-          </div>
         </div>
 
         <h2 className="h2" id="spisok-literatury">
@@ -657,19 +682,19 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
             Reid G, Bruce AW. Urogenital infections in women: can probiotics help? Postgrad Med J. 2003 Aug;79(934):428-32. doi: 10.1136/pmj.79.934.428. PMID: 12954951; PMCID: PMC1742800.
           </li>
           <li id="literatura-2">
-            Боровиков И.О., Куценко И.И., Рубинина Э.Р. Опыт клинического менеджмента смешанных инфекций урогенитального тракта у женщин. РМЖ. Мать и дитя. 2018;1:26–32. DOI: 10.32364/2618-8430-2018-1-1-26-32. Ravel J., Gajer P., Abdo Z., Schneider G. Vaginal microbiome of reproductive-age women. Proc Natl Acad Sci USA. 2011;108(1):4680–4687. DOI: 10.1073/pnas.1002611107.
+            Borovikov İ.O., Kutsenko İ.İ., Rubinina E.R. Qadınlarda urogenital traktın qarışıq infeksiyalarının klinik idarə edilməsi təcrübəsi. RMJ. Ana və uşaq. 2018;1:26–32. DOI: 10.32364/2618-8430-2018-1-1-26-32. Ravel J., Gajer P., Abdo Z., Schneider G. Vaginal microbiome of reproductive-age women. Proc Natl Acad Sci USA. 2011;108(1):4680–4687. DOI: 10.1073/pnas.1002611107.
           </li>
           <li id="literatura-3">
-            Воронова О.А. Внедрение инновационных технологий на этапе реабилитации больных с вагинальной патологией и инфекциями, передаваемыми половым путем. Тезисы II Всероссийского конгресса дерматовенерологов. СПб., 2007.
+            Voronova O.A. Vaginal patologiyası və cinsi yolla ötürülən infeksiyaları olan xəstələrin reabilitasiya mərhələsində innovativ texnologiyaların tətbiqi. II Ümumrusiya Dermatovenoroqlar Konqresinin tezisləri. Sankt-Peterburq, 2007.
           </li>
           <li id="literatura-4">
-            Радзинский В.Е., Кипяткова Н.Г., Мухтарова А.В. Биоценозы гениталий при угрожающем невынашивании и преждевременных родах. Вестник Российского университета дружбы народов. Серия: Медицина. 2009
+            Radzinski V.E., Kipyatkova N.Q., Muxtarova A.V. Abort təhlükəsi və vaxtından əvvəl doğuş zamanı genital biosenozlar. Rusiya Xalqların Dostluğu Universiteti Xəbərləri. Seriya: Tibb. 2009
           </li>
           <li id="literatura-5">
             Buchta V. Vaginal microbiome. Ceska Gynekol. 2018 Winter;83(5):371-379. English. PMID: 30848142.
           </li>
           <li id="literatura-6">
-            Савельева Г.М., Сухих Г.Т., Серова В.Н. и др. Гинекология. Национальное руководство. 2-е изд. М.: ГЭОТАР-Медиа, 2017.
+            Savelyeva Q.M., Suxix Q.T., Serova V.N. və b. Ginekologiya. Milli təlimat. 2-ci nəşr. M.: QEOTAR-Media, 2017.
           </li>
           <li id="literatura-7">
             Eggers M. Infectious Disease Management and Control with Povidone Iodine. Infect Dis Ther. 2019 Dec;8(4):581-593. doi: 10.1007/s40121-019-00260-x. Epub 2019 Aug 14. Erratum in: Infect Dis Ther. 2019 Aug 22;: PMID: 31414403; PMCID: PMC6856232.
@@ -681,19 +706,19 @@ export default function SmeshannyeInfekciiVGinekologiiAz() {
             Mtibaa L., Fakhfakh N., Kallel A., Belhadj S., Belhaj Salah N., Bada N., Kallel K. Vulvovaginal candidiasis: Etiology, symptomatology and risk factors. J Mycol Med. 2017 Jun;27(2):153-158. doi: 10.1016/j.mycmed.2017.01.003. Epub 2017 Mar 15. PMID: 28314677.
           </li>
           <li id="literatura-10">
-            Федеральные клинические рекомендации по ведению больных урогенитальным кандидозом. РОАГ. Москва, 2020 год.
+            Urogenital kandidozlu xəstələrin müalicəsi üzrə federal klinik tövsiyələr. ROAQ. Moskva, 2020-ci il.
           </li>
           <li id="literatura-11">
-            Перламутров Ю.Н., Чернова Н.И. Возможности повышения эффективности терапии неспецифического вагинита и цервицита. Лечащий врач. 2014. № 12. С. 79–82.
+            Perlamutrov Y.N., Çernova N.İ. Qeyri-spesifik vaginit və servisitin müalicə effektivliyinin artırılması imkanları. Müalicə edən həkim. 2014. № 12. S. 79–82.
           </li>
           <li id="literatura-12">
-            Бебнева Т.Н., Добрецова Т.А. Смешанные вагинальные инфекции: новая идеология. Неспецифические вагинальные инфекции в практике акушера-гинеколога. Информационный бюллетень. Под ред. В.Е. Радзинского, А.М. Савичевой. М.: StatusPraesens; 2016.
+            Bebneva T.N., Dobretsova T.A. Qarışıq vaginal infeksiyalar: yeni ideologiya. Mama-ginekoloq praktikasında qeyri-spesifik vaginal infeksiyalar. İnformasiya bülleteni. V.E. Radzinski, A.M. Saviçevanın red. M.: StatusPraesens; 2016.
           </li>
           <li id="literatura-13">
-            Богомазова И.М., Белоусова В.С., Максимов М.Л. Эффективность использования препарата Бетадин<sup>®</sup> при бактериальном вагинозе. РМЖ, 2014 год.
+            Boqomazova İ.M., Belousova V.S., Maksimov M.L. Bakterial vaginozda Betadin<sup>®</sup> preparatının istifadəsinin effektivliyi. RMJ, 2014-cü il.
           </li>
           <li id="literatura-14">
-            Инструкция по медицинскому применению Бетадин суппозитории. РН: П№015282/01.
+            Betadin suppozitoriyalar tibbi tətbiq təlimatı. RN: P№015282/01.
           </li>
         </ol>
       </div>

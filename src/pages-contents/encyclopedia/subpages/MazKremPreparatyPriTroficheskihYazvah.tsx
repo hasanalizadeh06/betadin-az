@@ -1,10 +1,14 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 const MazKremPreparatyPriTroficheskihYazvah: React.FC = () => {
   const t = useTranslations('Blogs.MazKremPreparatyPriTroficheskihYazvah');
   const triggeredRef = useRef<Record<number, boolean>>({ 25: false, 50: false, 75: false, 100: false });
+  const [navOpened, setNavOpened] = useState<boolean>(false);
+  const [secondaryNavOpened, setSecondaryNavOpened] = useState<boolean>(false);
+  const [navTitleHidden, setNavTitleHidden] = useState<boolean>(true);
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const scrollGoals: { [k: number]: () => void } = {
@@ -32,6 +36,29 @@ const MazKremPreparatyPriTroficheskihYazvah: React.FC = () => {
     };
     window.addEventListener('scroll', checkScroll);
     return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPosition = () => {
+      if (typeof window === 'undefined') return;
+      const threshold = 1000;
+      const scrollY = window.scrollY ?? window.pageYOffset;
+      if (scrollY >= threshold) {
+        setNavTitleHidden(false);
+      } else {
+        setNavTitleHidden(true);
+        setSecondaryNavOpened(false);
+      }
+    };
+
+    checkPosition();
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', checkPosition);
+
+    return () => {
+      window.removeEventListener('scroll', checkPosition);
+      window.removeEventListener('resize', checkPosition);
+    };
   }, []);
 
   return (
@@ -65,15 +92,14 @@ const MazKremPreparatyPriTroficheskihYazvah: React.FC = () => {
                   <h1 className="page-header-title-text">{t('sections.header_title')}</h1>
                   <picture>
                     <source
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.webp 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.webp 2x"
+                      srcSet="/icon-230x224.webp"
                       type="image/webp"
                     />
-                    <img
+                    <Image
                       decoding="async"
                       height={112}
                       width={115}
-                      src="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png"
-                      srcSet="https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-115x112.png 1x, https://betadin.ru/wp-content/uploads/imagesv3/994/da2be7790dac0732b628bb7213ed123ebbb60d0de77775855cefa7f12f9e4576-115x112/icon-230x224.png 2x"
+                      src="/icon-230x224.webp"
                       alt={t('sections.alt_header_icon')}
                     />
                   </picture>
@@ -114,59 +140,59 @@ const MazKremPreparatyPriTroficheskihYazvah: React.FC = () => {
                 </div>
               </div>
             </div>
-            <nav className="nav-content">
+            <nav className={`nav-content${navOpened ? " nav-content__open" : ""}`}>
               <ul>
                 <li>
-                  <a href="#prichiny-poyavleniya-i-vidy-troficheskih-yazv">{t('sections.nav_1')}</a>
+                  <a href="#prichiny-poyavleniya-i-vidy-troficheskih-yazv">{t.raw('sections.nav_1')}</a>
                 </li>
                 <li>
-                  <a href="#diagnostika">{t('sections.nav_2')}</a>
+                  <a href="#diagnostika">{t.raw('sections.nav_2')}</a>
                 </li>
                 <li>
-                  <a href="#lechenie-troficheskih-yazv">{t('sections.nav_3')}</a>
+                  <a href="#lechenie-troficheskih-yazv">{t.raw('sections.nav_3')}</a>
                 </li>
                 <li>
-                  <a href="#vidy-mazey-i-kremov-ot-troficheskih-yazv">{t('sections.nav_4')}</a>
+                  <a href="#vidy-mazey-i-kremov-ot-troficheskih-yazv">{t.raw('sections.nav_4')}</a>
                 </li>
                 <li>
-                  <a href="#profilaktika">{t('sections.nav_5')}</a>
+                  <a href="#profilaktika">{t.raw('sections.nav_5')}</a>
                 </li>
                 <li>
-                  <a href="#otvety-na-voprosy">{t('sections.nav_6')}</a>
+                  <a href="#otvety-na-voprosy">{t.raw('sections.nav_6')}</a>
                 </li>
                 <li>
-                  <a href="#spisok-literatury">{t('sections.nav_7')}</a>
+                  <a href="#spisok-literatury">{t.raw('sections.nav_7')}</a>
                 </li>
               </ul>
-              <div className="nav-content-title nav-content-title-cross"> {t('sections.table_of_contents')}</div>
+              <div className="nav-content-title nav-content-title-cross" onClick={() => setNavOpened(!navOpened)}> {t.raw('sections.table_of_contents')}</div>
             </nav>
           </div>
         </div>
-        <nav className="nav-content nav-content-fixed">
+        <nav className={`nav-content nav-content-fixed${navTitleHidden ? " nav-content-title-hidden" : ""}${secondaryNavOpened ? " nav-content__open" : ""}`}>
           <ul>
             <li>
-              <a href="#prichiny-poyavleniya-i-vidy-troficheskih-yazv">{t('sections.nav_1')}</a>
+              <a href="#prichiny-poyavleniya-i-vidy-troficheskih-yazv">{t.raw('sections.nav_1')}</a>
             </li>
             <li>
-              <a href="#diagnostika">{t('sections.nav_2')}</a>
+              <a href="#diagnostika">{t.raw('sections.nav_2')}</a>
             </li>
             <li>
-              <a href="#lechenie-troficheskih-yazv">{t('sections.nav_3')}</a>
+              <a href="#lechenie-troficheskih-yazv">{t.raw('sections.nav_3')}</a>
             </li>
             <li>
-              <a href="#vidy-mazey-i-kremov-ot-troficheskih-yazv">{t('sections.nav_4')}</a>
+              <a href="#vidy-mazey-i-kremov-ot-troficheskih-yazv">{t.raw('sections.nav_4')}</a>
             </li>
             <li>
-              <a href="#profilaktika">{t('sections.nav_5')}</a>
+              <a href="#profilaktika">{t.raw('sections.nav_5')}</a>
             </li>
             <li>
-              <a href="#otvety-na-voprosy">{t('sections.nav_6')}</a>
+              <a href="#otvety-na-voprosy">{t.raw('sections.nav_6')}</a>
             </li>
             <li>
-              <a href="#spisok-literatury">{t('sections.nav_7')}</a>
+              <a href="#spisok-literatury">{t.raw('sections.nav_7')}</a>
             </li>
           </ul>
-          <div className="nav-content-title nav-content-title-cross"> {t('sections.table_of_contents')}</div>
+          <div className="nav-content-title nav-content-title-cross" onClick={() => setSecondaryNavOpened(!secondaryNavOpened)}> {t.raw('sections.table_of_contents')}</div>
         </nav>
         <div className="home-container">
           <div className="new-disclaimer"> {t('sections.disclaimer')}</div>
