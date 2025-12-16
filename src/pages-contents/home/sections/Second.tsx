@@ -54,10 +54,7 @@ const Second: React.FC = () => {
 
                 <div className="home-card home-card_blue">
                     <picture>
-                        <source 
-                            media="(max-width: 1023px)" 
-                            srcSet="/svechi-product-768.webp"
-                        />
+                        
                         <img 
                             decoding="async" 
                             src="/svechi-product.webp" 

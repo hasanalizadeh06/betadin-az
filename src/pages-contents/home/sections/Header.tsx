@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           </span>
         </h1>
         <picture className="home-banner">
-          <source media="(max-width: 1023px)" srcSet={banner375Webp} />
+          
           <img decoding="async" src={bannerWebp} alt="" />
         </picture>
         <ul className="home-ul">
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
                 </button>
                 <div className="home-video-frame">
                 <video ref={videoRef} controls playsInline>
-                    <source src={videoUrl} type="video/mp4" />
+                    
                     {t("buttons.watch")}
                 </video>
                 </div>

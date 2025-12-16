@@ -1,5 +1,6 @@
 "use client"
 import { useTranslations } from 'next-intl';
+import { useRef, useState } from 'react';
 
 const Preimushestva = () => {
     const t = useTranslations('home.advantages');
@@ -51,7 +52,18 @@ const Preimushestva = () => {
             translationKey: 'slides.family_friendly'
         },
     ];
-    // For simplicity, static slider (no JS slider logic)
+    // Mobile slider logic
+    const [activeIdx, setActiveIdx] = useState(0);
+    const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+    const handleDotClick = (idx: number) => {
+        setActiveIdx(idx);
+        // Scroll to the slide on mobile
+        if (slideRefs.current[idx] && window.innerWidth <= 768) {
+            slideRefs.current[idx]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
+
     return (
         <div className="container default-pd">
             <h2 id="preimushchestva-betadin" className="home-h2">
@@ -59,10 +71,6 @@ const Preimushestva = () => {
             </h2>
             <div className="home-preimushestva">
                 <picture>
-                    <source
-                        media="(max-width: 767px)"
-                        srcSet="preimushestva-375.webp"
-                    />
                     <img
                         decoding="async"
                         src="/preimushestva.webp"
@@ -72,42 +80,61 @@ const Preimushestva = () => {
                 <div className="slider-home-preimushestva">
                     <div className="swiper-wrapper">
                         {slides.map((slide, idx) => (
-                            <div className="swiper-slide" key={idx}>
+                            <div
+                                className="swiper-slide"
+                                key={idx}
+                                ref={el => { slideRefs.current[idx] = el; }}
+                                style={{ display: (window.innerWidth <= 768 && idx !== activeIdx) ? 'none' : undefined }}
+                            >
                                 <div className="slide-image">
                                     <picture>
-                                        <source
-                                            media="(max-width: 767px)"
-                                            srcSet={slide.img.srcSet375}
-                                        />
-                                        <source
-                                            media="(max-width: 1023px)"
-                                            srcSet={slide.img.srcSet768}
-                                        />
-                                        <img
-                                            decoding="async"
-                                            src={slide.img.src}
-                                            alt={slide.img.alt}
-                                        />
+                                            <img
+                                                decoding="async"
+                                                src={
+                                                    window.innerWidth < 500
+                                                    ? "/img-768.svg"
+                                                    : slide.img.src
+                                                }
+                                                alt={slide.img.alt}
+                                            />
                                     </picture>
                                 </div>
                                 <div className="slide-body" dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
                             </div>
                         ))}
                     </div>
-                    {/* Pagination bullets (static for now)
-                    <div className="slider-home-preimushestva-pagination">
+                    {/* Mobile-only pagination dots */}
+                    <div className="slider-home-preimushestva-pagination-mobile" style={{ display: window.innerWidth <= 768 ? 'flex' : 'none', justifyContent: 'center', marginTop: 16 }}>
                         {slides.map((_, idx) => (
                             <span
                                 key={idx}
-                                className={
-                                    "swiper-pagination-bullet" +
-                                    (idx === 0 ? " swiper-pagination-bullet-active" : "")
-                                }
+                                onClick={() => handleDotClick(idx)}
+                                style={{
+                                    width: 12,
+                                    height: 12,
+                                    borderRadius: '50%',
+                                    background: idx === activeIdx ? '#1B7B2C' : '#E0E0E0',
+                                    margin: '0 4px',
+                                    display: 'inline-block',
+                                    cursor: 'pointer',
+                                    border: idx === activeIdx ? '2px solid #1B7B2C' : '2px solid #E0E0E0',
+                                    transition: 'background 0.2s, border 0.2s',
+                                }}
                             />
                         ))}
-                    </div> */}
+                    </div>
                 </div>
             </div>
+            <style jsx>{`
+                @media (min-width: 769px) {
+                    .slider-home-preimushestva-pagination-mobile {
+                        display: none !important;
+                    }
+                    .swiper-slide {
+                        display: block !important;
+                    }
+                }
+            `}</style>
         </div>
     );
 }

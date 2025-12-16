@@ -11,7 +11,7 @@ const OblastBlocks: React.FC = () => {
             <div className="home-oblast-blocks">
                 <div className="home-oblast-block">
                     <picture>
-                        <source media="(max-width: 767px)" srcSet="/article-rani-375.webp" />
+                        
                         <img decoding="async" src="/article-rani.webp" alt="" />
                     </picture>
                     <div className="home-oblast-block-text">
@@ -22,7 +22,7 @@ const OblastBlocks: React.FC = () => {
                 </div>
                 <div className="home-oblast-block">
                     <picture>
-                        <source media="(max-width: 767px)" srcSet="/article-povidon-375.webp" />
+                        
                         <img decoding="async" src="/article-povidon.webp" alt="" />
                     </picture>
                     <div className="home-oblast-block-text">
