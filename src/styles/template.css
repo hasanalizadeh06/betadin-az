@@ -2169,8 +2169,8 @@ a {
 
 .menu-desktop {
     margin-left: auto;
-    height: 100vh;
 }
+
 
 .menu-desktop ul {
     display: -webkit-box;
@@ -2353,6 +2353,7 @@ a {
         overflow: auto;
         position: fixed;
         top: 91px;
+        height: 100vh;
         width: 100vw;
         z-index: 99
     }
@@ -2360,7 +2361,7 @@ a {
 
 @media(max-width: 1023px) and (max-width:767px) {
     .menu-desktop.menu-desktop-mobile {
-        max-height:calc(100% - 76px);
+        max-height:calc(100%);
         top: 76px
     }
 }
