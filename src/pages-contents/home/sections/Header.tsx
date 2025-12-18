@@ -8,8 +8,6 @@ const ul1Webp = "/ul-1.webp";
 const ul2Webp = "/ul-2.webp";
 const ul3Webp = "/ul-3.webp";
 const videoIcon = "/video.svg";
-const videoUrl =
-  "https://betadin.ru/wp-content/uploads/2025/05/istorii-betadin_semejnyj-rolik.mp4";
 
 const Header: React.FC = () => {
   const t = useTranslations("home.header");
@@ -126,9 +124,13 @@ const Header: React.FC = () => {
                 ×
                 </button>
                 <div className="home-video-frame">
-                <video ref={videoRef} controls playsInline>
-                    
-                    {t("buttons.watch")}
+                <video
+                  ref={videoRef}
+                  controls
+                  playsInline
+                  src="/istorii-betadin_semejnyj-rolik.mp4"
+                >
+                  {t("buttons.watch")}
                 </video>
                 </div>
             </div>
