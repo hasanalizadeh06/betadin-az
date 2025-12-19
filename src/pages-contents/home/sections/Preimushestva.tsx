@@ -91,7 +91,7 @@ const Preimushestva = () => {
                                             <img
                                                 decoding="async"
                                                 src={
-                                                    window.innerWidth < 500
+                                                    window.innerWidth < 767
                                                     ? "/img-768.svg"
                                                     : slide.img.src
                                                 }
@@ -99,7 +99,7 @@ const Preimushestva = () => {
                                             />
                                     </picture>
                                 </div>
-                                <div className="slide-body" dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
+                                <div style={idx == 0 ? {width: "10px", padding: "0px !important", fontSize: "12px"} : undefined} className="slide-body"  dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
                             </div>
                         ))}
                     </div>

@@ -16,7 +16,7 @@ const Second: React.FC = () => {
                             alt={t('solution.alt')}
                         />
                     </picture>
-                    <div className="home-card-title">
+                    <div style={{marginTop: "10px"}} className="home-card-title">
                         {t('solution.title')}
                     </div>
                     <div className="home-card-text">
@@ -38,7 +38,7 @@ const Second: React.FC = () => {
                             alt={t('ointment.alt')}
                         />
                     </picture>
-                    <div className="home-card-title">
+                    <div style={{marginTop: "10px"}} className="home-card-title">
                         {t('ointment.title')}
                     </div>
                     <div className="home-card-text">
@@ -61,7 +61,7 @@ const Second: React.FC = () => {
                             alt={t('suppositories.alt')}
                         />
                     </picture>
-                    <div className="home-card-title">
+                    <div style={{marginTop: "10px"}} className="home-card-title">
                         {t('suppositories.title')}
                     </div>
                     <div className="home-card-text">
