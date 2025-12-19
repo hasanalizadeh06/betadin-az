@@ -99,7 +99,7 @@ const Preimushestva = () => {
                                             />
                                     </picture>
                                 </div>
-                                <div style={idx == 0 ? {width: "10px", padding: "0px !important", fontSize: "12px"} : undefined} className="slide-body"  dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
+                                <div className="slide-body"  dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
                             </div>
                         ))}
                     </div>
