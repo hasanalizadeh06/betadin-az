@@ -239,7 +239,7 @@ export default function RastvorPage(): React.ReactElement {
 
 					<div className="product-another-products">
 						<div className="slider-another-card">
-							<div className="swiper-wrapper">
+							<div className="swiper-wrapper overflow-scroll">
 								<div className="swiper-slide product-another-card product-another-card-current swiper-slide-active">
 									<picture>
 										<img loading="lazy" decoding="async" height={256} width={277} src="https://betadin.ru/wp-content/webp-express/webp-images/uploads/imagesv3/3422/fe2e0be6e3932eb43ec5a0fe3ece1a6f6a144cf6e001a9aece242e4dd75dfc01-277x256/product-rastvor-2x-277x256.jpg.webp" alt="" />

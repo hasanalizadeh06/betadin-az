@@ -251,7 +251,7 @@ function MazPage() {
             <h2 className="h2">{t('products.title')}</h2>
 
             <div className="product-another-products">
-              <div className="slider-another-card">
+              <div className="slider-another-card overflow-scroll ">
                 <div className="swiper-wrapper">
                   {/* Product 1 - Раствор */}
                   <div className="swiper-slide product-another-card">
