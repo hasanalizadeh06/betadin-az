@@ -1,7 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 function MazPage() {
+  const t = useTranslations('MazPage');
   return (
     <main>
       <article>
@@ -13,11 +15,11 @@ function MazPage() {
               <ol className="breadcrumb">
                 <li>
                   <a href="/">
-                    <span>Главная</span>
+                    <span>{t('breadcrumb.home')}</span>
                   </a>
                 </li>
                 <li>
-                  <span>БЕТАДИН МАЗЬ ДЛЯ НАРУЖНОГО ПРИМЕНЕНИЯ 10%</span>
+                  <span>{t('breadcrumb.current')}</span>
                 </li>
               </ol>
             </div>
@@ -25,11 +27,9 @@ function MazPage() {
             <div className="page-header">
               <div className="page-header-left page-header-left_product">
                 <div className="page-header-title page-header-title__product">
-                  <h1 className="page-header-product-title">
-                    Бетадин® мазь 10% для наружного применения
-                  </h1>
+                  <h1 className="page-header-product-title">{t('header.title')}</h1>
                   <Image
-                    src="/icon.png"
+                    src="/icon-230x224.webp"
                     alt="картинка у заголовка"
                     width={115}
                     height={112}
@@ -46,27 +46,17 @@ function MazPage() {
                       priority
                     />
                   </div>
-                  <a href="/betadin-maz-instruktsiya/" target="_blank" className="btn btn-green">
-                    Инструкция
-                  </a>
+                  <a href="/betadin-maz-instruktsiya/" target="_blank" className="btn btn-green">{t('header.instruction')}</a>
                 </div>
 
                 <div className="page-header-subtitle page-header-subtitle__product">
-                  <p>
-                    Бетадин<sup>®</sup> — универсальный антисептик широкого спектра действия
-                  </p>
+                  <p>{t('header.subtitle')}</p>
                 </div>
 
                 <ul>
-                  <li>
-                    <div className="text">Антисептическое и дезинфицирующее средство</div>
-                  </li>
-                  <li>
-                    <div className="text">Оказывает быстрое бактерицидное действие</div>
-                  </li>
-                  <li>
-                    <div className="text">Активна в отношении грибов, вирусов, простейших</div>
-                  </li>
+                  <li><div className="text">{t('header.list.0')}</div></li>
+                  <li><div className="text">{t('header.list.1')}</div></li>
+                  <li><div className="text">{t('header.list.2')}</div></li>
                 </ul>
 
                 {/* Properties Section */}
@@ -80,7 +70,7 @@ function MazPage() {
                         height={89}
                       />
                     </picture>
-                    <div className="text">Способствует заживлению ран, ссадин, ожогов и пролежней</div>
+                    <div className="text">{t('header.property.0')}</div>
                   </div>
 
                   <div className="page-header-property">
@@ -92,11 +82,7 @@ function MazPage() {
                         height={89}
                       />
                     </picture>
-                    <div className="text">
-                      Лечение
-                      <br />
-                      инфекционных дерматитов
-                    </div>
+                    <div className="text"><span dangerouslySetInnerHTML={{ __html: t.raw('header.property.1') }} /></div>
                   </div>
 
                   <div className="page-header-property">
@@ -108,7 +94,7 @@ function MazPage() {
                         height={89}
                       />
                     </picture>
-                    <div className="text">Терапия грибковых инфекций кожи</div>
+                    <div className="text">{t('header.property.2')}</div>
                   </div>
                 </div>
               </div>
@@ -123,9 +109,7 @@ function MazPage() {
                     priority
                   />
                 </div>
-                <a href="/betadin-maz-instruktsiya/" target="_blank" className="btn btn-green">
-                  Инструкция
-                </a>
+                <a href="/betadin-maz-instruktsiya/" target="_blank" className="btn btn-green">{t('header.instruction')}</a>
               </div>
             </div>
           </div>
@@ -134,7 +118,7 @@ function MazPage() {
         {/* Product Cards Section */}
         <div className="container-page-product">
           <div className="container page-content">
-            <h2 className="h2">Область применения:</h2>
+            <h2 className="h2">{t('usage.title')}</h2>
 
             <div className="product-cards">
               {/* Card 1 */}
@@ -148,16 +132,14 @@ function MazPage() {
                       height={106}
                     />
                   </picture>
-                  <div className="text">Обработка ссадин и ран</div>
-                  <div className="product-card-link-text">Подробнее</div>
+                  <div className="text">{t('usage.card.0')}</div>
+                  <div className="product-card-link-text">{t('usage.more')}</div>
                 </div>
                 <div className="product-card-back">
-                  <div className="product-card-title">Читайте подробнее:</div>
-                  <div className="text">Статьи раздела раны</div>
+                  <div className="product-card-title">{t('usage.readMore')}</div>
+                  <div className="text">{t('usage.section.wound')}</div>
                 </div>
-                <a href="/encyclopedia/#rany" target="_blank" className="product-card-link">
-                  Подробнее
-                </a>
+                <a href="/encyclopedia/#rany" target="_blank" className="product-card-link">{t('usage.more')}</a>
               </div>
 
               {/* Card 2 */}
@@ -171,16 +153,14 @@ function MazPage() {
                       height={106}
                     />
                   </picture>
-                  <div className="text">Лечение бактериальных инфекций кожи</div>
-                  <div className="product-card-link-text">Подробнее</div>
+                  <div className="text">{t('usage.card.1')}</div>
+                  <div className="product-card-link-text">{t('usage.more')}</div>
                 </div>
                 <div className="product-card-back">
-                  <div className="product-card-title">Читайте подробнее:</div>
-                  <div className="text">Статьи раздела инфекции</div>
+                  <div className="product-card-title">{t('usage.readMore')}</div>
+                  <div className="text">{t('usage.section.infection')}</div>
                 </div>
-                <a href="/encyclopedia/#infekcii" target="_blank" className="product-card-link">
-                  Подробнее
-                </a>
+                <a href="/encyclopedia/#infekcii" target="_blank" className="product-card-link">{t('usage.more')}</a>
               </div>
 
               {/* Card 3 */}
@@ -194,16 +174,14 @@ function MazPage() {
                       height={106}
                     />
                   </picture>
-                  <div className="text">Обработка трофических язв и пролежней</div>
-                  <div className="product-card-link-text">Подробнее</div>
+                  <div className="text">{t('usage.card.2')}</div>
+                  <div className="product-card-link-text">{t('usage.more')}</div>
                 </div>
                 <div className="product-card-back">
-                  <div className="product-card-title">Читайте подробнее:</div>
-                  <div className="text">Статьи раздела язвы</div>
+                  <div className="product-card-title">{t('usage.readMore')}</div>
+                  <div className="text">{t('usage.section.ulcer')}</div>
                 </div>
-                <a href="/encyclopedia/#yazvy" target="_blank" className="product-card-link">
-                  Подробнее
-                </a>
+                <a href="/encyclopedia/#yazvy" target="_blank" className="product-card-link">{t('usage.more')}</a>
               </div>
 
               {/* Card 4 */}
@@ -217,41 +195,31 @@ function MazPage() {
                       height={105}
                     />
                   </picture>
-                  <div className="text">Обработка ран при ожогах</div>
-                  <div className="product-card-link-text">Подробнее</div>
+                  <div className="text">{t('usage.card.3')}</div>
+                  <div className="product-card-link-text">{t('usage.more')}</div>
                 </div>
                 <div className="product-card-back">
-                  <div className="product-card-title">Читайте подробнее:</div>
-                  <div className="text">Статьи раздела ожоги</div>
+                  <div className="product-card-title">{t('usage.readMore')}</div>
+                  <div className="text">{t('usage.section.burn')}</div>
                 </div>
-                <a href="/encyclopedia/#ozhogi" target="_blank" className="product-card-link">
-                  Подробнее
-                </a>
+                <a href="/encyclopedia/#ozhogi" target="_blank" className="product-card-link">{t('usage.more')}</a>
               </div>
             </div>
 
             {/* Application Method Section */}
-            <h2 className="h2">Способ применения:</h2>
+            <h2 className="h2">{t('method.title')}</h2>
 
             <div className="product-primenenie product-primenenie-maz">
               <div className="product-premenenie-row product-premenenie-row__two-column">
                 <div className="product-premenenie-green product-premenenie-green-full-mobile">
                   <div className="title"></div>
-                  <div className="description">
-                    На пораженную поверхность мазь наносят тонким слоем 2‑3 раза в сутки.
-                  </div>
+                  <div className="description">{t('method.desc')}</div>
                 </div>
               </div>
 
-              <p className="p">
-                В месте применения образуется окрашенная пленка, сохраняющаяся до высвобождения
-                всего количества активного йода, что означает прекращение действия препарата.
-              </p>
+              <p className="p">{t('method.film')}</p>
 
-              <p className="p">
-                <strong>С осторожностью:</strong> беременность и период кормления грудью,
-                хроническая почечная недостаточность.
-              </p>
+              <p className="p"><strong>{t('method.cautionTitle')}</strong> {t('method.caution')}</p>
 
               <picture>
                 <Image
@@ -265,28 +233,22 @@ function MazPage() {
 
             {/* Composition Section */}
             <div className="product-sostav">
-              <h2 className="h2">Состав:</h2>
-              <h3 className="h3 green-strong">1 г мази содержится:</h3>
+              <h2 className="h2">{t('composition.title')}</h2>
+              <h3 className="h3 green-strong">{t('composition.subtitle')}</h3>
 
-              <p>
-                100 мг действующего вещества – <strong>повидона йода</strong> (что соответствует
-                10,25 мг активного йода), а также вспомогательные вещества: натрия гидрокарбонат,
-                макрогол 400, макрогол 4000, макрогол 1000, макрогол 1500, вода очищенная.
-              </p>
+              <p>{t('composition.text')}</p>
 
-              <p>
-                <strong>Макрогол, входящий в состав мази:</strong>
-              </p>
+              <p><strong>{t('composition.macrogolTitle')}</strong></p>
 
               <ul>
-                <li>Обладает раноочищающим действием</li>
-                <li>Помогает ускорить сроки заживления</li>
-                <li>Улучшает проникновение молекул повидон-йода в места локализации микробов</li>
+                <li>{t('composition.macrogolList.0')}</li>
+                <li>{t('composition.macrogolList.1')}</li>
+                <li>{t('composition.macrogolList.2')}</li>
               </ul>
             </div>
 
             {/* Other Products Section */}
-            <h2 className="h2">Продукты Бетадин</h2>
+            <h2 className="h2">{t('products.title')}</h2>
 
             <div className="product-another-products">
               <div className="slider-another-card">
@@ -299,10 +261,8 @@ function MazPage() {
                       width={277}
                       height={256}
                     />
-                    <div className="title">Раствор для местного и наружного применения</div>
-                    <a href="/betadin-rastvor/" target="_blank" className="btn btn-green">
-                      Подробнее
-                    </a>
+                    <div className="title">{t('products.solution')}</div>
+                    <a href="/betadin-rastvor/" target="_blank" className="btn btn-green">{t('usage.more')}</a>
                   </div>
 
                   {/* Product 2 - Свечи */}
@@ -313,10 +273,8 @@ function MazPage() {
                       width={277}
                       height={256}
                     />
-                    <div className="title">Вагинальные свечи</div>
-                    <a href="/svechi/" target="_blank" className="btn btn-green">
-                      Подробнее
-                    </a>
+                    <div className="title">{t('products.suppositories')}</div>
+                    <a href="/svechi/" target="_blank" className="btn btn-green">{t('usage.more')}</a>
                   </div>
 
                   {/* Product 3 - Мазь (Current) */}
@@ -327,18 +285,15 @@ function MazPage() {
                       width={277}
                       height={256}
                     />
-                    <div className="title">Мазь для наружного применения</div>
-                    <p className="p">Вы находитесь на странице данного препарата</p>
+                    <div className="title">{t('products.ointment')}</div>
+                    <p className="p">{t('products.current')}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Related Articles Section */}
-            <div className="h2 h2-read-more" id="chitat-po-teme">
-              Полезные статьи про лечение ран, порезов и других заболеваний, при которых помогает
-              Бетадин®
-            </div>
+            <div className="h2 h2-read-more" id="chitat-po-teme">{t('readMore')}</div>
 
             <div className="slider-normal">
               <div className="swiper-wrapper">
@@ -346,23 +301,16 @@ function MazPage() {
                 <div className="swiper-slide" style={{ marginRight: '29px', transition: '0.3s all ease' }}>
                   <div className="slide-image">
                     <Image
-                      src="/obrabotka-ran-prevyu-491x332.webp"
+                      src="/obrabotka-ran-prevyu-246x166.webp"
                       alt="Обработка ран - превью"
                       width={246}
                       height={166}
                     />
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title">
-                      <strong>Обработка ран</strong>
-                    </p>
-                    <p>
-                      Как правильно обрабатывать раны, чтобы избежать осложнений на поврежденных
-                      участках кожи.
-                    </p>
-                    <p className="slide-more">
-                      <a href="/encyclopedia/obrabotka-ran/">Подробнее</a>
-                    </p>
+                    <p className="slide-title"><strong>{t('articles.0.title')}</strong></p>
+                    <p>{t('articles.0.text')}</p>
+                    <p className="slide-more"><a href="/encyclopedia/obrabotka-ran/">{t('usage.more')}</a></p>
                   </div>
                 </div>
 
@@ -377,16 +325,9 @@ function MazPage() {
                     />
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title">
-                      <strong>Порезы</strong>
-                    </p>
-                    <p>
-                      Порез — бытовое название небольшой резаной раны. Как и чем обрабатывают такие
-                      повреждения?
-                    </p>
-                    <p className="slide-more">
-                      <a href="/encyclopedia/porezy/">Подробнее</a>
-                    </p>
+                    <p className="slide-title"><strong>{t('articles.1.title')}</strong></p>
+                    <p>{t('articles.1.text')}</p>
+                    <p className="slide-more"><a href="/encyclopedia/porezy/">{t('usage.more')}</a></p>
                   </div>
                 </div>
 
@@ -394,22 +335,16 @@ function MazPage() {
                 <div className="swiper-slide" style={{ marginRight: '29px', transition: '0.3s all ease' }}>
                   <div className="slide-image">
                     <Image
-                      src="/jod-prevyu-491x332.webp"
+                      src="/jod-prevyu-246x166 (1).webp"
                       alt="Йод-превью"
                       width={246}
                       height={166}
                     />
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title">
-                      <strong>Йод</strong>
-                    </p>
-                    <p>
-                      Сферы использования йода. Отличия повидон-йода от спиртового раствора йода.
-                    </p>
-                    <p className="slide-more">
-                      <a href="/encyclopedia/jod/">Подробнее</a>
-                    </p>
+                    <p className="slide-title"><strong>{t('articles.2.title')}</strong></p>
+                    <p>{t('articles.2.text')}</p>
+                    <p className="slide-more"><a href="/encyclopedia/jod/">{t('usage.more')}</a></p>
                   </div>
                 </div>
 
@@ -417,51 +352,30 @@ function MazPage() {
                 <div className="swiper-slide" style={{ marginRight: '29px', transition: '0.3s all ease' }}>
                   <div className="slide-image">
                     <Image
-                      src="/rany-s-infekcziej-prevyu-491x332.webp"
+                      src="/rany-s-infekcziej-prevyu-246x166 (1).webp"
                       alt="Раны с инфекцией-превью"
                       width={246}
                       height={166}
                     />
                   </div>
                   <div className="slide-body">
-                    <p className="slide-title">
-                      <strong>Раны с инфекцией</strong>
-                    </p>
-                    <p>
-                      Далеко не все ссадины и порезы заживают быстро и без осложнений. Как лечить
-                      инфицированные раны?
-                    </p>
-                    <p className="slide-more">
-                      <a href="/encyclopedia/rany-s-infekciej/">Подробнее</a>
-                    </p>
+                    <p className="slide-title"><strong>{t('articles.3.title')}</strong></p>
+                    <p>{t('articles.3.text')}</p>
+                    <p className="slide-more"><a href="/encyclopedia/rany-s-infekciej/">{t('usage.more')}</a></p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <a className="btn btn-green btn-green-all" href="/encyclopedia/">
-              Все статьи
-            </a>
+            <a className="btn btn-green btn-green-all" href="/encyclopedia/">{t('articlesAll')}</a>
 
             {/* Literature Section */}
-            <h2 className="h2">Список литературы</h2>
+            <h2 className="h2">{t('literature.title')}</h2>
             <ol className="literature">
-              <li id="literature-0">
-                Блатун Л.А. Возможности современных мазей в лечении гнойных ран, пролежней,
-                трофических язв, 2010
-              </li>
-              <li id="literature-1">
-                Бетадин<sup>®</sup> раствор. Инструкции по медицинскому применению (РН:
-                ЛП-№(002589)-(РГ-RU)).
-              </li>
-              <li id="literature-2">
-                Бетадин<sup>®</sup> мазь. Инструкции по медицинскому применению (РН:
-                ЛП-№(002552)-(РГ-RU)).
-              </li>
-              <li id="literature-3">
-                Бетадин<sup>®</sup> суппозитории. Инструкции по медицинскому применению (РН:
-                ЛП-№(002550)-(РГ-RU)).
-              </li>
+              <li id="literature-0">{t('literature.0')}</li>
+              <li id="literature-1">{t('literature.1')}</li>
+              <li id="literature-2">{t('literature.2')}</li>
+              <li id="literature-3">{t('literature.3')}</li>
             </ol>
           </div>
         </div>

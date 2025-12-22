@@ -1,4 +1,518 @@
 {
+  "SvechiInstruktsiyaPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "title": "Betadin şamlar: istifadə təlimatı"
+    },
+    "header": {
+      "title": "Betadin® şamlar: istifadə təlimatı",
+      "imgAlt": "başlıq yanında şəkil",
+      "info": "<strong>Qeydiyyat nömrəsi:</strong> LP-№(002589)-(RG-RU)<br /><strong>Ticarət adı:</strong> BETADIN<sup>®</sup><br /><strong>Beynəlxalq adı:</strong> povidon-yod<br /><strong>Dərman forması:</strong> vaginal şamlar",
+      "download": "Təlimatı yüklə",
+      "anchors": {
+        "indications": "Göstərişlər",
+        "contraindications": "Əks göstərişlər",
+        "dosage": "Dozaj"
+      }
+    },
+    "nav": {
+        "contentList": "<li><a href=\"#obshchaya-informaciya\">Ümumi məlumat</a></li><li><a href=\"#farmakologicheskie-svojstva\">Farmakoloji xüsusiyyətləri</a></li><li><a href=\"#pokazaniya-k-primeneniyu\">İstifadə göstərişləri</a></li><li><a href=\"#protivopokazaniya\">Əks göstərişlər</a></li><li><a href=\"#beremennost-i-laktatsiya\">Hamiləlik və laktasiya dövründə istifadə</a></li><li><a href=\"#rezhim-dozirovaniya-i-sposob-primeneniya\">İstifadə qaydası və dozası</a></li><li><a href=\"#pobochnye-effekty\">Yan təsirlər</a></li><li><a href=\"#peredozirovka\">Doza həddinin aşılması</a></li><li><a href=\"#vzaimodeystvie-s-drugimi-lekarstvennymi-sredstvami\">Digər dərmanlarla qarşılıqlı təsiri</a></li><li><a href=\"#osobye-ukazaniya\">Xüsusi göstərişlər</a></li><li><a href=\"#vozdeystvie-na-vedenie-transportnyh-sredstv-i-rabotu-s-povyshennoj-vnimatelnostyu-i-psihomotornymi-reakciyami\">Nəqliyyat vasitələrinin idarə olunmasına təsiri</a></li><li><a href=\"#forma-vypuska\">Buraxılış forması</a></li><li><a href=\"#srok-godnosti\">Yararlılıq müddəti</a></li><li><a href=\"#usloviya-hraneniya\">Saxlama şəraiti</a></li><li><a href=\"#usloviya-otpuska\">Buraxılış şərtləri</a></li><li><a href=\"#informaciya-o-proizvoditele\">İstehsalçı haqqında məlumat</a></li>",
+        "contentTitle": "Mündəricat"
+    },
+    "disclaimer": "Məqalədəki məlumat həkim məsləhətini əvəz etmir",
+    "sections": {
+      "generalInfo": {
+        "title": "Ümumi məlumat",
+        "bannerAlt": "Bəzək elementləri",
+        "content": "<p><strong>Tərkibi:</strong> təsiredici maddə: hər vaginal şamda 200 mq povidon-yod (18–24 mq aktiv yoda uyğundur). Köməkçi maddə: makroqal 1000 2800 mq.</p><p><strong>Təsviri:</strong> Tünd qəhvəyi rəngli, torpedo formalı homogen şamlar.</p><p><strong>Farmakoterapevtik qrupu:</strong> Antiseptik vasitə</p><p><strong>ATX kodu:</strong> G01AX11</p>"
+      },
+      "pharmacology": {
+        "title": "Farmakoloji xüsusiyyətləri",
+        "content": "<h3 class=\"h3\">Farmakodinamika:</h3><p>Povidon-yod — yod və polivinilpirrolidon polimerinin kompleksidir, tətbiqdən sonra müəyyən müddət ərzində yodu sərbəst buraxır. Elementar yod (I2) güclü antimikrob təsirə malikdir. In vitro sınaqlarda bakteriya, virus, göbələk və bəzi protozoaları tez məhv edir. Təsir mexanizmi: sərbəst yod sürətli antimikrob təsir göstərir, polimer isə yod üçün depo rolunu oynayır. Dəri və ya selikli qişa ilə təmasda polimerdən getdikcə artan miqdarda yod ayrılır. Yod mikroorqanizmlərin ferment və struktur zülallarında olan oksidləşən -SH və –OH qrupları ilə reaksiya verir, bu zülalları inaktivləşdirir və ya məhv edir, nəticədə mikroorqanizmlər ölür.</p><p>Əksər mikroorqanizmlər in vitro təsirdə 1 dəqiqədən az müddətdə məhv olur, əsas təsir ilk 15–30 saniyədə baş verir və bu zaman yod rəngsizləşir. Buna görə də qəhvəyi rəngin intensivliyi effektivliyin göstəricisidir. Preparata davamlılıq məlum deyil.</p><p>Antimikrob spektri: Betadin vaginal şamlarının təsiredici maddəsi geniş spektrli mikroorqanizmlərə — qram-müsbət və qram-mənfi bakteriyalara (bakterisid təsir), viruslara (virusid təsir), göbələklərə (fungisid təsir), bəzi protozoalara (protozoasid təsir) və sporlara (sporosit təsir) qarşı effektivdir və onları məhv edir.</p><h3 class=\"h3\">Farmakokinetika:</h3><p><strong>Udulma</strong><br/>Sistemli sorulma barədə məlumat yoxdur.</p><p><strong>Çıxarılma</strong></p><p>Əsasən böyrəklərlə.</p><p><strong>Povidon</strong></p><p>Povidonun sorulması və böyrəklərlə çıxarılması onun molekulyar çəkisindən asılıdır.</p><p>Molekulyar çəkisi 35000–50000 aralığında olduğuna görə, orqanizmdə gec çıxarılması mümkündür.</p>"
+      },
+      "indications": {
+        "title": "İstifadə göstərişləri",
+        "content": "<ul class=\"wp-block-list\"><li>Kəskin və ya xroniki vaginit (qarışıq qeyri-spesifik infeksiyalar);</li><li>bakterial vaginoz (Gardnerella vaginalis tərəfindən törədilmiş);</li><li>kandidoz;</li><li>Trichomonas vaginalis infeksiyası;</li><li>antibiotik və ya steroid preparatlarla müalicədən sonra vaginal infeksiyalar;</li><li>cərrahi və ya diaqnostik müdaxilələrdən əvvəl profilaktika.</li></ul>"
+      },
+      "contraindications": {
+        "title": "Əks göstərişlər",
+        "content": "<ul><li>Povidon-yoda və preparatın digər komponentlərinə yüksək həssaslıq;</li><li>qalxanabənzər vəzinin funksiyasının pozulması (hipertireoz) (\"Xüsusi göstərişlər\" bölməsinə bax);</li><li>qalxanabənzər vəzinin digər kəskin xəstəlikləri;</li><li>Herpetiform Dürinq dermatiti;</li><li>qalxanabənzər vəzinin xərçəngi üçün radioaktiv yodla müalicə və ya sintiqrafiya zamanı və ya əvvəl;</li><li>hamiləlik və laktasiya dövrü;</li><li>yeniyetmə yaşına çatmamış qızlarda Betadin vaginal şamlarının istifadəsi qadağandır.</li></ul>"
+      },
+      "pregnancy": {
+        "title": "Hamiləlik və laktasiya dövründə istifadə",
+        "content": "<p>Hamiləlik və laktasiya dövründə povidon-yodun istifadəsi qadağandır, çünki sorulan yod plasentadan keçir və ana südünə ifraz olunur. Bundan əlavə, döl və yenidoğulmuşlar yoda qarşı yüksək həssaslığa malikdir. Ana südündə yodun konsentrasiyası qanda olduğundan yüksəkdir. Yodun istifadəsi döl və ya yenidoğulmuşda yüksək TSH ilə hipotiroidizmə səbəb ola bilər. Uşaqda qalxanabənzər vəzinin funksiyasına nəzarət lazım ola bilər. Uşaqlarda preparatın təsadüfən ağıza düşməsinin və ya udulmasının qarşısı alınmalıdır.</p><p><strong>Fertillik</strong></p><p>Vaginal şamlar spermatozoidləri məhv edə bilər, buna görə də hamiləlik planlaşdıran qadınlarda istifadəsi tövsiyə edilmir.</p>"
+      },
+      "dosage": {
+        "title": "İstifadə qaydası və dozası",
+        "content": "<p><strong>Vaginaya daxil edilir (intravaginal).</strong></p><p>Təsiredici maddənin maksimum sərbəst buraxılması və yerli qıcıqlanmanın qarşısını almaq üçün şamı su ilə isladıb axşam yatmazdan əvvəl dərin vaginaya daxil etmək tövsiyə olunur. Menstruasiya zamanı istifadə davam etdirilməlidir, kursu dayandırmaq lazım deyil.</p><p>Kəskin vaginitdə — gündə 1 dəfə, 7 gün ərzində dərin vaginaya 1 şam daxil edilir; daha ağır hallarda və ya effekt yetərsizdirsə, müalicə əlavə 7 gün gündə 1 dəfə davam etdirilə bilər. Uzunmüddətli davamlı infeksiyalarda müalicə daha uzun ola bilər və şamlar gündə 2 dəfə istifadə oluna bilər.</p><p>Cərrahi müdaxilələrdən əvvəl infeksion ağırlaşmaların profilaktikası üçün preparat vaginaya gündə 2 dəfə (səhər və axşam) 1–7 gün ərzində daxil edilir.</p><p>Müalicədən sonra yaxşılaşma olmazsa, simptomlar pisləşərsə və ya yeni simptomlar yaranarsa, həkimə müraciət edin. Preparatı yalnız təlimatda göstərilən göstərişlər, istifadə qaydası və dozada istifadə edin.</p>",
+        "instructions": "<div class=\"two-column\" style=\"\"><div class=\"column\"> <p><strong>Şəkil 1</strong></p><p>V-şəkilli perforasiya xətti üzrə bir şamı lentdən ayırın.</p></div><div class=\"column\"> <p><strong>Şəkil 2</strong></p><p>Blisterdən şamı çıxarın: folqanın hər iki ucunu əks istiqamətlərə dartın.</p></div></div>"
+      },
+      "sideEffects": {
+        "title": "Yan təsirlər",
+        "content": "<p>Qaşınma, tətbiq yerində qızartı, allergik reaksiyalar.</p><p>Təlimatda göstərilən və ya digər yan təsirlər yaranarsa və ya pisləşərsə, həkimə məlumat verin.</p>"
+      },
+      "overdose": {
+        "title": "Doza həddinin aşılması",
+        "content": "<p>Təlimata uyğun istifadə zamanı doza həddinin aşılması ehtimalı azdır. Həddindən artıq istifadə zamanı yod intoksikasiyası mümkündür: ağızda metal dadı, tüpürcəyin artması, ağız və boğazda yanma və ya ağrı, gözlərin qıcıqlanması və ya şişməsi, dəri reaksiyaları, mədə-bağırsaq pozğunluqları və ishal, böyrək funksiyasının pozulması və anuriya, qan dövranı çatışmazlığı, qırtlaq ödemi və ikincili asfiksiya, ağciyər ödemi, metabolik asidoz, hipernatremiya.</p><p>Müalicə: simptomatik və dəstəkləyici terapiya, elektrolit balansı, böyrək və qalxanabənzər vəzinin funksiyasına nəzarət.</p>"
+      },
+      "interactions": {
+        "title": "Digər dərmanlarla qarşılıqlı təsiri",
+        "content": "<p>Povidon-yod kompleksi pH 2–7 aralığında effektivdir. Kompleksin zülallar və digər doymamış üzvi maddələrlə qarşılıqlı təsiri effektivliyi azaldır.</p><p>Preparatı oksidləşdiricilər, qələvilər və katyon səthi aktiv maddələr daxil olmaqla digər dezinfeksiyaedici və antiseptik vasitələrlə birlikdə istifadə etməyin. Yuxarıda göstərilən və ya digər dərmanları (o cümlədən reseptsiz) istifadə edirsinizsə, <strong>Betadin<sup>®</sup></strong> preparatını istifadə etməzdən əvvəl həkimlə məsləhətləşin.<br/>Povidon-yodun oksidləşdirici təsiri bəzi diaqnostik testlərin (məsələn, nəcis və ya sidikdə hemoglobinin və ya sidikdə qlükozanın təyini) yalan-müsbət nəticələrinə səbəb ola bilər.</p>"
+      },
+      "special": {
+        "title": "Xüsusi göstərişlər",
+        "content": "<ul><li>Uzunmüddətli istifadə zamanı dəri qıcıqlanması, kontakt dermatit və ya yüksək həssaslıq yarana bilər. Yerli qıcıqlanma və yüksək həssaslıq əlamətləri yaranarsa, istifadəyə son verin.</li><li>Preparatı istifadə etməzdən əvvəl qızdırmayın.</li><li>Qalxanabənzər vəzinin xəstəlikləri (zob, düyünlü zob və digər qeyri-kəskin xəstəliklər) olan pasiyentlərdə yodun yüksək dozası hipertireoza səbəb ola bilər. Belə pasiyentlərdə Betadin vaginal şamlarının istifadəsi vaxtla məhdudlaşdırılmalıdır. Müalicədən sonra hipertireoz əlamətləri yaranarsa, qalxanabənzər vəzinin funksiyasına nəzarət tövsiyə olunur.</li><li>Preparatı sintiqrafiyadan əvvəl və sonra, həmçinin qalxanabənzər vəzinin xərçəngi üçün radioaktiv yodla müalicə zamanı istifadə etmək olmaz (\"Əks göstərişlər\" bölməsinə bax).</li><li>Böyrək funksiyası pozulmuş pasiyentlərdə müntəzəm istifadə zamanı ehtiyatlı olmaq lazımdır.</li><li>Liti tərkibli preparatlarla müalicə olunan pasiyentlərdə Betadin® vaginal şamlarının müntəzəm istifadəsindən çəkinmək lazımdır.</li><li>Bakirə qızlarda vaginal şamların istifadəsi zamanı ehtiyatlı olmaq tövsiyə olunur.</li><li>Şamlar spermatozoidləri məhv edə bilər, buna görə də hamiləlik planlaşdıran qadınlarda istifadəsi tövsiyə edilmir.</li><li>Müalicə müddətində gigiyenik salfetlərdən istifadə tövsiyə olunur.</li><li>Dəridə və toxumalarda olan rəng asanlıqla su ilə yuyulur. Tətbiqdən sonra preparatın gözə düşməsindən çəkinin.</li><li><strong>Uşaqlar və yeniyetmələr</strong><br/>Yeniyetmə yaşına çatmamış qızlarda <strong>Betadin<sup>®</sup></strong> vaginal şamlarının istifadəsi qadağandır.</li></ul>"
+      },
+      "driving": {
+        "title": "Nəqliyyat vasitələrinin idarə olunmasına təsiri",
+        "content": "<p>Preparat nəqliyyat vasitələrinin idarə olunmasına və ya yüksək diqqət və psixomotor reaksiya tələb edən digər işlərə təsir etmir.</p>"
+      },
+      "release": {
+        "title": "Buraxılış forması",
+        "content": "<p>Vaginal şamlar 200 mq.</p><p>Hər blisterdə 7 vaginal şam (PVX/PE plyonka).</p><p>1 və ya 2 blister karton qutuda, istifadə təlimatı ilə birlikdə qablaşdırılır.</p>"
+      },
+      "expiry": {
+        "title": "Yararlılıq müddəti",
+        "content": "<p><strong>5 il.</strong></p><p>Son istifadə müddəti bitdikdən sonra istifadə etməyin.</p>"
+      },
+      "storage": {
+        "title": "Saxlama şəraiti",
+        "content": "<p><strong>5–15°C temperaturda saxlayın.</strong></p><p>Uşaqların əli çatmayan yerdə saxlayın.</p>"
+      },
+      "dispensing": {
+        "title": "Buraxılış şərtləri",
+        "content": "<p>Reçiptsiz buraxılır.</p>"
+      },
+      "manufacturer": {
+        "title": "İstehsalçı haqqında məlumat",
+        "content": "<h3 class=\"h3\">Qeydiyyat şəhadətnaməsinin sahibi</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>1106 Budapeşt, Kereşturi küç., 30-38, MACARISTAN</p><p><strong>Telefon:</strong> (36-1)803-5555,</p><p><strong>Faks:</strong> (36-1)803-5529</p><h3 class=\"h3\">İstehsalçı</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>9900, Kermend, Matyaş Kiray küç., 65, Macarıstan (istehsalın bütün mərhələləri)</p><p>MUNDIPHARMA AG, BASEL, İSVİÇRƏ lisenziyası ilə</p><h3 class=\"h3\">İstehlakçıların müraciətləri üçün ünvan:</h3><p>MMC <strong>\"Egis-Rus\"</strong>, Rusiya</p><p>121552, Moskva, Yartsevskaya küç., 19, blok B, mərtəbə 13, telefon: (495) 363-39-66</p>"
+      }
+    }
+  },
+  "MazInstruktsiyaPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "current": "Betadin mazı: istifadə təlimatı"
+    },
+    "header": {
+      "title": "Betadin<sup>®</sup> mazı: istifadə təlimatı",
+      "imgAlt": "başlıq üçün şəkil",
+      "info": "<strong>Qeydiyyat nömrəsi:</strong> LP-№(002552)-(RG-RU)<br /><strong>Ticarət adı:</strong> BETADIN<sup>®</sup><br /><strong>Beynəlxalq adı:</strong> povidon-yod<br /><strong>Dərman forması:</strong> xarici istifadə üçün 10% maz",
+      "download": "Təlimatı yüklə",
+      "anchors": {
+        "pokazaniya": "Göstərişlər",
+        "protivopokazaniya": "Əks göstərişlər",
+        "doz": "Dozaj"
+      }
+    },
+    "nav": {
+        "contentList": "<li><a href=\"#obshchaya-informaciya\">Ümumi məlumat</a></li><li><a href=\"#farmakologicheskoe-deystvie\">Farmakoloji təsiri</a></li><li><a href=\"#pokazaniya\">Göstərişlər</a></li><li><a href=\"#protivopokazaniya\">Əks göstərişlər</a></li><li><a href=\"#rezhim-dozirovaniya-i-sposob-primeneniya\">Dozaj rejimi və istifadə qaydası</a></li><li><a href=\"#pobochnye-effekty\">Yan təsirlər</a></li><li><a href=\"#vzaimodeystvie\">Əlaqə</a></li><li><a href=\"#osobye-ukazaniya\">Xüsusi göstərişlər</a></li><li><a href=\"#forma-vypuska\">Buraxılış forması</a></li><li><a href=\"#srok-godnosti\">Yararlılıq müddəti</a></li><li><a href=\"#usloviya-hraneniya\">Saxlama şəraiti</a></li><li><a href=\"#usloviya-otpuska\">Buraxılış şərtləri</a></li><li><a href=\"#informaciya-o-proizvoditele\">İstehsalçı haqqında məlumat</a></li>",
+        "contentTitle": "Mündəricat"
+    },
+    "disclaimer": "Məqalədəki məlumatlar həkim məsləhətini əvəz etmir",
+    "info": {
+      "title": "Ümumi məlumat",
+      "composition": "<strong>Tərkibi:</strong> 1 q mazda 100 mq təsiredici maddə – povidon-yod (10,25 mq aktiv yoda uyğundur), köməkçi maddələr: natrium hidrokarbonat, makroqal 400, makroqal 4000, makroqal 1000, makroqal 1500, təmizlənmiş su.",
+      "description": "<strong>Təsviri:</strong> Qəhvəyi rəngli, zəif yod qoxulu homogen maz.",
+      "group": "<strong>Farmakoterapevtik qrupu:</strong> Antiseptik vasitə",
+      "atx": "<strong>ATX kodu:</strong> D08AG02"
+    },
+    "pharm": {
+      "title": "Farmakoloji təsiri",
+      "desc": "Antiseptik və dezinfeksiyaedici vasitədir. Povidon-iyod kompleksi dəri və selikli qişalarla təmasda olduqda, yod bakteriya hüceyrələrinin zülalları ilə yodaminlər əmələ gətirir, onları koaqulyasiya edir və mikroorqanizmlərin məhvinə səbəb olur. Qram-müsbət və qram-mənfi bakteriyalara (M.tuberculosis istisna olmaqla) qarşı sürətli bakterisid təsir göstərir. Göbələklərə, viruslara və protozoalara qarşı effektivdir.",
+      "kineticsTitle": "Farmakokinetika:",
+      "kinetics": "Yerli tətbiq zamanı yodun reabsorbsiyası demək olar ki, baş vermir."
+    },
+    "indications": {
+      "title": "Göstərişlər",
+      "list": "<ul><li>Səpkilər</li><li>Yaralar</li><li>Dərinin bakterial və göbələk infeksiyaları</li><li>Yanıqlar</li><li>Trofik xoralar</li><li>Yataq yaraları</li><li>İnfeksion dermatitlər</li></ul>"
+    },
+    "contra": {
+      "title": "Əks göstərişlər",
+      "list": "<ul><li>Yoda və preparatın digər komponentlərinə yüksək həssaslıq.</li><li>Qalxanabənzər vəzinin funksiyasının pozulması (hipertireoz) (\"Xüsusi göstərişlər\" bölməsinə bax).</li><li>Qalxanabənzər vəzinin adenoması.</li><li>Herpetiform Dürinq dermatiti.</li><li>Eyni zamanda radioaktiv yodun istifadəsi.</li><li>Vaxtından əvvəl doğulmuş və yenidoğulmuş uşaqlar.</li></ul>",
+      "caution": "<p><strong>Ehtiyatla:</strong></p><p>Hamiləlik və laktasiya dövrü, xroniki böyrək çatışmazlığı.</p><p><strong>Betadinin 3-cü aydan etibarən hamiləlik və laktasiya dövründə istifadəsi tövsiyə edilmir.</strong></p><p>Bu hallarda müalicə yalnız fərdi tibbi nəzarət altında mümkündür.</p>"
+    },
+    "dosage": {
+      "title": "Dozaj rejimi və istifadə qaydası",
+      "desc": "Xaricdən, zədələnmiş nahiyəyə mazı nazik təbəqə şəklində gündə 2-3 dəfə çəkin, oklüziv sarğı altında istifadə oluna bilər."
+    },
+    "side": {
+      "title": "Yan təsirlər",
+      "desc": "<p>Geniş yara səthində və selikli qişalarda tez-tez istifadə zamanı yodun sistemli reabsorbsiyası baş verə bilər ki, bu da qalxanabənzər vəzinin funksional testlərinə təsir edə bilər.</p><p>Preparata qarşı yüksək həssaslıq reaksiyaları, allergik reaksiya (hiperemiya, yanma, qaşınma, ödem, ağrı) mümkündür, bu halda preparatın istifadəsi dayandırılmalıdır.</p>"
+    },
+    "interaction": {
+      "title": "Əlaqə",
+      "desc": "<p>Digər dezinfeksiyaedici və antiseptik vasitələrlə, xüsusilə qələvi, ferment və civə tərkibli olanlarla uyğun deyil.</p><p>Qan olduqda bakterisid təsir azalır, lakin preparatın konsentrasiyası artırıldıqda bakterisid aktivlik arta bilər.</p>"
+    },
+    "special": {
+      "title": "Xüsusi göstərişlər",
+      "list": "<ul><li>Qalxanabənzər vəzinin funksiyasının pozulması zamanı preparat yalnız həkim nəzarəti altında istifadə olunmalıdır.</li><li>Yenidoğulmuşlarda preparat yalnız zərurət olduqda, qalxanabənzər vəzinin funksiyası yoxlandıqdan sonra istifadə oluna bilər.</li><li>Xroniki böyrək çatışmazlığı olan xəstələrdə zədələnmiş dəriyə müntəzəm tətbiq zamanı ehtiyatlı olmaq lazımdır.</li><li>İstifadə yerində rəngli plyonka əmələ gəlir, bu plyonka bütün aktiv yod sərf olunana qədər qalır və preparatın təsirinin bitdiyini göstərir.</li><li>Dəridə və toxumalarda olan rəng asanlıqla su ilə yuyulur.</li><li>Həşərat, ev və vəhşi heyvan dişləmələrində istifadə etməyin.</li><li>Preparatın gözə düşməsindən çəkinin.</li></ul>"
+    },
+    "release": {
+      "title": "Buraxılış forması",
+      "desc": "20 q maz alüminium litoqrafiyalı tuba, ağ polietilen qapaqlı. 1 tuba və istifadə təlimatı karton qutuda qablaşdırılır."
+    },
+    "expiry": {
+      "title": "Yararlılıq müddəti",
+      "desc": "<p><strong>3 il.</strong></p><p>İlk açıldıqdan sonra 2 ildən çox saxlamayın.</p><p>Qablaşdırmada göstərilən son istifadə tarixindən sonra istifadə etməyin.</p>"
+    },
+    "storage": {
+      "title": "Saxlama şəraiti",
+      "desc": "15-25°C temperaturda, uşaqların əli çatmayan yerdə saxlayın."
+    },
+    "releasecond": {
+      "title": "Buraxılış şərtləri",
+      "desc": "Reçiptsiz."
+    },
+    "manufacturer": {
+      "title": "İstehsalçı haqqında məlumat",
+      "info": "<h3 class=\"h3\">Qeydiyyat şəhadətnaməsinin sahibi</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>1106 Budapeşt, Kereşturi küç., 30-38, MACARISTAN</p><p><strong>Telefon:</strong> (36-1)803-5555,</p><p><strong>Faks:</strong> (36-1)803-5529</p><h3 class=\"h3\">İstehsalçı</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>9900, Kermend, Matyaş Kiray küç., 65, Macarıstan (istehsalın bütün mərhələləri)</p><p>MUNDIPHARMA AG, BASEL, İSVİÇRƏ lisenziyası ilə</p><h3 class=\"h3\">İstehlakçıların müraciətləri üçün ünvan:</h3><p>MMC <strong>\"Egis-Rus\"</strong>, Rusiya</p><p>121552, Moskva, Yartsevskaya küç., 19, blok B, mərtəbə 13, telefon: (495) 363-39-66</p>"
+    }
+  },
+  "RastvorInstruktsiyaPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "current": "Betadin məhlulu: istifadə təlimatı"
+    },
+    "header": {
+      "title": "Betadin<sup>®</sup> məhlulu: istifadə təlimatı",
+      "imgAlt": "başlıq üçün şəkil",
+      "info": "<strong>Qeydiyyat nömrəsi:</strong>&nbsp;LP-№(002550)-(RG-RU)<br /><strong>Ticarət adı:</strong>&nbsp;BETADIN<sup>®</sup><br /><strong>Beynəlxalq adı:</strong>&nbsp;povidon-yod<br /><strong>Dərman forması:</strong>&nbsp;yerli və xarici istifadə üçün 10% məhlul",
+      "download": "Təlimatı yüklə",
+      "anchors": {
+        "pokazaniya": "Göstərişlər",
+        "protivopokazaniya": "Əks göstərişlər",
+        "doz": "Dozaj"
+      }
+    },
+    "nav": {
+        "contentList": "<li><a href=\"#obshchaya-informaciya\">Ümumi məlumat</a></li><li><a href=\"#farmakologicheskoe-deystvie\">Farmakoloji təsiri</a></li><li><a href=\"#pokazaniya\">Göstərişlər</a></li><li><a href=\"#protivopokazaniya\">Əks göstərişlər</a></li><li><a href=\"#rezhim-dozirovaniya-i-sposob-primeneniya\">Dozaj rejimi və istifadə qaydası</a></li><li><a href=\"#pobochnye-effekty\">Yan təsirlər</a></li><li><a href=\"#vzaimodeystvie\">Əlaqə</a></li><li><a href=\"#osobye-ukazaniya\">Xüsusi göstərişlər</a></li><li><a href=\"#forma-vypuska\">Buraxılış forması</a></li><li><a href=\"#srok-godnosti\">Yararlılıq müddəti</a></li><li><a href=\"#usloviya-hraneniya\">Saxlama şəraiti</a></li><li><a href=\"#usloviya-otpuska\">Buraxılış şərtləri</a></li><li><a href=\"#informaciya-o-proizvoditele\">İstehsalçı haqqında məlumat</a></li>",
+        "contentTitle": "Mündəricat"
+    },
+    "disclaimer": "Məqalədəki məlumatlar həkim məsləhətini əvəz etmir",
+    "info": {
+      "title": "Ümumi məlumat",
+      "composition": "<strong>Tərkibi:</strong>&nbsp;1 ml məhlulda 100 mq povidon-yod (10 mq aktiv yoda uyğundur), köməkçi maddələr: qliserol, nonoksinol 9, limon turşusu, natrium hidrofosfat, natrium hidroksid, təmizlənmiş su.",
+      "description": "<strong>Təsviri:</strong>&nbsp;qəhvəyi rəngli, yod qoxulu məhlul.",
+      "group": "<strong>Farmakoterapevtik qrupu:</strong>&nbsp;Antiseptik vasitə.",
+      "atx": "<strong>ATX kodu:</strong>&nbsp;D08AG02"
+    },
+    "pharm": {
+      "title": "Farmakoloji təsiri",
+      "desc": "Antiseptik və dezinfeksiyaedici vasitədir. Povidon-iyod kompleksi dəri və selikli qişalarla təmasda olduqda, yod bakteriya hüceyrələrinin zülalları ilə yodaminlər əmələ gətirir, onları koaqulyasiya edir və mikroorqanizmlərin məhvinə səbəb olur. Qram-müsbət və qram-mənfi bakteriyalara (M.tuberculosis istisna olmaqla) qarşı sürətli bakterisid təsir göstərir. Göbələklərə, viruslara və protozoalara qarşı effektivdir.",
+      "kineticsTitle": "Farmakokinetika:",
+      "kinetics": "Yerli tətbiq zamanı yodun reabsorbsiyası demək olar ki, baş vermir."
+    },
+    "indications": {
+      "title": "Göstərişlər",
+      "list": "<ul><li>Cərrahiyyə, travmatologiya, yanıq və stomatologiyada yara infeksiyalarının müalicəsi və profilaktikası.</li><li>Dərinin bakterial, göbələk və virus infeksiyalarının müalicəsi, dermatologiyada superinfeksiyanın profilaktikası.</li><li>Yataq yaralarının, trofik xoraların, diabetik ayağın işlənməsi.</li><li>Cərrahi əməliyyatlara, invaziv tədqiqatlara (punksiya, biopsiya, inyeksiya və s.) hazırlıq zamanı dəri və selikli qişaların dezinfeksiyası.</li><li>Drenaj, kateter, zond ətrafı dəri dezinfeksiyası.</li><li>Stomatoloji əməliyyatlar zamanı ağız boşluğunun dezinfeksiyası.</li><li>Doğuş yollarının dezinfeksiyası, `kiçik` ginekoloji əməliyyatlar zamanı (süni abort, spiral yerləşdirilməsi, eroziya və polipin koaqulyasiyası və s.).</li></ul>"
+    },
+    "contra": {
+      "title": "Əks göstərişlər",
+      "list": "<ul><li>Yoda və preparatın digər komponentlərinə yüksək həssaslıq.</li><li>Qalxanabənzər vəzinin funksiyasının pozulması (hipertireoz) (`Xüsusi göstərişlər` bölməsinə bax).</li><li>Qalxanabənzər vəzinin adenoması.</li><li>Herpetiform Dürinq dermatiti.</li><li>Eyni zamanda radioaktiv yodun istifadəsi.</li><li>Vaxtından əvvəl doğulmuş və yenidoğulmuş uşaqlar.</li></ul>",
+      "caution": "<p><strong>Ehtiyatla:</strong></p><p>Hamiləlik və laktasiya dövrü, xroniki böyrək çatışmazlığı.</p><p><strong>Betadinin 3-cü aydan etibarən hamiləlik və laktasiya dövründə istifadəsi tövsiyə edilmir.</strong></p><p>Bu hallarda müalicə yalnız fərdi tibbi nəzarət altında mümkündür.</p>"
+    },
+    "dosage": {
+      "title": "Dozaj rejimi və istifadə qaydası",
+      "desc": "<p>Dəri və selikli qişaların işlənməsi üçün məhlul durulaşdırılmadan sürtmə, yuma və ya isladılmış kompres kimi istifadə olunur.</p><p>Drenaj sistemlərində istifadə üçün 10% məhlul 10-100 dəfə durulaşdırılır. Məhlul birbaşa istifadə öncəsi hazırlanır, durulaşdırılmış məhlullar saxlanılmır.</p>"
+    },
+    "side": {
+      "title": "Yan təsirlər",
+      "desc": "<p>Geniş yara səthində və selikli qişalarda tez-tez istifadə zamanı yodun sistemli reabsorbsiyası baş verə bilər ki, bu da qalxanabənzər vəzinin funksional testlərinə təsir edə bilər.</p><p>Preparata qarşı yüksək həssaslıq reaksiyaları, allergik reaksiya (hiperemiya, yanma, qaşınma, ödem, ağrı) mümkündür, bu halda preparatın istifadəsi dayandırılmalıdır.</p>"
+    },
+    "interaction": {
+      "title": "Əlaqə",
+      "desc": "<p>Digər dezinfeksiyaedici və antiseptik vasitələrlə, xüsusilə qələvi, ferment və civə tərkibli olanlarla uyğun deyil.</p><p>Qan olduqda bakterisid təsir azalır, lakin məhlulun konsentrasiyası artırıldıqda bakterisid aktivlik arta bilər.</p>"
+    },
+    "special": {
+      "title": "Xüsusi göstərişlər",
+      "list": "<ul><li>Qalxanabənzər vəzinin funksiyasının pozulması zamanı preparat yalnız həkim nəzarəti altında istifadə olunmalıdır.</li><li>Yenidoğulmuşlarda preparat yalnız zərurət olduqda, qalxanabənzər vəzinin funksiyası yoxlandıqdan sonra istifadə oluna bilər.</li><li>Xroniki böyrək çatışmazlığı olan xəstələrdə zədələnmiş dəriyə müntəzəm tətbiq zamanı ehtiyatlı olmaq lazımdır.</li><li>İstifadədən əvvəl qızdırmayın.</li><li>İstifadə yerində rəngli plyonka əmələ gəlir, bu plyonka bütün aktiv yod sərf olunana qədər qalır və preparatın təsirinin bitdiyini göstərir.</li><li>Dəridə və toxumalarda olan rəng asanlıqla su ilə yuyulur.</li><li>Həşərat, ev və vəhşi heyvan dişləmələrində istifadə etməyin.</li></ul>"
+    },
+    "release": {
+      "title": "Buraxılış forması",
+      "desc": "<p><strong>30, 120 və 1000</strong> ml preparat yaşıl rəngli polietilen flakonda, rəngsiz polietilen damcıqla və ağ polipropilen qapaqla, ilk açılışa nəzarət mexanizmi ilə təmin olunmuş şəkildə buraxılır.</p><p><strong>30 ml</strong> və <strong>120 ml</strong> flakonlar karton qutuda, istifadə təlimatı ilə birlikdə qablaşdırılır.</p><p><strong>1000 ml</strong> flakona iki etiket yapışdırılır və təlimat əlavə olunur, flakon karton qutuya qoyulmur.</p>"
+    },
+    "expiry": {
+      "title": "Yararlılıq müddəti",
+      "desc": "<p><strong>3 il.</strong></p><p>Açılmış flakonu 3 aydan çox saxlamayın.</p><p>Qablaşdırmada göstərilən son istifadə tarixindən sonra istifadə etməyin.</p>"
+    },
+    "storage": {
+      "title": "Saxlama şəraiti",
+      "desc": "<p><strong>25°C-dən yüksək olmayan temperaturda saxlayın.</strong></p><p>Uşaqların əli çatmayan yerdə saxlayın.</p>"
+    },
+    "releasecond": {
+      "title": "Buraxılış şərtləri",
+      "desc": "<p>Reçiptsiz buraxılır</p>"
+    },
+    "manufacturer": {
+      "title": "İstehsalçı haqqında məlumat",
+      "info": "<h3 class=\"h3\">Qeydiyyat şəhadətnaməsinin sahibi</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>1106 Budapeşt, Kereşturi küç., 30-38, MACARISTAN</p><p><strong>Telefon:</strong> (36-1)803-5555,</p><p><strong>Faks:</strong> (36-1)803-5529</p><h3 class=\"h3\">İstehsalçı</h3><p>QSC <strong>\"Egis Pharmaceutical Plant\"</strong>, Macarıstan</p><p>9900, Kermend, Matyaş Kiray küç., 65, Macarıstan (istehsalın bütün mərhələləri)</p><p>MUNDIPHARMA AG, BASEL, İSVİÇRƏ lisenziyası ilə</p><h3 class=\"h3\">İstehlakçıların müraciətləri üçün ünvan:</h3><p>MMC <strong>\"Egis-Rus\"</strong>, Rusiya</p><p>121552, Moskva, Yartsevskaya küç., 19, blok B, mərtəbə 13, telefon: (495) 363-39-66</p>"
+    }
+  },
+  "SvechiPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "current": "BETADİN® şamlar"
+    },
+    "header": {
+      "title": "Povidon-yod 200 mq ilə vaginal şamlar — təlimat və rəylər",
+      "instruction": "Təlimat",
+      "subtitle": "Betadin<sup>®</sup> — geniş təsir spektrinə malik vaginal antiseptik",
+      "list": [
+        "Bakteriyalara, göbələklərə və viruslara qarşı aktivdir<sup>1</sup>",
+        "Narahatlıq, qaşınma və yanmanı aradan qaldırmağa kömək edir",
+        "Vaginal mikrofloranı dəstəkləyir<sup>2</sup>"
+      ],
+      "property": [
+        "Patogen mikroblara təsir<sup>2</sup>",
+        "Vaginit və kandidiozun müalicəsi<sup>1</sup>",
+        "Laktobakteriyaların qorunmasına və pH-nın normallaşmasına kömək edir"
+      ]
+    },
+    "usage": {
+      "title": "Tətbiq sahəsi:",
+      "card": [
+        "Kəskin və xroniki vaginit",
+        "Qarışıq vaginal infeksiyalar",
+        "Vulvovaginal kandidiaz (soor)",
+        "Vaginal infeksiyalar"
+      ],
+      "more": "Ətraflı",
+      "readMore": "Daha ətraflı oxuyun:",
+      "section": {
+        "suppositories": "Şam bölməsi məqalələri"
+      }
+    },
+    "method": {
+      "title": "İstifadə qaydası:",
+      "acuteTitle": "Kəskin vaginitdə:",
+      "acuteDesc": "1 şam gündə 2 dəfə, 7 gün ərzində",
+      "chronicTitle": "Xroniki və subakut vaginitdə:",
+      "chronicDesc": "1 şam gündə 1 dəfə, yatmazdan əvvəl",
+      "note": "Müalicə müddətində gigiyenik salfetlərdən istifadə tövsiyə olunur. Müalicə zamanı menstruasiya başlasa, kursu dayandırmaq lazım deyil.",
+      "instructionTitle": "Şamdan istifadə qaydası:",
+      "instruction": [
+        "Prosedurdan əvvəl əllərinizi sabun və ya antiseptiklə yaxşıca yuyun, sonra cinsiyyət orqanlarını ilıq təmiz su ilə yuyun.",
+        "Şamı su ilə isladın ki, onu daxil etmək asan olsun.",
+        "Şamı arxası üstə uzanaraq dərin daxil edin. Əgər bu narahatdırsa, bir ayağınızı stul və ya hündürlüyə qoyaraq ayaqüstə də edə bilərsiniz.",
+        "Daxil etdikdən sonra ən azı 15 dəqiqə uzanmış vəziyyətdə qalın ki, şam əriyib təsir etsin."
+      ],
+      "instructionNote": "Şam axa bilər — bu normaldır və preparatın effektivliyinə ciddi təsir etmir."
+    },
+    "composition": {
+      "title": "Tərkibi:",
+      "subtitle": "1 şamın tərkibi:",
+      "iodine": "200 mq povidon-yod",
+      "excipient": "Köməkçi maddə: makroqal 1000 2800 mq."
+    },
+    "products": {
+      "title": "Betadin məhsulları",
+      "solution": "Yerli və xarici istifadə üçün məhlul",
+      "suppositories": "Vaginal şamlar",
+      "ointment": "Xarici istifadə üçün məlhəm",
+      "current": "Siz bu preparatın səhifəsindəsiniz"
+    },
+    "readMore": "Mövzu üzrə oxuyun",
+    "articles": [
+      {
+        "title": "Vaginal ifrazatlar",
+        "text": "Vaginal ifrazatlar necə olur və normal axıntını patoloji axıntıdan necə ayırmaq olar?"
+      },
+      {
+        "title": "Vaginitin müalicəsi",
+        "text": "Vaginit — vaginal selikli qişanın iltihabıdır. Səbəbləri və müalicə üsulları."
+      },
+      {
+        "title": "Vaginal yanma",
+        "text": "Vaginal yanmanın səbəbləri və müalicə üsulları."
+      },
+      {
+        "title": "İntim zonada qaşınma",
+        "text": "İntim zonada qaşınma nədən yaranır və bu xoşagəlməz simptomu necə aradan qaldırmaq olar?"
+      }
+    ],
+    "literature": {
+      "title": "Ədəbiyyat siyahısı",
+      "0": "Betadin<sup>®</sup> məhlul. Tibbi istifadə üçün təlimatlar (RN: LP-№(002589)-(RG-AZ)).",
+      "1": "Betadin<sup>®</sup> məlhəm. Tibbi istifadə üçün təlimatlar (RN: LP-№(002552)-(RG-AZ)).",
+      "2": "Betadin<sup>®</sup> şamlar. Tibbi istifadə üçün təlimatlar (RN: LP-№(002550)-(RG-AZ)).",
+      "3": "Neut C. at al Open Journal of Obstetrics and Gynecology, 2015, 5, 173-180",
+      "4": "Eggers M, Infect Dis Ther (2019) 8:581–593."
+    }
+  },
+  "MazPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "current": "BETADİN MƏLHƏM XARİCİ İSTİFADƏ ÜÇÜN 10%"
+    },
+    "header": {
+      "title": "Betadin® məlhəm 10% xarici istifadə üçün",
+      "instruction": "Təlimat",
+      "subtitle": "Betadin® — geniş təsir spektrinə malik universal antiseptikdir",
+      "list": [
+        "Antiseptik və dezinfeksiyaedici vasitə",
+        "Sürətli bakterisid təsir göstərir",
+        "Göbələklərə, viruslara, ibtidailərə qarşı aktivdir"
+      ],
+      "property": [
+        "Yaraların, cızıqların, yanıqların və yataq yaralarının sağalmasına kömək edir",
+        "Dəri infeksiyalarının<br />müalicəsi",
+        "Dəri göbələk infeksiyalarının terapiyası"
+      ]
+    },
+    "usage": {
+      "title": "Tətbiq sahəsi:",
+      "card": [
+        "Cızıqların və yaraların emalı",
+        "Dəri bakterial infeksiyalarının müalicəsi",
+        "Trofik xoraların və yataq yaralarının emalı",
+        "Yanıqlarda yaraların emalı"
+      ],
+      "more": "Ətraflı",
+      "readMore": "Daha ətraflı oxuyun:",
+      "section": {
+        "wound": "Yara bölməsi məqalələri",
+        "infection": "İnfeksiya bölməsi məqalələri",
+        "ulcer": "Xora bölməsi məqalələri",
+        "burn": "Yanıq bölməsi məqalələri"
+      }
+    },
+    "method": {
+      "title": "İstifadə qaydası:",
+      "desc": "Zədələnmiş səthə məlhəm nazik qatla gündə 2-3 dəfə çəkilir.",
+      "film": "İstifadə yerində rəngli plyonka əmələ gəlir, bu plyonka aktiv yodun tam sərbəst buraxılmasına qədər qalır, bu da preparatın təsirinin bitdiyini göstərir.",
+      "cautionTitle": "Ehtiyatla:",
+      "caution": "Hamiləlik və laktasiya dövrü, xroniki böyrək çatışmazlığı."
+    },
+    "composition": {
+      "title": "Tərkibi:",
+      "subtitle": "1 q məlhəmin tərkibi:",
+      "text": "100 mq təsiredici maddə – povidon-yod (10,25 mq aktiv yoda uyğundur), köməkçi maddələr: natrium hidrokarbonat, makroqal 400, makroqal 4000, makroqal 1000, makroqal 1500, təmizlənmiş su.",
+      "macrogolTitle": "Məlhəmin tərkibindəki makroqal:",
+      "macrogolList": [
+        "Yara təmizləyici təsirə malikdir",
+        "Sağalma müddətini sürətləndirməyə kömək edir",
+        "Povidon-yod molekullarının mikrobların yerləşdiyi yerlərə nüfuzunu yaxşılaşdırır"
+      ]
+    },
+    "products": {
+      "title": "Betadin məhsulları",
+      "solution": "Yerli və xarici istifadə üçün məhlul",
+      "suppositories": "Vaginal şamlar",
+      "ointment": "Xarici istifadə üçün məlhəm",
+      "current": "Siz bu preparatın səhifəsindəsiniz"
+    },
+    "readMore": "Yaraların, kəsiklərin və Betadin® kömək etdiyi digər xəstəliklərin müalicəsi haqqında faydalı məqalələr",
+    "articles": [
+      {
+        "title": "Yaraların emalı",
+        "text": "Yaraların düzgün emalı, fəsadların qarşısını almaq üçün necə aparılmalıdır."
+      },
+      {
+        "title": "Kəsiklər",
+        "text": "Kəsik — kiçik kəsilmiş yaranın məişət adıdır. Belə zədələr necə və nə ilə emal olunur?"
+      },
+      {
+        "title": "Yod",
+        "text": "Yodun istifadə sahələri. Povidon-yodun spirtli yod məhlulundan fərqləri."
+      },
+      {
+        "title": "İnfeksiyalı yaralar",
+        "text": "Bütün cızıqlar və kəsiklər tez və fəsadsız sağalmır. İnfeksiyalı yaralar necə müalicə olunur?"
+      }
+    ],
+    "articlesAll": "Bütün məqalələr",
+    "literature": {
+      "title": "Ədəbiyyat siyahısı",
+      "0": "Blatun L.A. Müasir məlhəmlərin irinli yaraların, yataq yaralarının, trofik xoraların müalicəsində imkanları, 2010",
+      "1": "Betadin® məhlul. Tibbi istifadə üçün təlimatlar (RN: LP-№(002589)-(RG-AZ)).",
+      "2": "Betadin® məlhəm. Tibbi istifadə üçün təlimatlar (RN: LP-№(002552)-(RG-AZ)).",
+      "3": "Betadin® şamlar. Tibbi istifadə üçün təlimatlar (RN: LP-№(002550)-(RG-AZ))."
+    }
+  },
+  "RastvorPage": {
+    "breadcrumb": {
+      "home": "Əsas səhifə",
+      "current": "BETADİN YERLİ VƏ XARİCİ İSTİFADƏ ÜÇÜN MƏHLUL 10%"
+    },
+    "header": {
+      "title": "Betadin® məhlul 10%: göstərişlər, istifadə qaydası",
+      "instruction": "Təlimat",
+      "subtitle": "Betadin® — geniş təsir spektrinə malik universal antiseptikdir",
+      "list": [
+        "Antiseptik və dezinfeksiyaedici vasitə",
+        "Bakterisid təsir göstərir (əksər mikroorqanizmlər 15-30 saniyə ərzində məhv olur)",
+        "Göbələklərə, viruslara, ibtidailərə qarşı aktivdir",
+        "1 aylıqdan sonra istifadəyə icazəlidir"
+      ],
+      "property": [
+        "Yandırmır<br />və spirt tərkibli deyil",
+        "Su ilə<br />asanca yuyulur",
+        "Əksər bakteriya və<br />virusları məhv edir"
+      ]
+    },
+    "usage": {
+      "title": "Tətbiq sahəsi:",
+      "card": [
+        "Dərinin infeksiyalarının müalicəsi: bakterial, göbələk və virus mənşəli",
+        "Yaraların, yataq yaralarının, trofik xoraların, diabetik ayağın emalı",
+        "Dərinin və selikli qişaların<br />dezinfeksiyası",
+        "Yara səthinin emalı və yağlanması üçün, o cümlədən uşaqlarda"
+      ],
+      "more": "Ətraflı",
+      "readMore": "Daha ətraflı oxuyun:",
+      "section": {
+        "infection": "İnfeksiya bölməsi məqalələri",
+        "ulcer": "Xora bölməsi məqalələri",
+        "iodine": "Yod bölməsi məqalələri",
+        "wound": "Yara bölməsi məqalələri"
+      }
+    },
+    "method": {
+      "title": "İstifadə qaydası:",
+      "skin": "Dəriyə:",
+      "skinDesc": "Seyreltmədən kompres kimi istifadə edin.",
+      "mucosa": "Selikli qişalara:",
+      "mucosaDesc": "1:10 nisbətində seyreltmək (1 qapaq və ya 2 çay qaşığı 100 ml suya).",
+      "film": "İstifadə yerində rəngli plyonka əmələ gəlir, bu plyonka aktiv yodun tam sərbəst buraxılmasına qədər qalır, bu da preparatın təsirinin bitdiyini göstərir.",
+      "cautionTitle": "Ehtiyatla:",
+      "caution": "Hamiləlik və laktasiya dövrü, xroniki böyrək çatışmazlığı."
+    },
+    "composition": {
+      "title": "Tərkibi:",
+      "subtitle": "1 ml məhlulun tərkibi:",
+      "text": "100 mq povidon-yod (10 mq aktiv yoda uyğundur), köməkçi maddələr: qliserol, nonoksinol 9, limon turşusu, natrium hidrofosfat (dinatrium hidrofosfat), natrium hidroksid, təmizlənmiş su."
+    },
+    "products": {
+      "title": "Betadin məhsulları",
+      "solution": "Yerli və xarici istifadə üçün məhlul",
+      "current": "Siz bu preparatın səhifəsindəsiniz",
+      "suppositories": "Vaginal şamlar",
+      "ointment": "Xarici istifadə üçün məlhəm"
+    },
+    "readMore": "Yaraların, kəsiklərin və Betadin® kömək etdiyi digər xəstəliklərin müalicəsi haqqında faydalı məqalələr",
+    "articles": [
+      {
+        "title": "Yaraların emalı",
+        "text": "Yaraların düzgün emalı, fəsadların qarşısını almaq üçün necə aparılmalıdır."
+      },
+      {
+        "title": "Kəsiklər",
+        "text": "Kəsik — kiçik kəsilmiş yaranın məişət adıdır. Belə zədələr necə və nə ilə emal olunur?"
+      },
+      {
+        "title": "Yod",
+        "text": "Yodun istifadə sahələri. Povidon-yodun spirtli yod məhlulundan fərqləri."
+      }
+    ],
+    "articlesAll": "Bütün məqalələr",
+    "literature": {
+      "title": "Ədəbiyyat siyahısı",
+      "0": "Betadin® məhlul. Tibbi istifadə üçün təlimatlar (RN: LP-№(002589)-(RG-AZ)).",
+      "1": "Betadin® məlhəm. Tibbi istifadə üçün təlimatlar (RN: LP-№(002552)-(RG-AZ)).",
+      "2": "Betadin® şamlar. Tibbi istifadə üçün təlimatlar (RN: LP-№(002550)-(RG-AZ))."
+    }
+  },
   "Index": {
     "title": "Betadin (povidon-yod) — yaraların müalicəsi və infeksiyaların profilaktikası üçün effektiv antiseptik",
     "description": ""
