@@ -4,134 +4,89 @@ import { useRef, useState } from 'react';
 
 const Preimushestva = () => {
     const t = useTranslations('home.advantages');
-    
-        const slides = [
-        {
-            img: {
-                src: "/img-1.svg",
-                srcSet768: "/img-1-768.svg",
-                srcSet375: "/img-768.svg",
-                alt: "",
-            },
-            translationKey: 'slides.fights_infections'
-        },
-        {
-            img: {
-                src: "/img-2.svg",
-                srcSet768: "/img-2-768.svg",
-                srcSet375: "/img-768.svg",
-                alt: "",
-            },
-            translationKey: 'slides.no_burning'
-        },
-        {
-            img: {
-                src: "/img-3.svg",
-                srcSet768: "/img-3-768.svg",
-                srcSet375: "/img-768.svg",
-                alt: "",
-            },
-            translationKey: 'slides.wide_usage'
-        },
-        {
-            img: {
-                src: "/img-4.svg",
-                srcSet768: "/img-4-768.svg",
-                srcSet375: "/img-768.svg",
-                alt: "",
-            },
-            translationKey: 'slides.easy_wash'
-        },
-        {
-            img: {
-                src: "/img-5.svg",
-                srcSet768: "/img-5-768.svg",
-                srcSet375: "/img-768.svg",
-                alt: "",
-            },
-            translationKey: 'slides.family_friendly'
-        },
+    const slides = [
+        { translationKey: 'slides.fights_infections' },
+        { translationKey: 'slides.no_burning' },
+        { translationKey: 'slides.wide_usage' },
+        { translationKey: 'slides.easy_wash' },
+        { translationKey: 'slides.family_friendly' },
     ];
-    // Mobile slider logic
-    const [activeIdx, setActiveIdx] = useState(0);
-    const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-    const handleDotClick = (idx: number) => {
-        setActiveIdx(idx);
-        // Scroll to the slide on mobile
-        if (slideRefs.current[idx] && window.innerWidth <= 768) {
-            slideRefs.current[idx]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    };
-
     return (
         <div className="container default-pd">
             <h2 id="preimushchestva-betadin" className="home-h2">
                 {t('title')}
             </h2>
-            <div className="home-preimushestva">
-                <picture>
-                    <img
-                        decoding="async"
-                        src="/preimushestva.webp"
-                        alt=""
-                    />
-                </picture>
-                <div className="slider-home-preimushestva">
-                    <div className="swiper-wrapper">
-                        {slides.map((slide, idx) => (
-                            <div
-                                className="swiper-slide"
-                                key={idx}
-                                ref={el => { slideRefs.current[idx] = el; }}
-                                style={{ display: (window.innerWidth <= 768 && idx !== activeIdx) ? 'none' : undefined }}
-                            >
-                                <div className="slide-image">
-                                    <picture>
-                                            <img
-                                                decoding="async"
-                                                src={
-                                                    window.innerWidth < 767
-                                                    ? "/img-768.svg"
-                                                    : slide.img.src
-                                                }
-                                                alt={slide.img.alt}
-                                            />
-                                    </picture>
-                                </div>
-                                <div className="slide-body"  dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
-                            </div>
-                        ))}
-                    </div>
-                    {/* Mobile-only pagination dots */}
-                    <div className="slider-home-preimushestva-pagination-mobile" style={{ display: window.innerWidth <= 768 ? 'flex' : 'none', justifyContent: 'center', marginTop: 16 }}>
-                        {slides.map((_, idx) => (
-                            <span
-                                key={idx}
-                                onClick={() => handleDotClick(idx)}
-                                style={{
-                                    width: 12,
-                                    height: 12,
-                                    borderRadius: '50%',
-                                    background: idx === activeIdx ? '#1B7B2C' : '#E0E0E0',
-                                    margin: '0 4px',
-                                    display: 'inline-block',
-                                    cursor: 'pointer',
-                                    border: idx === activeIdx ? '2px solid #1B7B2C' : '2px solid #E0E0E0',
-                                    transition: 'background 0.2s, border 0.2s',
-                                }}
-                            />
-                        ))}
-                    </div>
+            <div className="home-preimushestva-list-layout">
+                <div className="home-preimushestva-list-img">
+                    <picture>
+                        <img
+                            decoding="async"
+                            src="/preimushestva.webp"
+                            alt=""
+                        />
+                    </picture>
                 </div>
+                <ul className="home-preimushestva-list">
+                    {slides.map((slide, idx) => (
+                        <li key={idx} className="home-preimushestva-list-item">
+                            <span dangerouslySetInnerHTML={{ __html: t(slide.translationKey) }} />
+                        </li>
+                    ))}
+                </ul>
             </div>
             <style jsx>{`
-                @media (min-width: 769px) {
-                    .slider-home-preimushestva-pagination-mobile {
-                        display: none !important;
+                .home-preimushestva-list-layout {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 48px;
+                    flex-wrap: wrap;
+                }
+                .home-preimushestva-list-img {
+                    flex: 5 1 0%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .home-preimushestva-list-img img {
+                    max-width: 100%;
+                    width: 100%;
+                    height: auto;
+                }
+                .home-preimushestva-list {
+                    flex: 1 1 0%;
+                    max-width: 320px;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                }
+                .home-preimushestva-list-item {
+                    background: #f7f9f8;
+                    border-radius: 12px;
+                    padding: 18px 24px;
+                    font-size: 1.08rem;
+                    color: #1B7B2C;
+                    box-shadow: 0 2px 8px rgba(27,123,44,0.06);
+                    font-weight: 500;
+                    transition: box-shadow 0.2s;
+                }
+                .home-preimushestva-list-item:hover {
+                    box-shadow: 0 4px 16px rgba(27,123,44,0.13);
+                }
+                @media (max-width: 900px) {
+                    .home-preimushestva-list-layout {
+                        flex-direction: column;
+                        gap: 32px;
                     }
-                    .swiper-slide {
-                        display: block !important;
+                    .home-preimushestva-list-img img {
+                        max-width: 180px;
+                    }
+                    .home-preimushestva-list {
+                        max-width: 100%;
+                        flex: 1 1 100%;
                     }
                 }
             `}</style>

@@ -31,6 +31,279 @@ body {
   font-family: var(--font-sans);
 }
 
+.cookie-banner {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 9999;
+    background-color: #fff;
+    padding-inline:20px;}
+
+.cookie-banner__wrapper {
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 1164px;
+}
+
+.cookie-banner__title {
+    margin: 0 0 16px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.cookie-banner__text {
+    margin: 0 0 32px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+}
+
+.cookie-banner__button-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.cookie-banner__button {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: #fff;
+    padding-inline:12px;min-height: 47px;
+    min-width: 160px;
+    cursor: pointer;
+    background: none;
+}
+
+@media screen and (max-width: 600px) {
+    .cookie-banner {
+        padding-inline:0;
+    }
+
+    .cookie-banner__wrapper {
+        padding: 16px 14px;
+        max-width: none;
+    }
+
+    .cookie-banner__title {
+        margin-bottom: 12px;
+        font-size: 16px;
+        line-height: 1.45;
+    }
+
+    .cookie-banner__text {
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+
+    .cookie-banner__button-wrapper {
+        flex-direction: row-reverse;
+    }
+
+    .cookie-banner__button {
+        width: 100%;
+        min-width: auto;
+        min-height: 40px;
+    }
+}
+
+.cookie-banner.zalain .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.zalain .cookie-banner__button-first {
+    background-color: #379b43;
+}
+
+.cookie-banner.zalain .cookie-banner__button-second {
+    color: #379b43;
+    border: 1px solid #379b43;
+}
+
+.cookie-banner.zalain .cookie-banner__text-link {
+    color: #379b43;
+}
+
+.cookie-banner.femnial .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.femnial .cookie-banner__button-first {
+    background-color: #c43f74;
+}
+
+.cookie-banner.femnial .cookie-banner__button-second {
+    color: #c43f74;
+    border: 1px solid #c43f74;
+}
+
+.cookie-banner.femnial .cookie-banner__text-link {
+    color: #c43f74;
+}
+
+.cookie-banner.novatenol .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.novatenol .cookie-banner__button-first {
+    background-color: #68bd5f;
+}
+
+.cookie-banner.novatenol .cookie-banner__button-second {
+    color: #68bd5f;
+    border: 1px solid #68bd5f;
+}
+
+.cookie-banner.novatenol .cookie-banner__text-link {
+    color: #68bd5f;
+}
+
+.cookie-banner.betadin .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.betadin .cookie-banner__button-first {
+    background-color: #30892b;
+    border: none;
+}
+
+.cookie-banner.betadin .cookie-banner__button-second {
+    color: #30892b;
+    border: 1px solid #30892b;
+}
+
+.cookie-banner.betadin .cookie-banner__text-link {
+    color: #30892b;
+    display: inline !important;
+    text-decoration: underline;
+}
+
+.cookie-banner.vagilak .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.vagilak .cookie-banner__button-first {
+    background-color: #eb6183;
+}
+
+.cookie-banner.vagilak .cookie-banner__button-second {
+    color: #eb6183;
+    border: 1px solid #eb6183;
+}
+
+.cookie-banner.vagilak .cookie-banner__text-link {
+    color: #eb6183;
+}
+
+.cookie-banner.superirion .cookie-banner__button {
+    border-radius: 64px;
+}
+
+.cookie-banner.superirion .cookie-banner__button-first {
+    background-color: #792682;
+}
+
+.cookie-banner.superirion .cookie-banner__button-second {
+    color: #792682;
+    border: 1px solid #792682;
+}
+
+.cookie-banner.superirion .cookie-banner__text-link {
+    color: #792682;
+}
+
+.cookie-banner.formakonadzor .cookie-banner__button {
+    border-radius: 8px;
+}
+
+.cookie-banner.formakonadzor .cookie-banner__button-first {
+    background-color: #07b8fd;
+}
+
+.cookie-banner.formakonadzor .cookie-banner__button-second {
+    color: #07b8fd;
+    border: 1px solid #07b8fd;
+}
+
+.cookie-banner.formakonadzor .cookie-banner__text-link {
+    color: #07b8fd;
+}
+
+.cookie-banner.suprastinex .cookie-banner__title {
+    margin-bottom: 8px;
+}
+
+.cookie-banner.suprastinex .cookie-banner__text {
+    margin-bottom: 16px;
+}
+
+.cookie-banner.suprastinex .cookie-banner__text br:first-child {
+    display: none;
+}
+
+.cookie-banner.suprastinex .cookie-banner__button {
+    border-radius: 8px;
+}
+
+.cookie-banner.suprastinex .cookie-banner__button-first {
+    background-color: #6319ae;
+}
+
+.cookie-banner.suprastinex .cookie-banner__button-second {
+    color: #6319ae;
+    border: 1px solid #6319ae;
+}
+
+.cookie-banner.suprastinex .cookie-banner__text-link {
+    color: #6319ae;
+}
+
+.cookie-banner.suprastin .cookie-banner__title {
+    margin-bottom: 16px;
+}
+
+.cookie-banner.suprastin .cookie-banner__text {
+    font-size: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .cookie-banner.suprastin .cookie-banner__text {
+        font-size:14px;
+    }
+}
+
+.cookie-banner.suprastin .cookie-banner__button {
+    border-radius: 36px;
+    line-height: 18px;
+    min-height: 42px;
+}
+
+@media screen and (max-width: 600px) {
+    .cookie-banner.suprastin .cookie-banner__button {
+        min-height:40px;
+    }
+}
+
+.cookie-banner.suprastin .cookie-banner__button-first {
+    background: linear-gradient(87.95deg, #a82783 5.2%, #915cb1 100%);
+}
+
+.cookie-banner.suprastin .cookie-banner__button-second {
+    color: #951d72;
+    border: 1px solid #951d72;
+}
+
+.cookie-banner.suprastin .cookie-banner__text-link {
+    color: #951d72;
+}
+
+.hidden {
+    display: none;
+}
+
 /*
   To load local font files, add them to /public/fonts (for example: /public/fonts/SansusWebissimo.woff2)
   and uncomment the @font-face block below, adjusting the src paths and font-weight as needed.

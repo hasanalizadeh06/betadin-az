@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { getTranslations, getMessages } from 'next-intl/server';  // ✅ getMessages əlavə edin
 import Navbar from "@/components/global/Navbar";
 import Footer from "@/components/global/Footer";
+import CookieBanner from "@/components/CookieBanner";
 import "@/styles/template.css";
 
 type LocaleParamsPromise = Promise<{ locale: string }>;
@@ -55,7 +56,8 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <Navbar />      
+      <Navbar />
+      <CookieBanner />
       <div className="overflow-hidden">
         {children}
       </div>

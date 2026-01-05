@@ -15,7 +15,9 @@ export default async function Layout({
 }) {
   return (
     <html className={montserrat.className}>
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   );
 }
